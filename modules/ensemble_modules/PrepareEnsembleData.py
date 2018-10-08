@@ -1,0 +1,3 @@
+from modules.ensemble_modules import EnsenmbleData
+
+EnsenmbleData.do_all_data_prep_for_training()
