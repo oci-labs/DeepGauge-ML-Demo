@@ -133,11 +133,9 @@ class OptimizerLogger(object):
                     OptimizerLogger.modelsInfo = modelsInfo
 
                     ##
-                    print('train_acc: {}'.format(train_acc))
-                    print('test_acc: {}'.format(test_acc))
-                    print('psi_5 accuracy: {}'.format(classes_info['test_classes']['psi_5']['acc']))
-                    print('psi_5_5 accuracy: {}'.format(classes_info['test_classes']['psi_5_5']['acc']))
-                    print('')
+                    # modelsInfo['main']['best_median']
+                    print('train_acc: {:.4f}   test_acc: {:.4f}  best_logits_median: {:.4f}'.
+                          format(train_acc, test_acc, modelsInfo['main']['best_median']))
                     print('')
 
                 ## to save modelsInfo

@@ -42,8 +42,6 @@ class Dataset(object):
 
         with open('dumps/category_mapper.json', 'w') as outfile:
             json.dump(category_mapper, outfile)
-        # with open('dumps/category_mapper.pkl', 'wb') as pklFile:
-        #     pickle.dump(category_mapper, pklFile)
         return
 
     @staticmethod
@@ -143,5 +141,7 @@ class Dataset(object):
 
         ##
         cls_indices = cls.find_cls_indices(train_y_data=y_train.values, test_y_data=y_test.values)
+
+        print("The image pre-processing is complete.")
 
         return X_train, X_test, y_train.values, y_test.values, cls_indices

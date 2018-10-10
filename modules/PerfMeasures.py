@@ -162,6 +162,9 @@ class Measures(object):
             if (best_models_info['main']['best_acc'] < classes_info['main']['acc']) and \
                     (classes_info['main']['acc'] > 0.01):
                 save_model = True
+            elif (best_models_info['main']['best_acc'] == classes_info['main']['acc']) and \
+                    (best_models_info['main']['best_median'] < classes_info['main']['logits_median']):
+                save_model = True
         else:
             save_model = True
             #
