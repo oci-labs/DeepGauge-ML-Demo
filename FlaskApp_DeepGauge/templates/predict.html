@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gauge Reader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <h4 style="margin: auto;width: 80%; text-align: center; margin-top: 20px;  text-transform: uppercase">Gauge Reading</h4>
+<div style="width: 90%; margin: auto; text-align: center">
+    <img src="{{ url_for('send_file', filename=image_file_name)}}" style ="max-width: 700px; max-height: 650px; margin-top: 30px; margin-bottom: 10px">
+    <!img src="{{ url_for('send_file', filename=image_file_name)}}" style ="max-width: 700px; max-height: 650px; margin-top: 30px; margin-bottom: 10px">
+    <p style="font-style: italic">{{ image_file_name }}</p>
+
+    <h3 style="margin-top: 40px"><b>Predicted Label: <span style="color: green">{{ label }}</span></b></h3>
+    <h3><b>Accuracy : <span style="color: green;">{{ accuracy }}</span></b></h3>
+     <a href="/">Back to Home</a>
+</div>
+
+<div style="text-align: center; margin-top: 20px">
+       <img style="max-width: 600px" src="{{ url_for('static', filename='latest_streaming_frame_annotated.jpg') }}"/>
+       <!<img src="gauge2.jpg" alt="Girl in a jacket" width="500" height="600">>
+</div>
+
+
+</body>
+
+</html>
