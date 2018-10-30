@@ -1,10 +1,10 @@
-from modules.ensemble_modules import EnsenmbleData
+from modules.ensemble_modules import obsolete_EnsenmbleData
 from modules import OptimizeAndLog
 import importlib
 
 ## load data
 X_train, X_test, y_train, y_test, cls_indices = \
-    EnsenmbleData.load_ensemble_data(data_path='./data/ensembleDatasets/pre_ensembleData_final.pkl')
+    obsolete_EnsenmbleData.load_ensemble_data(data_path='./data/ensembleDatasets/pre_ensembleData_final.pkl')
 
 ##
 importlib.reload(OptimizeAndLog)

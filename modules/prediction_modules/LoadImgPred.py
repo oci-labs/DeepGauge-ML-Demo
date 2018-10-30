@@ -41,7 +41,7 @@ class DatasetForPrediction(object):
     @staticmethod
     def path_to_tensor(img_path, img_size_x, img_size_y, color_mode):
         # loads RGB image as PIL.Image.Image type
-        img = image.load_img(img_path, target_size=(img_size_x, img_size_y, color_mode))
+        img = image.load_img(img_path, target_size=(img_size_y, img_size_x, color_mode))
         # convert the img to 3D tensor with shape (?, ?, ?)
         x = image.img_to_array(img)
         # convert 3D tensor to 4D tensor with shape (1, ?, ?, ?) and return 4D tensor

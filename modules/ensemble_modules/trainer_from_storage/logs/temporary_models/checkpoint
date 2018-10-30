@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/ensemble_architecture_main"
+all_model_checkpoint_paths: "/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/ensemble_architecture_main"

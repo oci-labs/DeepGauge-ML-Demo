@@ -20,7 +20,7 @@ class Predict(object):
 
     @staticmethod
     def restore_model(checkpoint_path, sess):
-        # checkpoint_path = './logs/models/' + checkpoint_path + '/'
+        # checkpoint_path = './logs/models/8th/'
         meta_graph_path = glob.glob(os.path.join(checkpoint_path, '*.meta'))[0]
         saver = tf.train.import_meta_graph(meta_graph_path, clear_devices=True)
         saver.restore(sess, tf.train.latest_checkpoint(checkpoint_path))
@@ -63,8 +63,8 @@ class Predict(object):
 
     @classmethod
     def predict_batch(cls, checkpoint_path, X_pred, y_true,
-                      get_results_pandas=True, guage_files=[],
-                      save_results_pandas=True):
+                      get_results_pandas=False, guage_files=None,
+                      save_results_pandas=False):
         ##
         with tf.Session() as session:
             cls.restore_model(checkpoint_path=checkpoint_path, sess=session)
@@ -80,7 +80,7 @@ class Predict(object):
             ##
             logits_pred = session.run(logits_tf, feed_dict=feed_dict_pred)
 
-            ##
+            #
             pred_acc = PerfMeasuresPred.Measures.compute_measures_pred(
                 logits_pred=logits_pred,
                 y_data_pred=y_true)
@@ -185,6 +185,9 @@ class Predict(object):
                     y = circles[0, 1]
                     r = circles[0, 2]
 
+                    cv2.circle(output, (x, y), r + 240, (250, 250, 250), 500)
+                    # cv2.rectangle(output, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
+
                     ## to crop the original frame
                     square_half_side = int(frame_ratio * r)
                     cropped_frame = output[x - square_half_side:x + square_half_side,
@@ -196,8 +199,8 @@ class Predict(object):
 
                     # draw the circle in the output image, then draw a rectangle
                     # corresponding to the center of the circle
-                    cv2.circle(cropped_frame, (x, y), r, (0, 255, 0), 4)
-                    cv2.rectangle(cropped_frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
+                    # cv2.circle(cropped_frame, (x, y), r, (0, 255, 0), 4)
+                    # cv2.rectangle(cropped_frame, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
                     # cv2.rectangle(output, (x - r, y - r), (x + r, y + r), (0, 128, 255), -1)
 
                     try:
