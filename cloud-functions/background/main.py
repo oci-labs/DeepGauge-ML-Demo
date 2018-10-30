@@ -36,16 +36,16 @@ def predict_gauge(data, context):
         name=name,
         body={'instances': [instance]}
     ).execute()
-
-    print( response['predictions'])
+    # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
+    print(response['predictions'])
 
     # Print General Information
-    print('Event ID: {}'.format(context.event_id))
-    print('Event type: {}'.format(context.event_type))
-    print('Bucket: {}'.format(data['bucket']))
-    print('File: {}'.format(data['name']))
-    print('Metageneration: {}'.format(data['metageneration']))
-    print('Created: {}'.format(data['timeCreated']))
-    print('Updated: {}'.format(data['updated']))
+    # print('Event ID: {}'.format(context.event_id))
+    # print('Event type: {}'.format(context.event_type))
+    # print('Bucket: {}'.format(data['bucket']))
+    # print('File: {}'.format(data['name']))
+    # print('Metageneration: {}'.format(data['metageneration']))
+    # print('Created: {}'.format(data['timeCreated']))
+    # print('Updated: {}'.format(data['updated']))
 
 # [END functions_predict_gauge]
