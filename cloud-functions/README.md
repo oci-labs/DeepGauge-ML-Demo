@@ -68,3 +68,70 @@ To deploy the function, run the following command in the directory where the sam
 ```
 gcloud functions deploy hello_gcs_generic --runtime python37 --trigger-resource YOUR_TRIGGER_BUCKET_NAME --trigger-event google.storage.object.finalize
 ```
+Deep Gauge
+```
+gcloud functions deploy predict_gauge --source=. --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.finalize
+```
+
+#### Object Finalize: triggering the function
+
+To trigger the function:
+
+1.  Create an empty `gcf-test.txt` file in the directory where the sample code is located.
+
+2.  Upload the file to Cloud Storage in order to trigger the function:
+```
+  gsutil cp gcf-test.txt gs://ocideepgauge-images
+  gsutil cp daisy.jpg gs://ocideepgauge-images
+```
+
+
+3.  Check the logs to make sure the executions have completed:
+```
+gcloud functions logs read --limit 50
+```
+
+### Object Delete
+
+Object delete events are most useful for [non-versioning buckets](https://cloud.google.com/storage/docs/object-versioning). They are triggered when an old version of an object is deleted. In addition, they are triggered when an object is overwritten. Object delete triggers can also be used with [versioning buckets](https://cloud.google.com/storage/docs/object-versioning), triggering when a version of an object is permanently deleted.
+
+#### Object Delete: deploying the function
+
+Using the same sample code as in the finalize example, deploy the function with object delete as the trigger event. Run the following command in the directory where the sample code is located:
+
+```
+gcloud functions deploy hello_gcs_generic --runtime python37 --trigger-resource YOUR_TRIGGER_BUCKET_NAME --trigger-event google.storage.object.delete
+```
+
+```
+gcloud functions deploy predict_gauge --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.delete
+```
+
+where `*YOUR_TRIGGER_BUCKET_NAME*` is the name of the Cloud Storage bucket that triggers the function.
+
+#### Object Delete: triggering the function
+
+To trigger the function:
+
+1.  Create an empty `gcf-test.txt` file in the directory where the sample code is located.
+
+2.  Make sure that your bucket is non-versioning:
+
+    gsutil versioning set off gs://*YOUR_TRIGGER_BUCKET_NAME*
+
+3.  Upload the file to Cloud Storage:
+
+    gsutil cp gcf-test.txt gs://*YOUR_TRIGGER_BUCKET_NAME*
+
+    where `*YOUR_TRIGGER_BUCKET_NAME*` is the name of your Cloud Storage bucket where you will upload a test file. At this point the function should not execute yet.
+
+4.  Delete the file to trigger the function:
+
+    gsutil rm gs://*YOUR_TRIGGER_BUCKET_NAME*/gcf-test.txt
+
+5.  Check the logs to make sure the executions have completed:
+
+    `gcloud functions logs read --limit 50\
+    `
+
+Note that the function may take some time to finish executing.
