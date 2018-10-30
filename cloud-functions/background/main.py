@@ -1,5 +1,6 @@
-import base64, json
+import base64
 from google.cloud import storage
+from googleapiclient import discovery
 
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
@@ -19,15 +20,26 @@ def predict_gauge(data, context):
     bucket = client.get_bucket(bucket_id)
     blob = bucket.blob(data['name'])
     img = base64.b64encode(blob.download_as_string())
-    json_dumps = json.dumps({"key":"0", "image_bytes": {"b64": img}})
 
-    print("NEWER VERSION")
-    # print(json_dumps)
-    # print("IMG".format(type(blob)))
+    instance = {"key":"0", "image_bytes": {"b64": img.decode("utf8")}}
 
-    # print( 'Bucket: {}'.format(type(bucket)) )
-    # print( 'JSON DUMPS: {}'.format(json_dumps) )
+    #
+    # Compose request to ML Engine
+    #
+    project = 'ocideepgauge'
+    model = 'flowers'
+    service = discovery.build('ml', 'v1', cache_discovery=False)
+    name = 'projects/{}/models/{}'.format(project, model)
 
+    # Create a request to call projects.models.predict.
+    response = service.projects().predict(
+        name=name,
+        body={'instances': [instance]}
+    ).execute()
+
+    print( response['predictions'])
+
+    # Print General Information
     print('Event ID: {}'.format(context.event_id))
     print('Event type: {}'.format(context.event_type))
     print('Bucket: {}'.format(data['bucket']))
