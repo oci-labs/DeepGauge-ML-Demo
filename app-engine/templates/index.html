@@ -20,6 +20,14 @@
         </div>
       </header>
       <section class="row">
+        <div class="col-6">
+          <p>Messages received by this instance:</p>
+          <ul>
+            {% for message in messages: %}
+              <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
       </section>
     </article>
 
