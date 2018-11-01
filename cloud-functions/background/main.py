@@ -1,6 +1,8 @@
-import base64
+import base64, json
 from google.cloud import storage
 from googleapiclient import discovery
+from google.cloud import pubsub_v1
+
 
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
@@ -36,9 +38,26 @@ def predict_gauge(data, context):
         name=name,
         body={'instances': [instance]}
     ).execute()
-    # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
-    print(response['predictions'])
 
+    #
+    # Compose request to PUB/SUB
+    #
+    topic_name = "flower-prediction"
+
+    publisher = pubsub_v1.PublisherClient()
+    topic_path = publisher.topic_path(project, topic_name)
+
+    # Data must be a bytestring
+    predictions = json.dumps(response['predictions'])
+    bytestring = predictions.encode('utf-8')
+
+    # Add two attributes, origin and username, to the message
+    publisher.publish(topic_path, bytestring, origin='flower-sample', username='gcp')
+
+    print('Published messages with custom attributes.')
+
+    # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
+    # print(response['predictions'])
     # Print General Information
     # print('Event ID: {}'.format(context.event_id))
     # print('Event type: {}'.format(context.event_type))
