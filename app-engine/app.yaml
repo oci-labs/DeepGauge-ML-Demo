@@ -1,5 +1,9 @@
 runtime: python37
 service: deep-gauge
+
+env_variables:
+    PUBSUB_TOPIC: flower-prediction
+    PUBSUB_VERIFICATION_TOKEN: 7fSDp7HI29
 handlers:
   # This configures Google App Engine to serve the files in the app's static
   # directory.
