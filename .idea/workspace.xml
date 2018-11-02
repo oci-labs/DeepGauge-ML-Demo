@@ -1,283 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/copy_to_bucket.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customEstimator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ens.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hyperParamOptimizer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/temporary_latest_streaming_image/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/CustomEnsembleEstimator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/ensemble_build.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/funcs_backup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/exported_model/1540911940/saved_model.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/exported_model/1540911940/variables/variables.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/exported_model/1540911940/variables/variables.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/2nd_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/2nd_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/2nd_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/2nd_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/8th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/8th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/8th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/8th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models/8th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/1st_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/1st_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/1st_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/1st_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/2nd_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/2nd_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/2nd_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/2nd_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/3rd_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/3rd_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/3rd_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/3rd_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/3rd_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/4th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/4th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/4th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/4th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/4th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/5th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/5th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/5th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/5th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/5th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/6th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/6th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/6th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/6th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/6th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/7th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/7th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/7th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/7th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/7th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/8th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/8th_good/best_model_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/8th_good/best_model_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/8th_good/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/primary_models_original/8th_good/hyper_params_main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/checkpoint" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/ensemble_architecture_main.data-00000-of-00001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/ensemble_architecture_main.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/temporary_models/ensemble_architecture_main.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dumps/best_models_info.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/dumps/best_models_info.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gaugeReader.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/gaugeReader.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/2nd_good/best_model_main.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/2nd_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/2nd_good/best_model_main.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/2nd_good/best_model_main.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/2nd_good/best_model_main.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/2nd_good/best_model_main.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/2nd_good/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/2nd_good/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/8th_good/best_model_main.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/8th_good/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/8th_good/best_model_main.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/8th_good/best_model_main.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/8th_good/best_model_main.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/8th_good/best_model_main.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/8th_good/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/8th_good/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/historical_models/8th_good/hyper_params_main.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/primary_models/8th_good/hyper_params_main.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/main/best_model_main.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/main/best_model_main.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/main/best_model_main.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/main/best_model_main.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/main/best_model_main.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/main/best_model_main.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/main/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/main/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/main/hyper_params_main.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/main/hyper_params_main.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi-NAN/best_model_psi-NAN.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi-NAN/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi-NAN/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi-NAN/hyper_params_psi-NAN.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi-NAN/hyper_params_psi-NAN.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_0/best_model_psi_0.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_0/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_0/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_0/hyper_params_psi_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_0/hyper_params_psi_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1/best_model_psi_1.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1/hyper_params_psi_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1/hyper_params_psi_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10/best_model_psi_10.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10/hyper_params_psi_10.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10/hyper_params_psi_10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10_5/best_model_psi_10_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_10_5/hyper_params_psi_10_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_10_5/hyper_params_psi_10_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11/best_model_psi_11.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11/hyper_params_psi_11.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11/hyper_params_psi_11.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11_5/best_model_psi_11_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_11_5/hyper_params_psi_11_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_11_5/hyper_params_psi_11_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12/best_model_psi_12.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12/hyper_params_psi_12.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12/hyper_params_psi_12.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12_5/best_model_psi_12_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_12_5/hyper_params_psi_12_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_12_5/hyper_params_psi_12_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13/best_model_psi_13.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13/hyper_params_psi_13.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13/hyper_params_psi_13.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13_5/best_model_psi_13_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_13_5/hyper_params_psi_13_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_13_5/hyper_params_psi_13_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14/best_model_psi_14.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14/hyper_params_psi_14.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14/hyper_params_psi_14.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14_5/best_model_psi_14_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_14_5/hyper_params_psi_14_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_14_5/hyper_params_psi_14_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_15/best_model_psi_15.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_15/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_15/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_15/hyper_params_psi_15.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_15/hyper_params_psi_15.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1_5/best_model_psi_1_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_1_5/hyper_params_psi_1_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_1_5/hyper_params_psi_1_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2/best_model_psi_2.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2/hyper_params_psi_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2/hyper_params_psi_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2_5/best_model_psi_2_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_2_5/hyper_params_psi_2_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_2_5/hyper_params_psi_2_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3/best_model_psi_3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3/hyper_params_psi_3.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3/hyper_params_psi_3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3_5/best_model_psi_3_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_3_5/hyper_params_psi_3_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_3_5/hyper_params_psi_3_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4/best_model_psi_4.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4/hyper_params_psi_4.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4/hyper_params_psi_4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4_5/best_model_psi_4_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_4_5/hyper_params_psi_4_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_4_5/hyper_params_psi_4_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5/best_model_psi_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5/hyper_params_psi_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5/hyper_params_psi_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5_5/best_model_psi_5_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_5_5/hyper_params_psi_5_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_5_5/hyper_params_psi_5_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6/best_model_psi_6.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6/hyper_params_psi_6.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6/hyper_params_psi_6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6_5/best_model_psi_6_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_6_5/hyper_params_psi_6_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_6_5/hyper_params_psi_6_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7/best_model_psi_7.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7/hyper_params_psi_7.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7/hyper_params_psi_7.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7_5/best_model_psi_7_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_7_5/hyper_params_psi_7_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_7_5/hyper_params_psi_7_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8/best_model_psi_8.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8/hyper_params_psi_8.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8/hyper_params_psi_8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8_5/best_model_psi_8_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_8_5/hyper_params_psi_8_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_8_5/hyper_params_psi_8_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9/best_model_psi_9.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9/hyper_params_psi_9.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9/hyper_params_psi_9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.index" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.meta" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9_5/best_model_psi_9_5.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9_5/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9_5/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/models/psi_9_5/hyper_params_psi_9_5.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/models/psi_9_5/hyper_params_psi_9_5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/1st_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/1st_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/1st_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/1st_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/3rd_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/3rd_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/3rd_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/3rd_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/3rd_good/hyper_params_main.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/4th_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/4th_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/4th_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/4th_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/4th_good/hyper_params_main.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/5th_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/5th_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/5th_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/5th_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/5th_good/hyper_params_main.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/6th_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/6th_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/6th_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/6th_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/6th_good/hyper_params_main.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/7th_good/best_model_main.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/7th_good/best_model_main.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/7th_good/best_model_main.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/7th_good/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/primary_models/7th_good/hyper_params_main.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/temporary_latest_streaming_image/latest_streaming_frame.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/logs/temporary_latest_streaming_image/latest_streaming_frame.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/LoadImg.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/LoadImg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ensemble_modules/EnsenmbleData.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/ensemble_modules/obsolete_EnsenmbleData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/ensemble_modules/PrepareEnsembleData.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/prediction_modules/LoadImgPred.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/prediction_modules/LoadImgPred.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/prediction_modules/PILimages.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/prediction_modules/PILimages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/prediction_modules/Prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/prediction_modules/Prediction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/performance_logs/pandas_final_result.csv" beforeDir="false" afterPath="$PROJECT_DIR$/performance_logs/pandas_final_result.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_online.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_online.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ensemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ensemble.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
-    </list>
+    <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,95 +75,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/input.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="165" column="27" selection-start-line="165" selection-start-column="27" selection-end-line="165" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#320#6650#0" />
-                <element signature="e#508#860#0" />
-                <element signature="e#939#1719#0" />
-                <element signature="e#1785#2208#0" />
-                <element signature="e#2313#2878#0" />
-                <element signature="e#2441#2524#0" />
-                <element signature="e#2947#3284#0" />
-                <element signature="e#3759#6335#0" />
-                <element signature="e#4053#4055#0" />
-                <element signature="e#6769#8167#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/task.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <element signature="e#15720#19976#0" />
-                <element signature="e#17792#18128#0" />
-                <element signature="e#18432#19976#0" />
-                <element signature="e#19605#19940#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="252" column="73" selection-start-line="252" selection-start-column="73" selection-end-line="252" selection-end-column="73" />
-              <folding>
-                <element signature="e#1#24#0" expanded="true" />
-                <element signature="e#270#9444#0" />
-                <element signature="e#296#8871#0" />
-                <element signature="e#482#3220#0" />
-                <element signature="e#566#1355#0" />
-                <element signature="e#681#1070#0" />
-                <element signature="e#1258#1302#0" />
-                <element signature="e#1459#2273#0" />
-                <element signature="e#2007#2153#0" />
-                <element signature="e#3332#5099#0" />
-                <element signature="e#3418#4394#0" />
-                <element signature="e#3598#4309#0" />
-                <element signature="e#3794#3906#0" />
-                <element signature="e#5494#8871#0" />
-                <element signature="e#5535#5688#0" />
-                <element signature="e#5743#5887#0" />
-                <element signature="e#6159#6632#0" />
-                <element signature="e#6211#6602#0" />
-                <element signature="e#6846#6930#0" />
-                <element signature="e#7036#8419#0" />
-                <element signature="e#7353#7975#0" />
-                <element signature="e#7394#7658#0" />
-                <element signature="e#7709#7975#0" />
-                <element signature="e#9276#9404#0" />
-                <element signature="e#9601#12065#0" />
-                <element signature="e#10073#10341#0" />
-                <element signature="e#10813#11052#0" />
-                <element signature="e#10827#10979#0" />
-                <element signature="e#11670#11758#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ens.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="19" selection-start-line="4" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -497,6 +133,7 @@
     <option name="width" value="1381" />
     <option name="height" value="791" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -513,35 +150,7 @@
             <path>
               <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="trainer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -584,13 +193,21 @@
       <option name="presentableId" value="Default" />
       <updated>1539030000528</updated>
     </task>
+    <task id="LOCAL-00001" summary="Rearrange folders">
+      <created>1541185823113</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541185823113</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1680" height="1052" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" weight="0.14075887" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19461444" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23561811" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
@@ -630,6 +247,32 @@
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
     </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -671,9 +314,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/testData/psi_8/20180723_120948(1).jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/testData/psi_8/20180723_120948(1).jpg" />
     <entry file="file://$PROJECT_DIR$/gaugeReader.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -866,52 +507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="803">
           <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#2717#8581#0" />
-            <element signature="e#2745#2770#0" />
-            <element signature="e#2862#3214#0" />
-            <element signature="e#3293#4073#0" />
-            <element signature="e#4139#4562#0" />
-            <element signature="e#4667#5240#0" />
-            <element signature="e#4803#4886#0" />
-            <element signature="e#5338#5824#0" />
-            <element signature="e#5924#6113#0" />
-            <element signature="e#5942#6071#0" />
-            <element signature="e#6194#6752#0" />
-            <element signature="e#6396#6572#0" />
-            <element signature="e#6988#8581#0" />
-            <element signature="e#9518#18886#0" />
-            <element signature="e#9544#18313#0" />
-            <element signature="e#9730#12468#0" />
-            <element signature="e#9814#10603#0" />
-            <element signature="e#9929#10318#0" />
-            <element signature="e#10506#10550#0" />
-            <element signature="e#10707#11521#0" />
-            <element signature="e#11255#11401#0" />
-            <element signature="e#12580#14541#0" />
-            <element signature="e#12666#13642#0" />
-            <element signature="e#12846#13557#0" />
-            <element signature="e#13042#13154#0" />
-            <element signature="e#14112#14217#0" />
-            <element signature="e#14936#18313#0" />
-            <element signature="e#14977#15130#0" />
-            <element signature="e#15185#15329#0" />
-            <element signature="e#15601#16074#0" />
-            <element signature="e#15653#16044#0" />
-            <element signature="e#16288#16372#0" />
-            <element signature="e#16478#17861#0" />
-            <element signature="e#16795#17417#0" />
-            <element signature="e#16836#17100#0" />
-            <element signature="e#17151#17417#0" />
-            <element signature="e#18718#18846#0" />
-            <element signature="e#18945#21892#0" />
-            <element signature="e#18945#18958#0" />
-            <element signature="e#19515#19783#0" />
-            <element signature="e#20255#20494#0" />
-            <element signature="e#20269#20421#0" />
-            <element signature="e#21112#21200#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,64 +514,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="165" column="27" selection-start-line="165" selection-start-column="27" selection-end-line="165" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#320#6650#0" />
-            <element signature="e#508#860#0" />
-            <element signature="e#939#1719#0" />
-            <element signature="e#1785#2208#0" />
-            <element signature="e#2313#2878#0" />
-            <element signature="e#2441#2524#0" />
-            <element signature="e#2947#3284#0" />
-            <element signature="e#3759#6335#0" />
-            <element signature="e#4053#4055#0" />
-            <element signature="e#6769#8167#0" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/models/main/checkpoint">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/models/main/checkpoint" />
     <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="252" column="73" selection-start-line="252" selection-start-column="73" selection-end-line="252" selection-end-column="73" />
-          <folding>
-            <element signature="e#1#24#0" expanded="true" />
-            <element signature="e#270#9444#0" />
-            <element signature="e#296#8871#0" />
-            <element signature="e#482#3220#0" />
-            <element signature="e#566#1355#0" />
-            <element signature="e#681#1070#0" />
-            <element signature="e#1258#1302#0" />
-            <element signature="e#1459#2273#0" />
-            <element signature="e#2007#2153#0" />
-            <element signature="e#3332#5099#0" />
-            <element signature="e#3418#4394#0" />
-            <element signature="e#3598#4309#0" />
-            <element signature="e#3794#3906#0" />
-            <element signature="e#5494#8871#0" />
-            <element signature="e#5535#5688#0" />
-            <element signature="e#5743#5887#0" />
-            <element signature="e#6159#6632#0" />
-            <element signature="e#6211#6602#0" />
-            <element signature="e#6846#6930#0" />
-            <element signature="e#7036#8419#0" />
-            <element signature="e#7353#7975#0" />
-            <element signature="e#7394#7658#0" />
-            <element signature="e#7709#7975#0" />
-            <element signature="e#9276#9404#0" />
-            <element signature="e#9601#12065#0" />
-            <element signature="e#10073#10341#0" />
-            <element signature="e#10813#11052#0" />
-            <element signature="e#10827#10979#0" />
-            <element signature="e#11670#11758#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -984,13 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#15720#19976#0" />
-            <element signature="e#17792#18128#0" />
-            <element signature="e#18432#19976#0" />
-            <element signature="e#19605#19940#0" />
-          </folding>
         </state>
       </provider>
     </entry>
