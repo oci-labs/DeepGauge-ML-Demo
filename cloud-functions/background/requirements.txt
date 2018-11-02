@@ -1,4 +1,0 @@
-# Function dependencies, for example:
-google-cloud-storage
-google-api-python-client
-google-cloud-pubsub
