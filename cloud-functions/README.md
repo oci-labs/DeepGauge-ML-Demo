@@ -135,3 +135,18 @@ To trigger the function:
     `
 
 Note that the function may take some time to finish executing.
+
+# PubSub
+
+## Create a topic and a subscription
+
+Once you create a topic, you can subscribe or publish to it.
+
+Use the [gcloud pubsub topics create](https://cloud.google.com/sdk/gcloud/reference/pubsub/topics/create) command to create a topic:
+```
+gcloud pubsub topics create my-topic
+```
+Use the [gcloud pubsub subscriptions create](https://cloud.google.com/sdk/gcloud/reference/pubsub/subscriptions/create) command to create a subscription. Only messages published to the topic after the subscription is created are available to subscriber applications.
+```
+gcloud pubsub subscriptions create my-sub --topic my-topic
+```
