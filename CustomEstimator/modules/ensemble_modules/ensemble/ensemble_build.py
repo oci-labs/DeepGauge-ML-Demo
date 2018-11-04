@@ -1,10 +1,11 @@
 import glob
-import os
-from tensorflow.python.framework import meta_graph
-import tensorflow as tf
-from CustomEstimator.modules import LoadImg
-import time
 import numpy as np
+import os
+import tensorflow as tf
+import time
+from tensorflow.python.framework import meta_graph
+
+from CustomEstimator.modules.primary_models_modules import LoadImg
 
 X_train, X_test, y_train, y_test, cls_indices = LoadImg.Dataset.prep_datasets(
     ver_ratio=0.2, container_path='./CustomEstimator/data/ImageEveryUnit',

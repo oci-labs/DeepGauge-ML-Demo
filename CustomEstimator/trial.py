@@ -1,7 +1,8 @@
 import os
 import tensorflow as tf
-from modules import LoadImg
 from tensorflow.python.framework import meta_graph
+
+from CustomEstimator.modules.primary_models_modules import LoadImg
 
 graph_model = tf.Graph()
 with graph_model.as_default():
