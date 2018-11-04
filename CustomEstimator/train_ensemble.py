@@ -1,6 +1,7 @@
-from modules.ensemble_modules import obsolete_EnsenmbleData
-from modules import OptimizeAndLog
 import importlib
+
+from CustomEstimator.modules.primary_models_modules import OptimizeAndLog
+from modules.ensemble_modules import obsolete_EnsenmbleData
 
 ## load data
 X_train, X_test, y_train, y_test, cls_indices = \

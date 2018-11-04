@@ -1,6 +1,7 @@
-from modules import LoadImg
-from modules import OptimizeAndLog
 import importlib
+
+from CustomEstimator.modules.primary_models_modules import LoadImg
+from modules import OptimizeAndLog
 
 ## load data
 # The color_mode is either 'rgb' or 'grayscale' (default).
