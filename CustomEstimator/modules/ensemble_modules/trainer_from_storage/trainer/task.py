@@ -4,8 +4,8 @@ import glob
 import os
 
 ## on
-from trainer_from_storage.input import Dataset
-from trainer_from_storage import model
+from trainer.input import Dataset
+import trainer.model as model
 
 ## dev
 # from modules.ensemble_modules.trainer_from_storage.input import Dataset
