@@ -10,8 +10,7 @@ app = Flask(__name__)
 # Configure the following environment variables via app.yaml
 # This is used in the push request handler to veirfy that the request came from
 # pubsub and originated from a trusted source.
-app.config['PUBSUB_VERIFICATION_TOKEN'] = \
-    os.environ['PUBSUB_VERIFICATION_TOKEN']
+app.config['PUBSUB_VERIFICATION_TOKEN'] = os.environ['PUBSUB_VERIFICATION_TOKEN']
 app.config['PUBSUB_TOPIC'] = os.environ['PUBSUB_TOPIC']
 app.config['PROJECT'] = os.environ['GOOGLE_CLOUD_PROJECT']
 
