@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/LoadImg.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/NeuralNet.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/NewLayers.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/OptimizeAndLog.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/PerfMeasures.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/prediction_modules/LoadImgPred.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/prediction_modules/PILimages.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/prediction_modules/PerfMeasuresPred.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomEstimator/modules/prediction_modules/Prediction.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/ensemble/ensemble_build.py" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/ensemble/ensemble_build.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomEstimator/train.py" afterPath="$PROJECT_DIR$/CustomEstimator/train.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomEstimator/train_ensemble.py" afterPath="$PROJECT_DIR$/CustomEstimator/train_ensemble.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomEstimator/trial.py" afterPath="$PROJECT_DIR$/CustomEstimator/trial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlaskApp_DeepGauge/Prediction.py" afterPath="$PROJECT_DIR$/FlaskApp_DeepGauge/Prediction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud-functions/background/main.py" afterPath="$PROJECT_DIR$/cloud-functions/background/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud-functions/background/requirements.txt" afterPath="$PROJECT_DIR$/cloud-functions/background/requirements.txt" />
+    </list>
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,18 +87,124 @@
           <entry key="ensemble_tf" value="3337" />
           <entry key="py" value="8722" />
           <entry key="sh" value="180" />
+          <entry key="txt" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="211" />
+          <entry key="PLAIN_TEXT" value="234" />
           <entry key="Python" value="13113" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+=======
+    <leaf>
+      <file leaf-file-name="Prediction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/Prediction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadImgPred.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/LoadImgPred.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PerfMeasuresPred.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/PerfMeasuresPred.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadImg.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/LoadImg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NeuralNet.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/NeuralNet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewLayers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/NewLayers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OptimizeAndLog.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/OptimizeAndLog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PerfMeasures.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/PerfMeasures.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bucket_data.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -89,6 +218,9 @@
       <find>=</find>
       <find>optimize_and_save_logs</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,6 +257,10 @@
         <option value="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/input.py" />
         <option value="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/task.py" />
         <option value="$PROJECT_DIR$/ens.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/ens.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/create_bucket.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh" />
       </list>
     </option>
   </component>
@@ -135,11 +271,22 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +299,30 @@
               <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
               <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
           </expand>
           <select />
         </subPane>
@@ -163,7 +334,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage" />
       <recent name="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage" />
       <recent name="$PROJECT_DIR$/trainer_from_bucket" />
       <recent name="$PROJECT_DIR$/trainer" />
@@ -181,6 +356,9 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -204,8 +382,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1680" height="1052" extended-state="6" />
+    <frame x="2441" y="0" width="1533" height="902" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Structure" order="0" weight="0.14075887" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23561811" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -225,28 +405,79 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24949563" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294423" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294423" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
     </layout>
-    <layout-to-restore>
-      <window_info id="Structure" order="0" weight="0.14075887" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19216646" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3264642" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.27657267" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
-    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                </collection>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -277,6 +508,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rearrange folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rearrange folders" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -289,11 +524,6 @@
           <url>file://$PROJECT_DIR$/modules/prediction_modules/Prediction.py</url>
           <line>80</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/trial.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/modules/ensemble_modules/CustomEnsembleEstimator.py</url>
@@ -312,9 +542,11 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/data/testData/psi_8/20180723_120948(1).jpg" />
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/gaugeReader.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -341,177 +573,137 @@
         </state>
       </provider>
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/gaugeReader.ipynb" />
+    <entry file="file://$PROJECT_DIR$/train.py" />
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
     <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/PrepareEnsembleData.py" />
-    <entry file="file://$PROJECT_DIR$/train_ensemble.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/NewLayers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="106" selection-start-line="106" selection-end-line="128" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/NeuralNet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/primary_models/8th_good/hyper_params_main.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction_batch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="11" selection-start-line="10" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction_online.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/LoadImgPred.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="43" column="76" selection-start-line="43" selection-start-column="76" selection-end-line="43" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/PILimages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/obsolete_EnsenmbleData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#254#418#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/funcs_backup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/ensemble_build.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" column="38" selection-start-line="23" selection-end-line="27" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/OptimizeAndLog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7304">
-          <caret line="340" column="8" selection-start-line="340" selection-start-column="8" selection-end-line="340" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/PerfMeasures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3894">
-          <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dumps/category_mapper.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/Prediction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="23" selection-start-line="23" selection-end-line="25" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/LoadImg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="11" selection-start-line="11" selection-end-line="182" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#344#369#0" />
-            <element signature="e#6176#6190#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/copy_to_bucket.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/CustomEnsembleEstimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="535" column="64" selection-start-line="535" selection-start-column="64" selection-end-line="535" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/train_ensemble.py" />
+    <entry file="file://$PROJECT_DIR$/modules/NewLayers.py" />
+    <entry file="file://$PROJECT_DIR$/modules/NeuralNet.py" />
+    <entry file="file://$PROJECT_DIR$/logs/primary_models/8th_good/hyper_params_main.json" />
+    <entry file="file://$PROJECT_DIR$/prediction_batch.py" />
+    <entry file="file://$PROJECT_DIR$/prediction_online.py" />
+    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/LoadImgPred.py" />
+    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/PILimages.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/obsolete_EnsenmbleData.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/funcs_backup.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/ensemble_build.py" />
+    <entry file="file://$PROJECT_DIR$/modules/OptimizeAndLog.py" />
+    <entry file="file://$PROJECT_DIR$/modules/PerfMeasures.py" />
+    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/Prediction.py" />
+    <entry file="file://$PROJECT_DIR$/modules/LoadImg.py" />
+    <entry file="file://$PROJECT_DIR$/copy_to_bucket.sh" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/CustomEnsembleEstimator.py" />
     <entry file="file://$PROJECT_DIR$/trainer/LoadImg.py" />
     <entry file="file://$PROJECT_DIR$/trainer/CustomEnsembleEstimator.py" />
     <entry file="file://$PROJECT_DIR$/trainer_from_bucket/input.py" />
     <entry file="file://$PROJECT_DIR$/trainer_from_bucket/task.py" />
-    <entry file="file://$PROJECT_DIR$/trial.py">
+    <entry file="file://$PROJECT_DIR$/trial.py" />
+    <entry file="file://$PROJECT_DIR$/customEstimator.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer/CustomEnsembleEstimator.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/input.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/models/main/checkpoint" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/model.py" />
+    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/task.py" />
+    <entry file="file://$PROJECT_DIR$/ens.sh" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/customEstimator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5434">
-          <caret line="250" column="29" selection-start-line="250" selection-start-column="16" selection-end-line="250" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#67#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/customEstimator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="20" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/gaugeReader.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer/CustomEnsembleEstimator.py">
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/CLI_commands/ens.sh">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/PILimages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/Prediction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/LoadImgPred.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/prediction_modules/PerfMeasuresPred.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/LoadImg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/NeuralNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/NewLayers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/OptimizeAndLog.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="803">
           <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/input.py">
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules/PerfMeasures.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="264">
           <caret line="165" column="27" selection-start-line="165" selection-start-column="27" selection-end-line="165" selection-end-column="27" />
         </state>
@@ -536,6 +728,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="19" selection-start-line="4" selection-end-line="10" />
+=======
+        <state relative-caret-position="352">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="25" column="22" lean-forward="false" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+>>>>>>> bb93cbcd7cad7607cd38e67529b10db40b6075e4
         </state>
       </provider>
     </entry>
