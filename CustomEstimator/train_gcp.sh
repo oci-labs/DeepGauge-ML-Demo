@@ -1,7 +1,8 @@
 ##
 REGION=us-central1
-JOB_NAME=deep_gauge_1
+JOB_NAME=deep_gauge_4
 BUCKET=gs://tt_ttt
+##
 JOB_DIR="${BUCKET}/misc/logs/job_dir"
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
 ##
@@ -23,7 +24,7 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --job-dir "$JOB_DIR"  \
     --region "$REGION" \
     -- \
-    --verbosity="DEBUG"
+    --verbosity="DEBUG" \
     --primary_models_directory="$PRIMARY_PATH" \
     --ensemble_architecture_path="$ENSEMBLE_PATH" \
     --path_to_images="$IMG_PATH" \
