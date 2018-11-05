@@ -1,5 +1,5 @@
 runtime: python37
-service: deep-gauge
+service: default
 
 env_variables:
     PUBSUB_TOPIC: flower-prediction
