@@ -33,10 +33,11 @@ $ curl -i --data @sample_message.json "http://localhost:8080/pubsub/push?token=7
 Deploy AppEngine into Project
 ```
 gcloud app deploy --version pre-prod-1 --project MY_PROJECT
+gcloud app deploy --version pre-prod-1 --project ocideepgauge
 ```
 Browse the AppEngine Project
 ```
-$ gcloud app browse -s pet-products
+$ gcloud app browse -s deep-gauge
 ```
 
 Create an isolated Python environment in a directory external to your project and activate it:

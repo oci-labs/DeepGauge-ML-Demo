@@ -1,6 +1,5 @@
 # [START gae_python37_render_template]
 import datetime
-import pandas as pd
 from flask import Flask, Response, request, json, render_template, current_app
 from google.cloud import pubsub_v1
 
