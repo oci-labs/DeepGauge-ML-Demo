@@ -39,7 +39,7 @@ class Dataset():
 
         Dataset.category_mapper = category_mapper
 
-        with open(bin_path + 'category_mapper.json', 'w') as outfile:
+        with open(os.path.join(bin_path, 'category_mapper.json'), 'w') as outfile:
             json.dump(category_mapper, outfile)
         return
 

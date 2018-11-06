@@ -45,7 +45,7 @@ def initialise_hyper_params(parser):
                         default='./logs/exported_model',
                         type=str)
     parser.add_argument('--ensemble_architecture_path',
-                        default='./logs/temporary_models/',
+                        default='./logs/ensemble_graph/',
                         type=str)
     parser.add_argument('--metric',
                         default='accuracy',
@@ -55,7 +55,7 @@ def initialise_hyper_params(parser):
                         type=str)
     parser.add_argument('--dev',
                         choices=['True', 'False'],
-                        default='False',
+                        default='True',
                         type=str)
     parser.add_argument('--color_mode',
                         default='grayscale',
@@ -172,7 +172,7 @@ def main(argv):
     ## to delete the ensemble graph created for the custom estimator
     files = glob.glob(os.path.join(ensemble_architecture_path, '*'))
     for f in files:
-        if 'ensemble_architecture_' in f:
+        if 'ensemble_architecture_' or 'checkpoint' in f:
             os.remove(f)
 
 ##
