@@ -1,5 +1,4 @@
 import tensorflow as tf
-import glob
 import os
 from tensorflow.python.framework import meta_graph
 
@@ -68,9 +67,9 @@ def create_ensemble_architecture(hidden_units=None,
             graph_parent = tf.Graph()
             with graph_parent.as_default():
                 raw_imgs = tf.placeholder(tf.float32, shape=[None, None, None, None], name='raw_imgs')
-                for i, model in enumerate(os.listdir(models_directory)):
-                    checkpoint_path = glob.glob(os.path.join(models_directory, model))[0]
-                    checkpoint_file_path = glob.glob(os.path.join(checkpoint_path, '*.meta'))[0]
+                for i, model in enumerate(tf.gfile.ListDirectory(models_directory)):
+                    checkpoint_path = os.path.join(models_directory, model)
+                    checkpoint_file_path = tf.gfile.Glob(os.path.join(checkpoint_path, '*.meta'))[0]
                     params = {"checkpoint_path": checkpoint_path,
                               "checkpoint_file_path": checkpoint_file_path}
 
@@ -201,7 +200,7 @@ def model_fn(features, labels, mode, params):
 
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
-        meta_graph_path = glob.glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
+        meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
         loader = tf.train.import_meta_graph(meta_graph_path, clear_devices=True)
         loader.restore(sess, tf.train.latest_checkpoint(params["ensemble_architecture_path"]))
 

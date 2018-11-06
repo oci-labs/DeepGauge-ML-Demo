@@ -1,7 +1,5 @@
 import argparse
 import tensorflow as tf
-import glob
-import os
 
 ## on
 from trainer.input import Dataset
@@ -33,7 +31,7 @@ def initialise_hyper_params(parser):
                         default='False',
                         type=str)
     parser.add_argument('--batch_size',
-                        default=5,
+                        default=15,
                         type=int)
     parser.add_argument('--train_epochs',
                         default=1,
@@ -86,10 +84,9 @@ def initialise_hyper_params(parser):
 def main(argv):
     args = HYPER_PARAMS.parse_args(argv[1:])
 
-    ##
+    ##     color_mode = args.color_mode
     images_shape = eval(args.images_shape)
     path_to_images = args.path_to_images
-    color_mode = args.color_mode
     bin_path = args.bin_path
     is_trial = args.dev == 'True'
     primary_models_directory = args.primary_models_directory
@@ -168,12 +165,6 @@ def main(argv):
             continue
         print('')
         print('')
-
-    ## to delete the ensemble graph created for the custom estimator
-    files = glob.glob(os.path.join(ensemble_architecture_path, '*'))
-    for f in files:
-        if 'ensemble_architecture_' or 'checkpoint' in f:
-            os.remove(f)
 
 ##
 args_parser = argparse.ArgumentParser()
