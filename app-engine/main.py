@@ -20,7 +20,32 @@ MESSAGES = []
 
 @app.route('/')
 def root():
-    return render_template('index.html', messages=MESSAGES)
+    return render_template('dashboard.html', messages=MESSAGES)
+
+@app.route('/camera/add')
+def add_camera():
+    # show the post with the given id, the id is an integer
+    return 'Add Camera'
+
+@app.route('/camera/add/url')
+def add_camera_url():
+    # show the post with the given id, the id is an integer
+    return 'Add Camera URL'
+
+@app.route('/camera/add/upload')
+def add_camera_upload():
+    # show the post with the given id, the id is an integer
+    return 'Add Camera Upload'
+
+@app.route('/camera/<int:camera_id>')
+def show_camera(camera_id):
+    # show the post with the given id, the id is an integer
+    return 'Camera %d' % camera_id
+
+@app.route('/camera/<int:camera_id>/settings')
+def show_camera_settings(camera_id):
+    # show the post with the given id, the id is an integer
+    return 'Camera %d Settings' % camera_id
 
 # [START push]
 @app.route('/pubsub/push', methods=['POST'])
