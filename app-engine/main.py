@@ -24,6 +24,7 @@ def root():
 
 @app.route('/camera/add')
 def add_camera():
+    return render_template('add_camera.html')
     # show the post with the given id, the id is an integer
     return 'Add Camera'
 
