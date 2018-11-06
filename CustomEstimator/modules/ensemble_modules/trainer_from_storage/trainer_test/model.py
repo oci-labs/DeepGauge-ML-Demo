@@ -139,7 +139,7 @@ def create_ensemble_architecture(hidden_units=None,
             raw_imgs, concatenated_features = cls._combine_all_channel(
                 models_directory=primary_models_directory, images_shape=images_shape)
             ##
-            params_fc = {'hidden_units': hidden_units.copy(),
+            params_fc = {'hidden_units': hidden_units,
                          'n_output': n_output}
             ##
             graph_fc = tf.Graph()
