@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_training_trial_changed_setup_17
+JOB_NAME=custom_estimator_training_trial_changed_setup_20
 BUCKET="gs://custom_estimator"
 ##
 # JOB_DIR="${BUCKET}/misc/logs/job_dir"

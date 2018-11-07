@@ -1,11 +1,10 @@
 import argparse
 import tensorflow as tf
-import glob
-import os
 
 ## on
 from trainer.input import Dataset
 import trainer.model as model
+
 
 ## dev
 # from modules.ensemble_modules.trainer_from_storage.input import Dataset
@@ -33,7 +32,7 @@ def initialise_hyper_params(parser):
                         default='False',
                         type=str)
     parser.add_argument('--batch_size',
-                        default=5,
+                        default=15,
                         type=int)
     parser.add_argument('--train_epochs',
                         default=1,
@@ -82,14 +81,14 @@ def initialise_hyper_params(parser):
                         )
     return parser
 
+
 ##
 def main(argv):
     args = HYPER_PARAMS.parse_args(argv[1:])
 
-    ##
+    ##     color_mode = args.color_mode
     images_shape = eval(args.images_shape)
     path_to_images = args.path_to_images
-    color_mode = args.color_mode
     bin_path = args.bin_path
     is_trial = args.dev == 'True'
     primary_models_directory = args.primary_models_directory
@@ -106,7 +105,17 @@ def main(argv):
     image_processing_multi_threading = args.image_processing_multi_threading == 'True'
 
     ##
-    # tf.logging.set_verbosity(args.verbosity)
+    tf.logging.set_verbosity(args.verbosity)
+
+    ## getting images paths and labels
+    X_train_path_names, X_test_path_names, y_train, y_test = \
+        Dataset.split_data_files(ver_ratio=0.2,
+                                 path=path_to_images,
+                                 random_state=19,
+                                 is_trial=is_trial,
+                                 bin_path=bin_path)
+
+    #########################
 
     model.create_ensemble_architecture(hidden_units=hidden_units,
                                        n_output=31,
@@ -169,11 +178,6 @@ def main(argv):
         print('')
         print('')
 
-    ## to delete the ensemble graph created for the custom estimator
-    files = glob.glob(os.path.join(ensemble_architecture_path, '*'))
-    for f in files:
-        if 'ensemble_architecture_' or 'checkpoint' in f:
-            os.remove(f)
 
 ##
 args_parser = argparse.ArgumentParser()
