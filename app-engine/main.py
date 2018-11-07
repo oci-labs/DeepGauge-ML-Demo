@@ -40,10 +40,18 @@ def add_camera_upload():
 
 @app.route('/camera/<int:camera_id>')
 def show_camera(camera_id):
-    # show the post with the given id, the id is an integer
-    return 'Camera %d' % camera_id
+    cam = {
+        "id": camera_id,
+        "img": "http://placehold.it/500x500",
+        "acc": 12,
+        "type": "Analog Gauge",
+        "loc": "St. Louis",
+        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl."
+    }
 
-@app.route('/camera/<int:camera_id>/settings')
+    return render_template('single_camera.html', camera=cam)
+
+@app.route('/camera/settings/<int:camera_id>')
 def show_camera_settings(camera_id):
     # show the post with the given id, the id is an integer
     return 'Camera %d Settings' % camera_id
