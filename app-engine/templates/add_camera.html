@@ -1,22 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
 <div id="content">
-    <article class="container-fluid">
-      <section class="row">
-        <div class="col-4">
-          <h2>Add New Device</h2>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#urlModal">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="{{ url_for('root') }}">
+        <i class="fas fa-chevron-left"></i>
+        Back to Dashboard
+      </a>
+    </div>
+  </nav>
+
+  <article class="container-fluid">
+    <section class="row">
+      <div class="col-4">
+        <h2>Add New Device</h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#urlModal">
             Via URL
           </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
             Upload Image
           </button>
 
-        </div>
-      </section>
-    </article>
+      </div>
+    </section>
+  </article>
 </div>
 
 
@@ -74,12 +82,12 @@
               <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
             </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Add Device</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Add Device</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}
