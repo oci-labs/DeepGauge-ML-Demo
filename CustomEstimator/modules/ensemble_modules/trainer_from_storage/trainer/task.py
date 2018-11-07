@@ -5,6 +5,7 @@ import tensorflow as tf
 from trainer.input import Dataset
 import trainer.model as model
 
+
 ## dev
 # from modules.ensemble_modules.trainer_from_storage.input import Dataset
 # from modules.ensemble_modules.trainer_from_storage import model
@@ -80,6 +81,7 @@ def initialise_hyper_params(parser):
                         )
     return parser
 
+
 ##
 def main(argv):
     args = HYPER_PARAMS.parse_args(argv[1:])
@@ -104,6 +106,16 @@ def main(argv):
 
     ##
     tf.logging.set_verbosity(args.verbosity)
+
+    #############################################
+
+    X_train_path_names, X_test_path_names, y_train, y_test = \
+        Dataset.split_data_files(ver_ratio=0.2,
+                                 path=path_to_images,
+                                 random_state=19,
+                                 is_trial=is_trial,
+                                 bin_path=bin_path)
+    ############################################
 
     model.create_ensemble_architecture(hidden_units=hidden_units,
                                        n_output=31,
@@ -165,6 +177,7 @@ def main(argv):
             continue
         print('')
         print('')
+
 
 ##
 args_parser = argparse.ArgumentParser()

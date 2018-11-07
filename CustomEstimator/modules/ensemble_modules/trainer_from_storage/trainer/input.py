@@ -84,6 +84,7 @@ class MultiColomnOneHotEncoder:
         ##
         return pd.concat([data, transformedCatData], axis=1)
 
+
 ###################################
 class Dataset():
     @staticmethod
@@ -119,14 +120,65 @@ class Dataset():
 
     @staticmethod
     def load_dataset(path, bin_path):
-        data = load_files(path, load_content=False)
+        ####################
+        directory = path
+        images_folders = tf.train.match_filenames_once(directory + '/*')
+
+        init = (tf.global_variables_initializer(), tf.local_variables_initializer())
+
+        with tf.Session() as sess:
+            sess.run(init)
+            folders = sess.run(images_folders)
+
+        folders = [str(path) for path in folders]
+
+        # #####################################
+        # for path in folders:
+        #     print(path)
+        #######################################
+
+        imgs_paths_labels = pd.DataFrame(columns=['filenames', 'target'])
+        for f in folders:
+            with tf.Session() as sess:
+                images = tf.train.match_filenames_once(f + '/*.*')
+                sess.run((tf.global_variables_initializer(), tf.local_variables_initializer()))
+                image_paths = sess.run(images)
+                ##
+                imgs_paths_labels_current = pd.DataFrame(columns=['filenames', 'target'])
+                image_paths = [str(p) for p in image_paths]
+                imgs_paths_labels_current.loc[:, 'filenames'] = image_paths
+                # target_list = [str(f).split('/')[-1] for range(len(image_paths))]
+                imgs_paths_labels_current.loc[:, 'target'] = str(f).split('/')[-1]
+                # for img in image_paths:
+                #     print(img)
+                imgs_paths_labels = imgs_paths_labels.append(imgs_paths_labels_current)
+
+        imgs_paths_labels.reset_index(drop=True, inplace=True)
+
+        print(imgs_paths_labels['target'])
+        print(imgs_paths_labels['filenames'])
+
+        # image_paths = [path.split("'")[1] for path in image_paths_b]
+
+        # target = [str(path).split('/')[-1] for path in folders]
+        ########################################
+        # for cat in target:
+        #     print(cat)
+        ##########################
+        # target = [path.split("'")[2] for path in targets_b]
+
+        ##########################
+        # data = load_files(path, load_content=False)
+        data = {'filenames': imgs_paths_labels.filenames.values, 'target': imgs_paths_labels.target.values}
 
         ## to save categories encoder
         Dataset.dump_json_category_mapper(data=data, bin_path=bin_path)
 
         ##
-        guage_files = np.array(data['filenames'])
-        gauge_categories = np.array(data['target'])
+        # guage_files = imgs_paths_labels.filenames.values
+        # gauge_categories = imgs_paths_labels.target.values
+        guage_files = data['filenames']
+        gauge_categories = data['target']
 
         ##
         Dataset.dump_pkl_MultiColProcessor(gauge_categories=gauge_categories, bin_path=bin_path)

@@ -3,7 +3,6 @@ from setuptools import setup
 
 REQUIRED_PACKAGES = ['argparse',
                      'tensorflow>=1.10.0',
-                     'sklearn',
                      'numpy>=1.14.5',
                      'pandas>=0.23.4',
                      'MultiColProcessor',
