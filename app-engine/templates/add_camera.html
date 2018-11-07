@@ -10,7 +10,10 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#urlModal">
             Via URL
           </button>
-          <button class="btn btn-primary">Upload Image</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+            Upload Image
+          </button>
+
         </div>
       </section>
     </article>
@@ -18,7 +21,7 @@
 
 
 <!-- URL Modal -->
-<div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,6 +45,35 @@
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Add Device</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile02">
+              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Add Device</button>
