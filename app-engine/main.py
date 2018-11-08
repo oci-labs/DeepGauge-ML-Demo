@@ -53,8 +53,18 @@ def show_camera(camera_id):
 
 @app.route('/camera/settings/<int:camera_id>')
 def show_camera_settings(camera_id):
-    # show the post with the given id, the id is an integer
-    return 'Camera %d Settings' % camera_id
+    cam = {
+        "id": camera_id,
+        "img": "http://placehold.it/500x500",
+        "type": "Analog Gauge",
+        "rate": "30",
+        "refresh": "60",
+        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl.",
+        "thresholds": [
+            { "low": 6 }
+        ]
+    }
+    return render_template('settings_camera.html', camera=cam)
 
 # [START push]
 @app.route('/pubsub/push', methods=['POST'])
