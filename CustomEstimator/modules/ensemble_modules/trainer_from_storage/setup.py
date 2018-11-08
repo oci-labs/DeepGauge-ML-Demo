@@ -13,5 +13,3 @@ setup(
     include_package_data=True,
     description=''
 )
-
-import glob
