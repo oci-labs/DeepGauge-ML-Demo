@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_training_trial_changed_setup_49
+JOB_NAME=custom_estimator_training_2
 BUCKET="gs://custom_estimator"
 ##
 # JOB_DIR="${BUCKET}/misc/logs/job_dir"
@@ -28,7 +28,9 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --ensemble_architecture_path="${ENSEMBLE_PATH}" \
     --path_to_images="${IMG_PATH}" \
     --bin_path="${BIN_PATH}" \
-    --export_dir="${EXPORT_PATH}"
+    --export_dir="${EXPORT_PATH}" \
+    --dev=False \
+    --batch_size=150
 
 
 

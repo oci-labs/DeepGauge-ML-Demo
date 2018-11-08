@@ -119,7 +119,7 @@ class Dataset():
         return
 
     @staticmethod
-    def load_dataset(path, bin_path):
+    def load_dataset(path):
         ####################
         directory = path
         images_folders = tf.train.match_filenames_once(directory + '/*')
@@ -155,8 +155,82 @@ class Dataset():
 
         imgs_paths_labels.reset_index(drop=True, inplace=True)
 
-        print(imgs_paths_labels['target'])
-        print(imgs_paths_labels['filenames'])
+        labels_unique = np.unique(imgs_paths_labels.target.values)
+
+        category_mapper = {labels_unique[i]: i for i in range(len(labels_unique))}
+        category_mapper_ext = {y: x for x, y in category_mapper.items()}
+
+        for i in range(20):
+            print('here0')
+
+        category_mapper.update(category_mapper_ext)
+
+        for i in range(20):
+            print('here1')
+
+        # with open(os.path.join(bin_path, 'category_mapper.json'), 'w') as outfile:
+        #     json.dump(category_mapper, outfile)
+        #
+        # for i in range(20):
+        #     print('here2')
+
+        target = imgs_paths_labels['target'].map(category_mapper)
+
+        for i in range(20):
+            print('here3')
+
+        # target = target.values
+
+        print(target)
+
+        # imgs_paths_labels.loc[:, 'target'] = target
+
+        y_true_zeros = np.zeros((target.shape[0], labels_unique.shape[0]))
+        # y_true = [y_true_zeros[i] for i in range(len(y_true_zeros))]
+        for i in range(len(y_true_zeros)):
+            y_true_zeros[i, target[i]] = 1
+
+        y_true = y_true_zeros.copy()
+
+        print(y_true)
+
+        # for i in range(20):
+        #     print('here1')
+        #
+        # y_true_cat = pd.DataFrame(data=imgs_paths_labels.loc[:, 'target'].values,
+        #                           columns=['y_true'],
+        #                           dtype='category')
+        #
+        # print(y_true_cat)
+        #
+        # # for i in range(20):
+        # #     print('here2')
+        # #
+        # # MultiColumnOneHotEncoder = MultiColomnOneHotEncoder()
+        #
+        # for i in range(20):
+        #     print('here3')
+        #
+        # onehot_encoder = preprocessing.OneHotEncoder(sparse=False)
+        #
+        # # le = preprocessing.LabelEncoder()
+        #
+        # for i in range(20):
+        #     print('here4')
+        #
+        # y_train = onehot_encoder.fit_transform(y_true_cat.y_true.reshape(-1, 1))
+        #
+        # # MultiColumnOneHotEncoder.fit(data=y_true_cat.loc[:, 'y_true'])
+        #
+        # for i in range(20):
+        #     print('here5')
+        #
+        # # y_train = MultiColumnOneHotEncoder.transform(data=y_true_cat)
+        #
+        # print(y_train)
+
+        # print(imgs_paths_labels['target'])
+        # print(imgs_paths_labels['filenames'])
 
         # image_paths = [path.split("'")[1] for path in image_paths_b]
 
@@ -169,30 +243,39 @@ class Dataset():
 
         ##########################
         # data = load_files(path, load_content=False)
-        data = {'filenames': imgs_paths_labels.filenames.values, 'target': imgs_paths_labels.target.values}
-
-        ## to save categories encoder
-        Dataset.dump_json_category_mapper(data=data, bin_path=bin_path)
+        # data = {'filenames': imgs_paths_labels.filenames.values, 'target': imgs_paths_labels.target.values}
+        #
+        # ## to save categories encoder
+        # Dataset.dump_json_category_mapper(data=data, bin_path=bin_path)
 
         ##
         # guage_files = imgs_paths_labels.filenames.values
         # gauge_categories = imgs_paths_labels.target.values
-        guage_files = data['filenames']
-        gauge_categories = data['target']
+        guage_files = imgs_paths_labels.filenames.values
+        gauge_categories = y_true
+
+        for i in range(20):
+            print('here4')
+
+        print(guage_files)
+        print(gauge_categories)
 
         ##
-        Dataset.dump_pkl_MultiColProcessor(gauge_categories=gauge_categories, bin_path=bin_path)
+        # Dataset.dump_pkl_MultiColProcessor(gauge_categories=gauge_categories, bin_path=bin_path)
 
         return guage_files, gauge_categories
 
-    @staticmethod
-    def split_data_files(ver_ratio, path, random_state, is_trial, bin_path):
+    @classmethod
+    def split_data_files(cls, ver_ratio, path, random_state, is_trial):
         ##
-        guage_files, gauge_categories = Dataset.load_dataset(path=path, bin_path=bin_path)
+        guage_files, gauge_categories = cls.load_dataset(path=path)
 
         if is_trial:
             guage_files = guage_files[:20]
             gauge_categories = gauge_categories[:20]
+
+            for i in range(20):
+                print('here5')
 
         #
         X_train_path_names, X_test_path_names, y_train, y_test = \
@@ -200,6 +283,9 @@ class Dataset():
                              gauge_categories,
                              test_size=ver_ratio,
                              random_state=random_state)
+
+        for i in range(20):
+            print('here6')
         ##
         return X_train_path_names, X_test_path_names, y_train, y_test
 
@@ -213,35 +299,35 @@ class Dataset():
         return {'X': image}, label
 
     @classmethod
-    def prep_input_function(cls, ver_ratio, container_path,
+    def prep_input_function(cls,
                             prefetch_buffer_size=None,
-                            color_mode='grayscale',
                             epochs_between_evals=None,
-                            random_state=19,
-                            is_trial=False,
-                            bin_path=None,
                             multi_threading=True,
                             train_batch_size=None,
-                            mode=None):
+                            mode=None,
+                            X_train_path_names=None,
+                            X_test_path_names=None,
+                            y_train=None,
+                            y_test=None):
 
-        X_train_path_names, X_test_path_names, y_train, y_test = \
-            cls.split_data_files(ver_ratio=ver_ratio,
-                                 path=container_path,
-                                 random_state=random_state,
-                                 is_trial=is_trial,
-                                 bin_path=bin_path)
+        # X_train_path_names, X_test_path_names, y_train, y_test = \
+        #     cls.split_data_files(ver_ratio=ver_ratio,
+        #                          path=container_path,
+        #                          random_state=random_state,
+        #                          is_trial=is_trial,
+        #                          bin_path=bin_path)
         ##
         ## OneHot encoding of y_train and y_test
-        with open(bin_path + '/MultiColProcessor.pkl', 'rb') as handle:
-            MultiColumnOneHotEncoder = pickle.load(handle)
+        # with open(bin_path + '/MultiColProcessor.pkl', 'rb') as handle:
+        #     MultiColumnOneHotEncoder = pickle.load(handle)
 
-        y_train_cat = pd.DataFrame(data=y_train, columns=['y_true'], dtype='category')
-        y_train = MultiColumnOneHotEncoder.transform(data=y_train_cat)
-        y_train = y_train.values
-        ##
-        y_test_cat = pd.DataFrame(data=y_test, columns=['y_true'], dtype='category')
-        y_test = MultiColumnOneHotEncoder.transform(data=y_test_cat)
-        y_test = y_test.values
+        # y_train_cat = pd.DataFrame(data=y_train, columns=['y_true'], dtype='category')
+        # y_train = MultiColumnOneHotEncoder.transform(data=y_train_cat)
+        # y_train = y_train.values
+        # ##
+        # y_test_cat = pd.DataFrame(data=y_test, columns=['y_true'], dtype='category')
+        # y_test = MultiColumnOneHotEncoder.transform(data=y_test_cat)
+        # y_test = y_test.values
         ##
         num_threads = multiprocessing.cpu_count() if multi_threading else 1
 
