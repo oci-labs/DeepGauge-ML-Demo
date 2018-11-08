@@ -1,11 +1,8 @@
 from setuptools import find_packages
 from setuptools import setup
 
-REQUIRED_PACKAGES = ['argparse',
-                     'tensorflow>=1.10.0',
-                     'numpy>=1.14.5',
+REQUIRED_PACKAGES = ['tensorflow>=1.10.0',
                      'pandas>=0.23.4',
-                     'MultiColProcessor',
                      'multiprocessing']
 
 setup(

@@ -6,10 +6,6 @@ from trainer.input import Dataset
 import trainer.model as model
 
 
-## dev
-# from modules.ensemble_modules.trainer_from_storage.input import Dataset
-# from modules.ensemble_modules.trainer_from_storage import model
-
 ##
 def initialise_hyper_params(parser):
     parser.add_argument('--path_to_images', default='data/ImageEveryUnit',
@@ -22,20 +18,20 @@ def initialise_hyper_params(parser):
                         default='[None, 224, 224, 3]',
                         type=str)
     parser.add_argument('--hidden_units',
-                        default='[20, 30]',
+                        default='[500, 100]',
                         type=str)
     parser.add_argument('--learning_rate',
-                        default=.01,
+                        default=3e-4,
                         type=float)
     parser.add_argument('--retrain_primary_models',
                         choices=['True', 'False'],
                         default='False',
                         type=str)
     parser.add_argument('--batch_size',
-                        default=15,
+                        default=500,
                         type=int)
     parser.add_argument('--train_epochs',
-                        default=1,
+                        default=250,
                         type=int)
     parser.add_argument('--epochs_between_evals',
                         default=1,
@@ -54,7 +50,7 @@ def initialise_hyper_params(parser):
                         type=str)
     parser.add_argument('--dev',
                         choices=['True', 'False'],
-                        default='True',
+                        default='False',
                         type=str)
     parser.add_argument('--color_mode',
                         default='grayscale',
@@ -98,7 +94,7 @@ def main(argv):
     retrain_primary_models = args.retrain_primary_models == 'True'
     train_epochs = args.train_epochs
     epochs_between_evals = args.epochs_between_evals
-    batch_size = args.batch_size
+    batch_size = int(args.batch_size)
     export_dir = args.export_dir
     metric = args.metric
     prefetch_buffer_size = args.prefetch_buffer_size
@@ -107,18 +103,16 @@ def main(argv):
     ##
     tf.logging.set_verbosity(args.verbosity)
 
-    #############################################
-
+    ##
     X_train_path_names, X_test_path_names, y_train, y_test = \
         Dataset.split_data_files(ver_ratio=0.2,
                                  path=path_to_images,
                                  random_state=19,
-                                 is_trial=is_trial,
-                                 bin_path=bin_path)
-    ############################################
+                                 is_trial=is_trial)
 
+    ##
     model.create_ensemble_architecture(hidden_units=hidden_units,
-                                       n_output=31,
+                                       n_output=y_train.shape[1],
                                        primary_models_directory=primary_models_directory,
                                        images_shape=images_shape,
                                        save_path=ensemble_architecture_path)
@@ -140,29 +134,29 @@ def main(argv):
     model_criteria = 0.0
     image = tf.placeholder(tf.float32, shape=images_shape, name='export_input_image')
     input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'X': image})
+
     ##
     for i in range(train_epochs // epochs_between_evals):
         print('epoch {} .........'.format(i * epochs_between_evals + 1))
         classifier.train(input_fn=lambda: Dataset.prep_input_function(
-            ver_ratio=0.2,
-            container_path=path_to_images,
             prefetch_buffer_size=prefetch_buffer_size,
             epochs_between_evals=epochs_between_evals,
-            random_state=19,
-            is_trial=is_trial,
-            bin_path=bin_path,
             multi_threading=image_processing_multi_threading,
             train_batch_size=batch_size,
-            mode=tf.estimator.ModeKeys.TRAIN))
+            mode=tf.estimator.ModeKeys.TRAIN,
+            X_train_path_names=X_train_path_names,
+            X_test_path_names=X_test_path_names,
+            y_train=y_train,
+            y_test=y_test
+        ))
 
         eval_result = classifier.evaluate(input_fn=lambda: Dataset.prep_input_function(
-            ver_ratio=0.2,
-            container_path=path_to_images,
-            random_state=19,
-            is_trial=is_trial,
-            bin_path=bin_path,
             multi_threading=image_processing_multi_threading,
-            mode=tf.estimator.ModeKeys.EVAL))
+            mode=tf.estimator.ModeKeys.EVAL,
+            X_train_path_names=X_train_path_names,
+            X_test_path_names=X_test_path_names,
+            y_train=y_train,
+            y_test=y_test))
         print('')
         print('')
         print('current validation dataset accuracy is: {}'.format(eval_result['accuracy']))
