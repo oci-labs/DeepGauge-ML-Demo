@@ -19,6 +19,9 @@ def initialise_hyper_params(parser):
     parser.add_argument('--primary_models_directory',
                         default='./logs/primary_models/',
                         type=str)
+    parser.add_argument('--job_dir',
+                        default='./logs/job_dir/',
+                        type=str)
     parser.add_argument('--images_shape',
                         default='[None, 224, 224, 3]',
                         type=str)
@@ -79,6 +82,7 @@ def main(argv):
     args = HYPER_PARAMS.parse_args(argv[1:])
 
     ##
+    job_dir = args.job_dir
     images_shape = eval(args.images_shape)
     path_to_images = args.path_to_images
     is_trial = args.dev == 'True'
@@ -121,7 +125,8 @@ def main(argv):
             'learning_rate': learning_rate,
             'ensemble_architecture_path': ensemble_architecture_path,
             'retrain_primary_models': retrain_primary_models
-        })
+        },
+        model_dir=job_dir)
 
     # Train and evaluate model.
     image = tf.placeholder(tf.float32, shape=images_shape, name='export_input_image')
@@ -154,6 +159,7 @@ def main(argv):
     print('validation accuracy after {} epochs is: {}'.format(train_epochs, eval_result['accuracy']))
     print('')
     print('')
+
 
 ##
 args_parser = argparse.ArgumentParser()
