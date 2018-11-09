@@ -8,14 +8,14 @@ from google.cloud import bigquery
 
 def flowers_table_insert_rows(client, datarow):
     SCHEMA = [
-    bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
-    bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
-    bigquery.SchemaField('SCORE1','FLOAT', mode='REQUIRED'),
-    bigquery.SchemaField('SCORE2','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE3','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE4','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED'),
+      bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
+      bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE1', 'FLOAT', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE2', 'FLOAT', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE3', 'FLOAT', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE4', 'FLOAT', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE5', 'FLOAT', mode='REQUIRED'),
+      bigquery.SchemaField('SCORE6', 'FLOAT', mode='REQUIRED')
     ]
 
     #my_bigquery.dataset(dataset_name).table(table_name).exists()  # returns boolean
