@@ -156,22 +156,12 @@ gcloud pubsub subscriptions create my-sub --topic my-topic
 
 i)Creating a dataset
 
-# from google.cloud import bigquery
-# client = bigquery.Client()
-# dataset_id = 'my_dataset'
-
-# Create a DatasetReference using a chosen dataset ID.
-# The project defaults to the Client's project if not specified.
+from google.cloud import bigquery
+client = bigquery.Client()
+dataset_id = 'my_dataset'
 dataset_ref = client.dataset(dataset_id)
-
-# Construct a full Dataset object to send to the API.
 dataset = bigquery.Dataset(dataset_ref)
-# Specify the geographic location where the dataset should reside.
 dataset.location = 'US'
-
-# Send the dataset to the API for creation.
-# Raises google.api_core.exceptions.AlreadyExists if the Dataset already
-# exists within the project.
 dataset = client.create_dataset(dataset)  # API request
 
 ii) Creating Schema for flowers ML Engine BigQuery 
@@ -210,14 +200,6 @@ Using a Google BigQuery IO transform in a Cloud Dataflow pipeline to write data 
 
 ### Streaming Data into BigQuery
 Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job. 
-# TODO(developer): Uncomment the lines below and replace with your values.
-# from google.cloud import bigquery
-# client = bigquery.Client()
-# dataset_id = 'my_dataset'  # replace with your dataset ID
-# For this sample, the table must already exist and have a defined schema
-# table_id = 'my_table'  # replace with your table ID
-# table_ref = client.dataset(dataset_id).table(table_id)
-# table = client.get_table(table_ref)  # API request
 
 rows_to_insert = [
     (u'Phred Phlyntstone', 32),
