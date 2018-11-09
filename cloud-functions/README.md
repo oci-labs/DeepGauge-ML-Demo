@@ -193,11 +193,13 @@ assert table.table_id == 'my_table'
 You can load data:
 
 From Cloud Storage
-From other Google services, such as Google Ad Manager and Google Ads
-From a readable data source (such as your local machine)
-By inserting individual records using streaming inserts
-Using DML statements to perform bulk inserts
-Using a Google BigQuery IO transform in a Cloud Dataflow pipeline to write data to BigQuery
+1. From other Google services, such as Google Ad Manager and Google Ads
+2. From a readable data source (such as your local machine)
+3. By inserting individual records using streaming inserts
+4. Using DML statements to perform bulk inserts
+5. Using a Google BigQuery IO transform in a Cloud Dataflow pipeline to write data to BigQuery
+
+Note: For the DeepGauge we use streaming inserts.
 
 ### Streaming Data into BigQuery
 Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job. 
@@ -211,3 +213,13 @@ errors = client.insert_rows(table, rows_to_insert)  # API request
 assert errors == []
 ```
 The added table and data can be views at BigQuery WebUI or using BigQuery commands at terminal.
+i) WebUI to view the BigQuery datasets and tables for the project
+https://console.cloud.google.com/bigquery?project=ocideepgauge&authuser=1&p=ocideepgauge&d=flowers_dataset&t=flowers_table&page=table
+
+SELECT SCORE1
+FROM `ocideepgauge.flowers_dataset.flowers_table`
+LIMIT 1000
+
+ii) Command line 
+bq ls --format=pretty ocideepgauge:flowers_dataset
+
