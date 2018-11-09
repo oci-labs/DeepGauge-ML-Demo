@@ -97,6 +97,13 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
+            with tf.Session(graph=tf.Graph()) as sess:
+                tf.graph_util.convert_variables_to_constants(
+                    sess,
+                    tf.get_default_graph().as_graph_def(),
+                    [v for v in tf.trainable_variables()]
+                )
+
             return raw_imgs_in_main_graph, logits_concat
 
         @classmethod
