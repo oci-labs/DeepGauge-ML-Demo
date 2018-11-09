@@ -3,6 +3,44 @@ from google.cloud import storage
 from googleapiclient import discovery
 from google.cloud import pubsub_v1
 
+# Imports the Google Cloud client library
+from google.cloud import bigquery
+
+def flowers_table_insert_rows(client, datarow):
+    SCHEMA = [
+    bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE1','FLOAT', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE2','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE3','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE4','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED'),
+    ]
+
+    #my_bigquery.dataset(dataset_name).table(table_name).exists()  # returns boolean
+
+    """Insert / fetch table data."""
+    dataset_id = 'flowers_dataset'
+    table_id = 'flowers_table'
+    dataset = bigquery.Dataset(client.dataset(dataset_id))
+    try:
+     dataset = client.create_dataset(dataset)
+    except Exception as err:
+     print("dataset already exists, appending to the dataset")
+    dataset.location = 'US'
+    #to_delete.append(dataset)
+    table = bigquery.Table(dataset.table(table_id), schema=SCHEMA)
+    try:
+     table = client.create_table(table)
+    except Exception as err:
+     print("table already exists, appending to the table")
+    rows_to_insert = datarow
+    print("inserting elements to the table")
+    errors = client.insert_rows(table, rows_to_insert)  # API request
+    assert errors == []
+    # [END bigquery_table_insert_rows]
+
 
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
@@ -66,5 +104,20 @@ def predict_gauge(data, context):
     # print('Metageneration: {}'.format(data['metageneration']))
     # print('Created: {}'.format(data['timeCreated']))
     # print('Updated: {}'.format(data['updated']))
+    
+    #Compose request to BigQuery
+    predict=(response['predictions'][0]['prediction'])
+    key=(response['predictions'][0]['key'])
+    scores=(response['predictions'][0]['scores'])
+    score1=scores[0]
+    score2=scores[1]
+    score3=scores[2]
+    score4=scores[3]
+    score5=scores[4]
+    score6=scores[5]
+    rows=[(predict, key, score1, score2, score3, score4, score5, score6)]
+
+    client = bigquery.Client()
+    flowers_table_insert_rows(client,rows)
 
 # [END functions_predict_gauge]
