@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_training_frozen_primary_2
+JOB_NAME=custom_estimator_retrain_primary_2
 BUCKET="gs://custom_estimator"
 ##
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
@@ -29,8 +29,8 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --path_to_images="${IMG_PATH}" \
     --export_dir="${EXPORT_PATH}" \
     --dev=False \
-    --train_epochs=150 \
-    --batch_size=250 \
-    --retrain_primary_models=False \
-    --learning_rate=5e-4 \
+    --train_epochs=450 \
+    --batch_size=150 \
+    --retrain_primary_models=True \
+    --learning_rate=6e-4 \
     --job_dir="$JOB_DIR"
