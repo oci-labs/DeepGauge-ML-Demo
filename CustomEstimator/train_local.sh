@@ -2,7 +2,7 @@ MODULE_NAME=trainer.task
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
 PRIMARY_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/primary_models
 ENSEMBLE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/temporary_models
-IMG_PATH=/home/khodayarim/PycharmProjects/ImageEveryUnit
+IMG_PATH=/home/khodayarim/PycharmProjects/data/ImageEveryUnit
 BIN_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/logs/dumps
 EXPORT_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model
 

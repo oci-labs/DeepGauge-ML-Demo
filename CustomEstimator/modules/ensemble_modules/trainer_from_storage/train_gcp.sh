@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_training_2
+JOB_NAME=custom_estimator_retrain_primary_1
 BUCKET="gs://custom_estimator"
 ##
 # JOB_DIR="${BUCKET}/misc/logs/job_dir"
@@ -12,7 +12,7 @@ IMG_PATH="${BUCKET}/data"
 BIN_PATH="${BUCKET}/misc/logs/dumps"
 EXPORT_PATH="${BUCKET}/misc/exported_model"
 
-##     --job-dir "$JOB_DIR"  \
+## --job-dir "$JOB_DIR" \
 ## --python-version 3.5 \
 
 gcloud ml-engine jobs submit training "$JOB_NAME" \
@@ -27,12 +27,8 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --primary_models_directory="${PRIMARY_PATH}" \
     --ensemble_architecture_path="${ENSEMBLE_PATH}" \
     --path_to_images="${IMG_PATH}" \
-    --bin_path="${BIN_PATH}" \
     --export_dir="${EXPORT_PATH}" \
     --dev=False \
-    --batch_size=150
-
-
-
-
-
+    --train_epochs=300 \
+    --batch_size=150 \
+    --retrain_primary_models=True

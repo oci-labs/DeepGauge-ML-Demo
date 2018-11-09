@@ -33,7 +33,7 @@ def initialise_hyper_params(parser):
                         default='False',
                         type=str)
     parser.add_argument('--batch_size',
-                        default=5,
+                        default=10,
                         type=int)
     parser.add_argument('--train_epochs',
                         default=1,
@@ -45,7 +45,7 @@ def initialise_hyper_params(parser):
                         default='./logs/exported_model',
                         type=str)
     parser.add_argument('--ensemble_architecture_path',
-                        default='./logs/temporary_models/',
+                        default='./logs/ensemble_graph/',
                         type=str)
     parser.add_argument('--metric',
                         default='accuracy',
@@ -55,7 +55,7 @@ def initialise_hyper_params(parser):
                         type=str)
     parser.add_argument('--dev',
                         choices=['True', 'False'],
-                        default='False',
+                        default='True',
                         type=str)
     parser.add_argument('--color_mode',
                         default='grayscale',
@@ -138,7 +138,7 @@ def main(argv):
             ver_ratio=0.2,
             container_path=path_to_images,
             prefetch_buffer_size=prefetch_buffer_size,
-            epochs_between_evals=epochs_between_evals,
+            train_epochs=epochs_between_evals,
             random_state=19,
             is_trial=is_trial,
             bin_path=bin_path,

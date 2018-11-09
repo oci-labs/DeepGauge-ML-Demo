@@ -14,7 +14,7 @@ def create_ensemble_architecture(hidden_units=None,
                              raw_imgs_placeholder=None):
             graph_model = tf.Graph()
             with graph_model.as_default():
-                ##################################
+                ##
                 with tf.Session(graph=graph_model) as sess:
                     saver = tf.train.import_meta_graph(pipeline_params["checkpoint_file_path"],
                                                        clear_devices=True,
@@ -25,11 +25,11 @@ def create_ensemble_architecture(hidden_units=None,
                 X_image_tf = graph_model.get_tensor_by_name("CNN_model/X_image_tf:0")
                 logits_tf = graph_model.get_tensor_by_name("CNN_model/logits_tf:0")
                 # logits_tf_sg = tf.stop_gradient(logits_tf)
-                ####################################
+                ##
 
             graph_pipeline = tf.Graph()
             with graph_pipeline.as_default():
-                ##################################
+                ##
                 X_raw = tf.placeholder(tf.float32, shape=[None, None, None, None], name="X_raw")
                 meta_graph.import_scoped_meta_graph(pipeline_params["checkpoint_file_path"],
                                                     clear_devices=True,
@@ -40,7 +40,7 @@ def create_ensemble_architecture(hidden_units=None,
                 resized_imgs = tf.identity(tf.image.resize_images(X_raw, (X_image_tf.get_shape().as_list()[1],
                                                                           X_image_tf.get_shape().as_list()[2])),
                                            name='resized_imgs')
-                ####################################
+                ##
 
             graph = tf.get_default_graph()
 
@@ -147,7 +147,7 @@ def create_ensemble_architecture(hidden_units=None,
                 X_tf = tf.placeholder(tf.float32, shape=[None, concatenated_features.get_shape().as_list()[1]],
                                       name='X_tf')
 
-                #########################
+                ##
                 layer = None
                 for n_layer, n_nodes in enumerate(params_fc['hidden_units']):
                     if n_layer == 0:
