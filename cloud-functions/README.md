@@ -155,7 +155,7 @@ gcloud pubsub subscriptions create my-sub --topic my-topic
 ## Create BigQuery Dataset and Table 
 
 i)Creating a dataset
-
+```
 from google.cloud import bigquery
 client = bigquery.Client()
 dataset_id = 'my_dataset'
@@ -163,8 +163,9 @@ dataset_ref = client.dataset(dataset_id)
 dataset = bigquery.Dataset(dataset_ref)
 dataset.location = 'US'
 dataset = client.create_dataset(dataset)  # API request
-
+```
 ii) Creating Schema for flowers ML Engine BigQuery 
+```
 SCHEMA = [
     bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
     bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
@@ -175,9 +176,9 @@ SCHEMA = [
     bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
     bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED'),
     ]
-
+```
 iii) Creating a table based on the sample schema
-
+```
 schema = [
     bigquery.SchemaField('full_name', 'STRING', mode='REQUIRED'),
     bigquery.SchemaField('age', 'INTEGER', mode='REQUIRED'),
@@ -187,7 +188,7 @@ table = bigquery.Table(table_ref, schema=schema)
 table = client.create_table(table)  # API request
 
 assert table.table_id == 'my_table'
-
+```
 ## Insert rows in BigQuery Table
 You can load data:
 
@@ -200,7 +201,7 @@ Using a Google BigQuery IO transform in a Cloud Dataflow pipeline to write data 
 
 ### Streaming Data into BigQuery
 Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job. 
-
+```
 rows_to_insert = [
     (u'Phred Phlyntstone', 32),
     (u'Wylma Phlyntstone', 29),
@@ -208,5 +209,5 @@ rows_to_insert = [
 errors = client.insert_rows(table, rows_to_insert)  # API request
 
 assert errors == []
-
+```
 The added table and data can be views at BigQuery WebUI or using BigQuery commands at terminal.
