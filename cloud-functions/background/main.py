@@ -2,37 +2,40 @@ import base64, json
 from google.cloud import storage
 from googleapiclient import discovery
 from google.cloud import pubsub_v1
-
 # Imports the Google Cloud client library
 from google.cloud import bigquery
+import datetime
 
 def flowers_table_insert_rows(client, datarow):
     SCHEMA = [
-      bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
-      bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE1', 'FLOAT', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE2', 'FLOAT', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE3', 'FLOAT', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE4', 'FLOAT', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE5', 'FLOAT', mode='REQUIRED'),
-      bigquery.SchemaField('SCORE6', 'FLOAT', mode='REQUIRED')
+    bigquery.SchemaField('DATETIME','DATETIME',mode='REQUIRED'),
+    bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE1','FLOAT', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE2','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE3','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE4','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED'),
     ]
+
+    #my_bigquery.dataset(dataset_name).table(table_name).exists()  # returns boolean
+
     """Insert / fetch table data."""
-    dataset_id = 'flowers_dataset'
-    table_id = 'flowers_table'
+    dataset_id = 'flowers_dataset_final'
+    table_id = 'flowers_table3_final'
     dataset = bigquery.Dataset(client.dataset(dataset_id))
     try:
         dataset = client.create_dataset(dataset)
     except Exception as err:
-        print("dataset already exists, appending to the dataset")
+        print("dataset already exists")
     dataset.location = 'US'
     table = bigquery.Table(dataset.table(table_id), schema=SCHEMA)
     try:
         table = client.create_table(table)
     except Exception as err:
-        print("table already exists, appending to the table")
+        print("table already exists")
     rows_to_insert = datarow
-    print("inserting elements to the table")
     errors = client.insert_rows(table, rows_to_insert)  # API request
     assert errors == []
     # [END bigquery_table_insert_rows]
@@ -41,9 +44,8 @@ def flowers_table_insert_rows(client, datarow):
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
     """Background Cloud Function to be triggered by Cloud Storage.
-       This generic function logs relevant data when a file is changed.
-
-    Args:
+       This generic function logs relevant data when a file is changed. 
+       Args:
         data (dict): The Cloud Functions event payload.
         context (google.cloud.functions.Context): Metadata of triggering event.
     Returns:
@@ -89,26 +91,24 @@ def predict_gauge(data, context):
     publisher.publish(topic_path, bytestring, origin='flower-sample', username='gcp')
 
     print('Published messages with custom attributes.')
-
     # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
-    # print(response['predictions'])
-    # Print General Information
-    # print('Event ID: {}'.format(context.event_id))
-    # print('Event type: {}'.format(context.event_type))
-    # print('Bucket: {}'.format(data['bucket']))
-    # print('File: {}'.format(data['name']))
-    # print('Metageneration: {}'.format(data['metageneration']))
-    # print('Created: {}'.format(data['timeCreated']))
-    # print('Updated: {}'.format(data['updated']))
-    
+    #print(response['predictions']
+    dt=datetime.datetime.now()
     #Compose request to BigQuery
     predict=(response['predictions'][0]['prediction'])
     key=(response['predictions'][0]['key'])
-    scores=(response['predictions'][0]['scores'])
     score1, score2, score3, score4, score5, score6=(response['predictions'][0]['scores'])
-    print(predict, key, score1, score2, score3,score4,score5,score6)
-    rows=[(predict, key, score1, score2, score3, score4, score5, score6)]
+    rows=[(dt, key, predict, score1, score2, score3, score4, score5, score6)]
     client = bigquery.Client()
     flowers_table_insert_rows(client,rows)
-    
+    print(dt, key, predict, score1, score2, score3,score4,score5,score6)
+    #print(reponse['predictions'][2])
+    # Print General Information
+    #print('Event ID: {}'.format(context.event_id))
+    #print('Event type: {}'.format(context.event_type))
+    #print('Bucket: {}'.format(data['bucket']))
+    #print('File: {}'.format(data['name']))
+    #print('Metageneration: {}'.format(data['metageneration']))
+    #print('Created: {}'.format(data['timeCreated']))
+    #print('Updated: {}'.format(data['updated']))
 # [END functions_predict_gauge]
