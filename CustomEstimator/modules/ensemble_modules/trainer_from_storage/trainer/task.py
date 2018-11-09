@@ -1,14 +1,19 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 import argparse
 import tensorflow as tf
 
-## on
+##
 from trainer.input import Dataset
 import trainer.model as model
 
 
 ##
 def initialise_hyper_params(parser):
-    parser.add_argument('--path_to_images', default='data/ImageEveryUnit',
+    parser.add_argument('--path_to_images',
+                        default='data/ImageEveryUnit',
                         type=str,
                         help='path to images (e.g. gs://...)')
     parser.add_argument('--primary_models_directory',
@@ -33,20 +38,11 @@ def initialise_hyper_params(parser):
     parser.add_argument('--train_epochs',
                         default=250,
                         type=int)
-    parser.add_argument('--epochs_between_evals',
-                        default=1,
-                        type=int)
     parser.add_argument('--export_dir',
                         default='./logs/exported_model',
                         type=str)
     parser.add_argument('--ensemble_architecture_path',
                         default='./logs/ensemble_graph/',
-                        type=str)
-    parser.add_argument('--metric',
-                        default='accuracy',
-                        type=str)
-    parser.add_argument('--bin_path',
-                        default='dumps/',
                         type=str)
     parser.add_argument('--dev',
                         choices=['True', 'False'],
@@ -82,10 +78,9 @@ def initialise_hyper_params(parser):
 def main(argv):
     args = HYPER_PARAMS.parse_args(argv[1:])
 
-    ##     color_mode = args.color_mode
+    ##
     images_shape = eval(args.images_shape)
     path_to_images = args.path_to_images
-    bin_path = args.bin_path
     is_trial = args.dev == 'True'
     primary_models_directory = args.primary_models_directory
     hidden_units = eval(args.hidden_units)
@@ -93,10 +88,8 @@ def main(argv):
     learning_rate = args.learning_rate
     retrain_primary_models = args.retrain_primary_models == 'True'
     train_epochs = args.train_epochs
-    epochs_between_evals = args.epochs_between_evals
     batch_size = int(args.batch_size)
     export_dir = args.export_dir
-    metric = args.metric
     prefetch_buffer_size = args.prefetch_buffer_size
     image_processing_multi_threading = args.image_processing_multi_threading == 'True'
 
@@ -131,47 +124,36 @@ def main(argv):
         })
 
     # Train and evaluate model.
-    model_criteria = 0.0
     image = tf.placeholder(tf.float32, shape=images_shape, name='export_input_image')
     input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'X': image})
 
     ##
-    for i in range(train_epochs // epochs_between_evals):
-        print('epoch {} .........'.format(i * epochs_between_evals + 1))
-        classifier.train(input_fn=lambda: Dataset.prep_input_function(
-            prefetch_buffer_size=prefetch_buffer_size,
-            epochs_between_evals=epochs_between_evals,
-            multi_threading=image_processing_multi_threading,
-            train_batch_size=batch_size,
-            mode=tf.estimator.ModeKeys.TRAIN,
-            X_train_path_names=X_train_path_names,
-            X_test_path_names=X_test_path_names,
-            y_train=y_train,
-            y_test=y_test
-        ))
+    classifier.train(input_fn=lambda: Dataset.prep_input_function(
+        prefetch_buffer_size=prefetch_buffer_size,
+        train_epochs=train_epochs,
+        multi_threading=image_processing_multi_threading,
+        train_batch_size=batch_size,
+        mode=tf.estimator.ModeKeys.TRAIN,
+        X_train_path_names=X_train_path_names,
+        X_test_path_names=X_test_path_names,
+        y_train=y_train,
+        y_test=y_test
+    ))
 
-        eval_result = classifier.evaluate(input_fn=lambda: Dataset.prep_input_function(
-            multi_threading=image_processing_multi_threading,
-            mode=tf.estimator.ModeKeys.EVAL,
-            X_train_path_names=X_train_path_names,
-            X_test_path_names=X_test_path_names,
-            y_train=y_train,
-            y_test=y_test))
-        print('')
-        print('')
-        print('current validation dataset accuracy is: {}'.format(eval_result['accuracy']))
-        print('current highest validation dataset accuracy is: {}'.format(model_criteria))
-        if eval_result[metric] >= model_criteria:
-            model_criteria = eval_result[metric].copy()
-            print('current highest validation dataset accuracy updated to: {}'.format(model_criteria))
-            print('')
-            print('')
-            classifier.export_savedmodel(export_dir, input_fn, strip_default_attrs=True)
-            print('model updated')
-            continue
-        print('')
-        print('')
+    eval_result = classifier.evaluate(input_fn=lambda: Dataset.prep_input_function(
+        multi_threading=image_processing_multi_threading,
+        mode=tf.estimator.ModeKeys.EVAL,
+        X_train_path_names=X_train_path_names,
+        X_test_path_names=X_test_path_names,
+        y_train=y_train,
+        y_test=y_test))
 
+    classifier.export_savedmodel(export_dir, input_fn, strip_default_attrs=True)
+    print('')
+    print('')
+    print('validation accuracy after {} epochs is: {}'.format(train_epochs, eval_result['accuracy']))
+    print('')
+    print('')
 
 ##
 args_parser = argparse.ArgumentParser()

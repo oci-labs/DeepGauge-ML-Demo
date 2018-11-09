@@ -135,7 +135,7 @@ def main(argv):
             ver_ratio=0.2,
             container_path=path_to_images,
             prefetch_buffer_size=prefetch_buffer_size,
-            epochs_between_evals=epochs_between_evals,
+            train_epochs=epochs_between_evals,
             random_state=19,
             is_trial=is_trial,
             bin_path=bin_path,

@@ -1,7 +1,7 @@
 ##
 REGION=us-central1
-JOB_NAME=deep_gauge_4
-BUCKET=gs://tt_ttt
+JOB_NAME=training_trial_1
+BUCKET=gs://custom_estimator
 ##
 JOB_DIR="${BUCKET}/misc/logs/job_dir"
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer

@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/logs/job_dir/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_local.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CustomEstimator/train_gcp.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/DeepGauge-ML-Demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DeepGauge-ML-Demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/ensemble/CustomEnsembleEstimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/ensemble/CustomEnsembleEstimator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_memory/CustomEnsembleEstimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_memory/CustomEnsembleEstimator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/train_local.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/train_local.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/train_gcp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/train_gcp.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/train_local.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/train_local.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/trial.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,15 +27,16 @@
     <session id="723162537">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="20" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="2" />
-          <entry key="project.open.time.44" value="2" />
+          <entry key="project.open.time.44" value="3" />
           <entry key="project.open.time.45" value="1" />
-          <entry key="project.open.time.46" value="3" />
+          <entry key="project.open.time.46" value="4" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.49" value="1" />
@@ -39,11 +45,15 @@
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.66" value="1" />
-          <entry key="project.open.time.69" value="2" />
+          <entry key="project.open.time.67" value="1" />
+          <entry key="project.open.time.69" value="3" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.open.time.79" value="1" />
+          <entry key="project.open.time.81" value="1" />
+          <entry key="project.open.time.93" value="1" />
+          <entry key="project.opened" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -55,8 +65,9 @@
           <entry key="jpeg" value="1" />
           <entry key="json" value="4" />
           <entry key="png" value="1" />
-          <entry key="py" value="77" />
-          <entry key="sh" value="12" />
+          <entry key="py" value="117" />
+          <entry key="sh" value="22" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -64,71 +75,95 @@
           <entry key="IPNB" value="1" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="4" />
-          <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="78" />
+          <entry key="PLAIN_TEXT" value="25" />
+          <entry key="Python" value="118" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="1054" />
-          <entry key="dummy" value="31" />
+          <entry key="Python Console" value="1773" />
+          <entry key="dummy" value="41" />
           <entry key="ensemble_tf" value="3337" />
-          <entry key="py" value="8740" />
-          <entry key="sh" value="608" />
-          <entry key="txt" value="23" />
+          <entry key="py" value="10711" />
+          <entry key="sh" value="967" />
+          <entry key="txt" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="662" />
-          <entry key="Python" value="13131" />
+          <entry key="PLAIN_TEXT" value="1032" />
+          <entry key="Python" value="15821" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="30" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomEstimator/train_gcp.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="11" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_local.sh">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            <state relative-caret-position="286">
+              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomEstimator/CLI_commands/ens.sh">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5236">
+              <caret line="240" selection-start-line="240" selection-end-line="240" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/trial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6776">
+              <caret line="312" column="4" selection-start-line="312" selection-start-column="4" selection-end-line="312" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="4" selection-start-line="4" selection-end-line="13" />
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,10 +181,18 @@
     <findStrings>
       <find>=</find>
       <find>optimize_and_save_logs</find>
+      <find>hidden</find>
+      <find>hidden_uni</find>
+      <find>mcp</find>
+      <find>container_path</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer</dir>
       <dir>$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc</dir>
+      <dir>$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -189,12 +232,25 @@
         <option value="$PROJECT_DIR$/ens.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/ens.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/create_bucket.sh" />
-        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh" />
-        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py" />
         <option value="$PROJECT_DIR$/CustomEstimator/train.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/train_local.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/train_gcp.sh" />
-        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/task.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/train_local.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_local.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/initialize.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_misc.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_create.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/task.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/trial.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" />
       </list>
     </option>
   </component>
@@ -209,7 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,10 +316,28 @@
               <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
               <item name="trainer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_original" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_local" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,13 +346,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/CustomEstimator" />
-      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/logs/job_dir" />
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer" />
       <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage" />
-      <recent name="$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage" />
-      <recent name="$PROJECT_DIR$/trainer_from_bucket" />
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules" />
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/ensemble_graph" />
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original" />
+      <recent name="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage" />
       <recent name="$PROJECT_DIR$/CustomEstimator/modules/primary_models_modules" />
     </key>
   </component>
@@ -312,19 +387,19 @@
     <frame x="1920" y="-2" width="1680" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Structure" order="0" weight="0.25" />
+      <window_info id="Structure" order="0" sideWeight="0.4989154" weight="0.249694" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" side_tool="true" visible="true" weight="0.1750306" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.5010846" side_tool="true" visible="true" weight="0.17135863" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294423" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -334,9 +409,9 @@
       <window_info anchor="right" id="R Packages" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info id="Structure" order="0" weight="0.14075887" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19216646" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="0" sideWeight="0.4989154" weight="0.249694" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.5010846" side_tool="true" visible="true" weight="0.2123623" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -344,15 +419,16 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3264642" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.27657267" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294423" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -442,33 +518,20 @@
           <line>388</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_test/model.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_test/task.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gaugeReader.ipynb" />
-    <entry file="file://$PROJECT_DIR$/train.py" />
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/PrepareEnsembleData.py" />
-    <entry file="file://$PROJECT_DIR$/train_ensemble.py" />
-    <entry file="file://$PROJECT_DIR$/modules/NewLayers.py" />
-    <entry file="file://$PROJECT_DIR$/modules/NeuralNet.py" />
-    <entry file="file://$PROJECT_DIR$/logs/primary_models/8th_good/hyper_params_main.json" />
-    <entry file="file://$PROJECT_DIR$/prediction_batch.py" />
-    <entry file="file://$PROJECT_DIR$/prediction_online.py" />
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/LoadImgPred.py" />
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/PILimages.py" />
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/obsolete_EnsenmbleData.py" />
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/funcs_backup.py" />
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/ensemble_build.py" />
-    <entry file="file://$PROJECT_DIR$/modules/OptimizeAndLog.py" />
-    <entry file="file://$PROJECT_DIR$/modules/PerfMeasures.py" />
-    <entry file="file://$PROJECT_DIR$/modules/prediction_modules/Prediction.py" />
-    <entry file="file://$PROJECT_DIR$/modules/LoadImg.py" />
-    <entry file="file://$PROJECT_DIR$/copy_to_bucket.sh" />
-    <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/CustomEnsembleEstimator.py" />
-    <entry file="file://$PROJECT_DIR$/trainer/LoadImg.py" />
-    <entry file="file://$PROJECT_DIR$/trainer/CustomEnsembleEstimator.py" />
-    <entry file="file://$PROJECT_DIR$/trainer_from_bucket/input.py" />
     <entry file="file://$PROJECT_DIR$/trainer_from_bucket/task.py" />
     <entry file="file://$PROJECT_DIR$/trial.py" />
     <entry file="file://$PROJECT_DIR$/customEstimator.py" />
@@ -525,34 +588,13 @@
     <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/logs/job_dir/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/misc/logs/dumps/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomEstimator/train_gcp.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="11" selection-end-column="46" />
+        <state relative-caret-position="330">
+          <caret line="15" column="2" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -563,10 +605,158 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_local.sh">
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/input.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/model.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/trainer/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_test_local.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="146" selection-start-line="3" selection-start-column="146" selection-end-line="3" selection-end-column="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_local/train_local.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="139" selection-start-line="3" selection-start-column="139" selection-end-line="3" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/ensemble_graph/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_misc.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_test/input.py" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_create.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="62" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_test/task.py" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/initialize.py" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_test/model.py" />
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2954">
+          <caret line="22" selection-start-line="22" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="58" column="62" lean-forward="true" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/train_local.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/train_ensemble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="53" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5236">
+          <caret line="240" selection-start-line="240" selection-end-line="240" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/trial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6776">
+          <caret line="312" column="4" selection-start-line="312" selection-start-column="4" selection-end-line="312" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1688">
+          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

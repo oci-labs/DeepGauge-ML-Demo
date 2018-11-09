@@ -55,7 +55,7 @@ def create_parser():
                         default='./logs/exported_model',
                         type=str)
     parser.add_argument('--ensemble_architecture_path',
-                        default='./logs/temporary_models/',
+                        default='./logs/ensemble_graph/',
                         type=str)
     parser.add_argument('--metric',
                         default='accuracy',
