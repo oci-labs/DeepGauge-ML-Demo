@@ -150,3 +150,81 @@ Use the [gcloud pubsub subscriptions create](https://cloud.google.com/sdk/gclou
 ```
 gcloud pubsub subscriptions create my-sub --topic my-topic
 ```
+# BigQuery
+
+## Create BigQuery Dataset and Table 
+
+i)Creating a dataset
+
+# from google.cloud import bigquery
+# client = bigquery.Client()
+# dataset_id = 'my_dataset'
+
+# Create a DatasetReference using a chosen dataset ID.
+# The project defaults to the Client's project if not specified.
+dataset_ref = client.dataset(dataset_id)
+
+# Construct a full Dataset object to send to the API.
+dataset = bigquery.Dataset(dataset_ref)
+# Specify the geographic location where the dataset should reside.
+dataset.location = 'US'
+
+# Send the dataset to the API for creation.
+# Raises google.api_core.exceptions.AlreadyExists if the Dataset already
+# exists within the project.
+dataset = client.create_dataset(dataset)  # API request
+
+ii) Creating Schema for flowers ML Engine BigQuery 
+SCHEMA = [
+    bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('PREDICTION', 'INTEGER', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE1','FLOAT', mode='REQUIRED'),
+    bigquery.SchemaField('SCORE2','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE3','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE4','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
+    bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED'),
+    ]
+
+iii) Creating a table based on the sample schema
+
+schema = [
+    bigquery.SchemaField('full_name', 'STRING', mode='REQUIRED'),
+    bigquery.SchemaField('age', 'INTEGER', mode='REQUIRED'),
+]
+table_ref = dataset_ref.table('my_table')
+table = bigquery.Table(table_ref, schema=schema)
+table = client.create_table(table)  # API request
+
+assert table.table_id == 'my_table'
+
+## Insert rows in BigQuery Table
+You can load data:
+
+From Cloud Storage
+From other Google services, such as Google Ad Manager and Google Ads
+From a readable data source (such as your local machine)
+By inserting individual records using streaming inserts
+Using DML statements to perform bulk inserts
+Using a Google BigQuery IO transform in a Cloud Dataflow pipeline to write data to BigQuery
+
+### Streaming Data into BigQuery
+Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job. 
+# TODO(developer): Uncomment the lines below and replace with your values.
+# from google.cloud import bigquery
+# client = bigquery.Client()
+# dataset_id = 'my_dataset'  # replace with your dataset ID
+# For this sample, the table must already exist and have a defined schema
+# table_id = 'my_table'  # replace with your table ID
+# table_ref = client.dataset(dataset_id).table(table_id)
+# table = client.get_table(table_ref)  # API request
+
+rows_to_insert = [
+    (u'Phred Phlyntstone', 32),
+    (u'Wylma Phlyntstone', 29),
+]
+errors = client.insert_rows(table, rows_to_insert)  # API request
+
+assert errors == []
+
+The added table and data can be views at BigQuery WebUI or using BigQuery commands at terminal.
