@@ -23,7 +23,7 @@ def flowers_table_insert_rows(client, datarow):
 
     """Insert / fetch table data."""
     dataset_id = 'flowers_dataset_final'
-    table_id = 'flowers_table3_final'
+    table_id = 'flowers_table_final'
     dataset = bigquery.Dataset(client.dataset(dataset_id))
     try:
         dataset = client.create_dataset(dataset)
