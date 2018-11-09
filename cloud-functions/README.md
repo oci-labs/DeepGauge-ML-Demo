@@ -213,13 +213,15 @@ errors = client.insert_rows(table, rows_to_insert)  # API request
 assert errors == []
 ```
 The added table and data can be views at BigQuery WebUI or using BigQuery commands at terminal.
-i) WebUI to view the BigQuery datasets and tables for the project
+1. WebUI to view the BigQuery datasets and tables for the project
+```
 https://console.cloud.google.com/bigquery?project=ocideepgauge&authuser=1&p=ocideepgauge&d=flowers_dataset&t=flowers_table&page=table
 
 SELECT SCORE1
 FROM `ocideepgauge.flowers_dataset.flowers_table`
 LIMIT 1000
-
-ii) Command line 
+```
+2. Command line 
+```
 bq ls --format=pretty ocideepgauge:flowers_dataset
-
+```
