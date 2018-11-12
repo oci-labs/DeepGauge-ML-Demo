@@ -52,12 +52,14 @@ class Dataset():
         guage_files = imgs_paths_labels.filenames.values
         gauge_categories = y_true
 
-        return guage_files, gauge_categories
+        map = [category_mapper_ext[i] for i in range(len(category_mapper_ext))]
+
+        return guage_files, gauge_categories, map
 
     @classmethod
     def split_data_files(cls, ver_ratio, path, random_state, is_trial):
         ##
-        guage_files, gauge_categories = cls.load_dataset(path=path)
+        guage_files, gauge_categories, map = cls.load_dataset(path=path)
 
         if is_trial:
             guage_files = guage_files[:20]
@@ -69,7 +71,7 @@ class Dataset():
                              test_size=ver_ratio,
                              random_state=random_state)
 
-        return X_train_path_names, X_test_path_names, y_train, y_test
+        return X_train_path_names, X_test_path_names, y_train, y_test, map
 
     @staticmethod
     def parse_function(filename, label):

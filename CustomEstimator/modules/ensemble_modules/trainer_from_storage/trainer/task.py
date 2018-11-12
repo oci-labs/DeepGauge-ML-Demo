@@ -101,7 +101,7 @@ def main(argv):
     tf.logging.set_verbosity(args.verbosity)
 
     ##
-    X_train_path_names, X_test_path_names, y_train, y_test = \
+    X_train_path_names, X_test_path_names, y_train, y_test, map = \
         Dataset.split_data_files(ver_ratio=0.2,
                                  path=path_to_images,
                                  random_state=19,
@@ -124,13 +124,12 @@ def main(argv):
             'hidden_units': hidden_units,
             'learning_rate': learning_rate,
             'ensemble_architecture_path': ensemble_architecture_path,
-            'retrain_primary_models': retrain_primary_models
+            'retrain_primary_models': retrain_primary_models,
+            'category_map': map
         },
         model_dir=job_dir)
 
     # Train and evaluate model.
-    image = tf.placeholder(tf.float32, shape=images_shape, name='export_input_image')
-    input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'X': image})
 
     ##
     classifier.train(input_fn=lambda: Dataset.prep_input_function(
@@ -153,7 +152,10 @@ def main(argv):
         y_train=y_train,
         y_test=y_test))
 
-    classifier.export_savedmodel(export_dir, input_fn, strip_default_attrs=True)
+    image = tf.placeholder(tf.float32, shape=images_shape, name='export_input_image')
+    input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'X': image})
+    classifier.export_savedmodel(export_dir_base=export_dir,
+                                 serving_input_receiver_fn=input_fn)
     print('')
     print('')
     print('validation accuracy after {} epochs is: {}'.format(train_epochs, eval_result['accuracy']))
