@@ -2,6 +2,7 @@ import tensorflow as tf
 import os
 from tensorflow.python.framework import meta_graph
 
+
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
                                  primary_models_directory=None,
@@ -97,12 +98,14 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
+            #########################################
             with tf.Session(graph=tf.Graph()) as sess:
                 tf.graph_util.convert_variables_to_constants(
                     sess,
                     tf.get_default_graph().as_graph_def(),
                     [v for v in tf.trainable_variables()]
                 )
+            ################################################
 
             return raw_imgs_in_main_graph, logits_concat
 
@@ -203,8 +206,8 @@ def create_ensemble_architecture(hidden_units=None,
     tf.reset_default_graph()
     return
 
-def model_fn(features, labels, mode, params):
 
+def model_fn(features, labels, mode, params):
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
         meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
@@ -227,6 +230,7 @@ def model_fn(features, labels, mode, params):
             'class_ids': predicted_classes[:, tf.newaxis],
             'probabilities': tf.nn.softmax(logits),
             'logits': logits,
+            'category_map': tf.constant(params["category_map"]),
         }
         return tf.estimator.EstimatorSpec(mode, predictions=predictions)
 
