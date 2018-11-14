@@ -77,9 +77,10 @@ class Dataset():
     def parse_function(filename, label):
         filename = filename['file']
         image_string = tf.read_file(filename)
-        image = tf.image.decode_jpeg(image_string, channels=3)
-        image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-        image = tf.image.convert_image_dtype(image, tf.float32)
+        # image = tf.image.decode_jpeg(image_string, channels=3)
+        # image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+        # image = tf.image.convert_image_dtype(image, tf.float32)
+        image = tf.encode_base64(input=image_string)
         return {'X': image}, label
 
     @classmethod
@@ -108,7 +109,7 @@ class Dataset():
                     num_parallel_batches=num_threads))
 
             dataset_train = dataset_train. \
-                cache().shuffle(len(X_train_path_names)+100).repeat(train_epochs)
+                cache().shuffle(len(X_train_path_names) + 100).repeat(train_epochs)
             #
             dataset_final = dataset_train.prefetch(buffer_size=prefetch_buffer_size)
 

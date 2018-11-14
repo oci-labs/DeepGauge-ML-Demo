@@ -3,6 +3,7 @@ import os
 from tensorflow.python.framework import meta_graph
 
 
+
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
                                  primary_models_directory=None,
@@ -208,6 +209,21 @@ def create_ensemble_architecture(hidden_units=None,
 
 
 def model_fn(features, labels, mode, params):
+    def decode_and_resize(img_base64):
+        image_str_tensor = tf.decode_base64(input=img_base64)
+        image = tf.image.decode_jpeg(image_str_tensor, channels=3)
+        image = tf.expand_dims(image, 0)
+        image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
+        image = tf.squeeze(image, squeeze_dims=[0])
+        image = tf.cast(image, dtype=tf.uint8)
+        return image
+
+    graph_img_convert = tf.Graph()
+    with graph_img_convert.as_default():
+        images_str = tf.placeholder(dtype=tf.string, name='img_string')
+        images = tf.map_fn(decode_and_resize, images_str, dtype=tf.uint8)
+        tf.image.convert_image_dtype(images, dtype=tf.float32, name='img_converted')
+
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
         meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
@@ -216,9 +232,13 @@ def model_fn(features, labels, mode, params):
 
     graph = tf.get_default_graph()
 
-    meta_graph_0 = tf.train.export_meta_graph(graph=graph_ensemble)
-    meta_graph.import_scoped_meta_graph(meta_graph_0,
-                                        input_map={"raw_imgs": features['X']},
+    meta_graph_0 = tf.train.export_meta_graph(graph=graph_img_convert)
+    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['X']})
+    converted_img = graph.get_tensor_by_name('img_converted:0')
+
+    meta_graph_1 = tf.train.export_meta_graph(graph=graph_ensemble)
+    meta_graph.import_scoped_meta_graph(meta_graph_1,
+                                        input_map={"raw_imgs": converted_img},
                                         import_scope='main_graph')
 
     logits = graph.get_tensor_by_name('main_graph/logits_tf:0')
