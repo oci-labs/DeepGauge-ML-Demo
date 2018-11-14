@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_train_259
+JOB_NAME=custom_estimator_train_base64__trial_6
 BUCKET="gs://custom_estimator"
 ##
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
@@ -30,7 +30,7 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --export_dir="${EXPORT_PATH}" \
     --dev=True \
     --train_epochs=2 \
-    --batch_size=150 \
+    --batch_size=200 \
     --retrain_primary_models=False \
     --learning_rate=3e-4 \
     --job_dir="$JOB_DIR"
