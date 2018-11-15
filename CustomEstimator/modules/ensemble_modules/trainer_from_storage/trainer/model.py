@@ -1,7 +1,8 @@
 import tensorflow as tf
-import glob
 import os
 from tensorflow.python.framework import meta_graph
+
+
 
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
@@ -15,7 +16,7 @@ def create_ensemble_architecture(hidden_units=None,
                              raw_imgs_placeholder=None):
             graph_model = tf.Graph()
             with graph_model.as_default():
-                ##################################
+                ##
                 with tf.Session(graph=graph_model) as sess:
                     saver = tf.train.import_meta_graph(pipeline_params["checkpoint_file_path"],
                                                        clear_devices=True,
@@ -26,11 +27,11 @@ def create_ensemble_architecture(hidden_units=None,
                 X_image_tf = graph_model.get_tensor_by_name("CNN_model/X_image_tf:0")
                 logits_tf = graph_model.get_tensor_by_name("CNN_model/logits_tf:0")
                 # logits_tf_sg = tf.stop_gradient(logits_tf)
-                ####################################
+                ##
 
             graph_pipeline = tf.Graph()
             with graph_pipeline.as_default():
-                ##################################
+                ##
                 X_raw = tf.placeholder(tf.float32, shape=[None, None, None, None], name="X_raw")
                 meta_graph.import_scoped_meta_graph(pipeline_params["checkpoint_file_path"],
                                                     clear_devices=True,
@@ -41,7 +42,7 @@ def create_ensemble_architecture(hidden_units=None,
                 resized_imgs = tf.identity(tf.image.resize_images(X_raw, (X_image_tf.get_shape().as_list()[1],
                                                                           X_image_tf.get_shape().as_list()[2])),
                                            name='resized_imgs')
-                ####################################
+                ##
 
             graph = tf.get_default_graph()
 
@@ -68,9 +69,9 @@ def create_ensemble_architecture(hidden_units=None,
             graph_parent = tf.Graph()
             with graph_parent.as_default():
                 raw_imgs = tf.placeholder(tf.float32, shape=[None, None, None, None], name='raw_imgs')
-                for i, model in enumerate(os.listdir(models_directory)):
-                    checkpoint_path = glob.glob(os.path.join(models_directory, model))[0]
-                    checkpoint_file_path = glob.glob(os.path.join(checkpoint_path, '*.meta'))[0]
+                for i, model in enumerate(tf.gfile.ListDirectory(models_directory)):
+                    checkpoint_path = os.path.join(models_directory, model)
+                    checkpoint_file_path = tf.gfile.Glob(os.path.join(checkpoint_path, '*.meta'))[0]
                     params = {"checkpoint_path": checkpoint_path,
                               "checkpoint_file_path": checkpoint_file_path}
 
@@ -97,6 +98,15 @@ def create_ensemble_architecture(hidden_units=None,
 
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
+
+            #########################################
+            with tf.Session(graph=tf.Graph()) as sess:
+                tf.graph_util.convert_variables_to_constants(
+                    sess,
+                    tf.get_default_graph().as_graph_def(),
+                    [v for v in tf.trainable_variables()]
+                )
+            ################################################
 
             return raw_imgs_in_main_graph, logits_concat
 
@@ -140,7 +150,7 @@ def create_ensemble_architecture(hidden_units=None,
             raw_imgs, concatenated_features = cls._combine_all_channel(
                 models_directory=primary_models_directory, images_shape=images_shape)
             ##
-            params_fc = {'hidden_units': hidden_units.copy(),
+            params_fc = {'hidden_units': hidden_units,
                          'n_output': n_output}
             ##
             graph_fc = tf.Graph()
@@ -148,7 +158,7 @@ def create_ensemble_architecture(hidden_units=None,
                 X_tf = tf.placeholder(tf.float32, shape=[None, concatenated_features.get_shape().as_list()[1]],
                                       name='X_tf')
 
-                #########################
+                ##
                 layer = None
                 for n_layer, n_nodes in enumerate(params_fc['hidden_units']):
                     if n_layer == 0:
@@ -197,19 +207,38 @@ def create_ensemble_architecture(hidden_units=None,
     tf.reset_default_graph()
     return
 
+
 def model_fn(features, labels, mode, params):
+    def decode_and_resize(img_base64):
+        image_str_tensor = tf.decode_base64(input=img_base64)
+        image = tf.image.decode_jpeg(image_str_tensor, channels=3)
+        image = tf.expand_dims(image, 0)
+        image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
+        image = tf.squeeze(image, squeeze_dims=[0])
+        image = tf.cast(image, dtype=tf.uint8)
+        return image
+
+    graph_img_convert = tf.Graph()
+    with graph_img_convert.as_default():
+        images_str = tf.placeholder(dtype=tf.string, name='img_string')
+        images = tf.map_fn(decode_and_resize, images_str, dtype=tf.uint8)
+        tf.image.convert_image_dtype(images, dtype=tf.float32, name='img_converted')
 
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
-        meta_graph_path = glob.glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
+        meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
         loader = tf.train.import_meta_graph(meta_graph_path, clear_devices=True)
         loader.restore(sess, tf.train.latest_checkpoint(params["ensemble_architecture_path"]))
 
     graph = tf.get_default_graph()
 
-    meta_graph_0 = tf.train.export_meta_graph(graph=graph_ensemble)
-    meta_graph.import_scoped_meta_graph(meta_graph_0,
-                                        input_map={"raw_imgs": features['X']},
+    meta_graph_0 = tf.train.export_meta_graph(graph=graph_img_convert)
+    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['X']})
+    converted_img = graph.get_tensor_by_name('img_converted:0')
+
+    meta_graph_1 = tf.train.export_meta_graph(graph=graph_ensemble)
+    meta_graph.import_scoped_meta_graph(meta_graph_1,
+                                        input_map={"raw_imgs": converted_img},
                                         import_scope='main_graph')
 
     logits = graph.get_tensor_by_name('main_graph/logits_tf:0')
@@ -221,6 +250,7 @@ def model_fn(features, labels, mode, params):
             'class_ids': predicted_classes[:, tf.newaxis],
             'probabilities': tf.nn.softmax(logits),
             'logits': logits,
+            'category_map': tf.constant(params["category_map"]),
         }
         return tf.estimator.EstimatorSpec(mode, predictions=predictions)
 

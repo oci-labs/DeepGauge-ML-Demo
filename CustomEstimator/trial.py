@@ -287,3 +287,66 @@ plt.imshow(im)
 
 img = Image.fromarray(im, 'RGB')
 img.show()
+
+
+###################
+import tensorflow as tf
+
+with tf.Session() as sess:
+    a = tf.gfile.ListDirectory("CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/primary_models")
+
+
+##########################
+
+import tensorflow as tf
+
+directory = "CustomEstimator"
+file_names = tf.train.match_filenames_once(directory+'/*')
+
+# file_names = tf.gfile.ListDirectory("CustomEstimator")
+
+
+init = (tf.global_variables_initializer(), tf.local_variables_initializer())
+
+with tf.Session() as sess:
+    sess.run((tf.global_variables_initializer(), tf.local_variables_initializer()))
+    f = sess.run(file_names)
+
+image_paths_b=[str(path) for path in f]
+image_paths=[path.split("'")[1] for path in image_paths_b]
+
+targets_b = [str(path).split('/')[0] for path in f]
+targets = [path.split("'")[2] for path in targets_b]
+
+print(f)
+
+
+
+
+
+
+
+
+
+###########################################
+import tensorflow as tf
+import numpy as np
+
+
+filename = '/home/khodayarim/PycharmProjects/data/ImageEveryUnit/psi_1/gauge_scale_5.jpg'
+def parse_image(filename):
+    image_string = tf.read_file(filename)
+    image = tf.image.decode_jpeg(image_string, channels=3)
+    image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+    image = tf.image.convert_image_dtype(image, tf.float32)
+    return image
+
+with tf.Session() as sess:
+    image = parse_image(filename=filename)
+    image = sess.run(image)
+
+
+export_dir='/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542057622'
+predict_fn = tf.contrib.predictor.from_saved_model(export_dir)
+
+a = predict_fn({'X':np.expand_dims(image, axis=0)})
