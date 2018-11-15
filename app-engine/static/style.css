@@ -79,25 +79,33 @@ i, span {
   display: block;
 }
 
+#logo {
+  filter: brightness(0) invert(1);
+  width: 32px;
+}
+
 #sidebar ul li a {
-  text-align: left;
+  text-align: right;
 }
 
 #sidebar.active ul li a {
   padding: 20px 10px;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 1.5em;
 }
 
 #sidebar.active ul li a i {
-  margin-right: 0;
-  display: block;
-  font-size: 1.8em;
-  margin-bottom: 5px;
+  font-size: 1.5em;
+  float: none;
+  margin-left: 0px;
 }
 
 #sidebar.active ul ul a {
   padding: 10px !important;
+}
+
+#sidebar.active ul li a span {
+  display: none;
 }
 
 #sidebar.active .dropdown-toggle::after {
@@ -112,6 +120,7 @@ i, span {
 #sidebar .sidebar-header {
   padding: 20px;
   background: #72c8d5;
+  height: 80px;
 }
 
 #sidebar .sidebar-header strong {
@@ -121,13 +130,15 @@ i, span {
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  border-top: 1px solid #47748b;
+  clear: both;
 }
 
 #sidebar ul li a {
-  padding: 10px;
-  font-size: 1.1em;
+  padding: 1em;
+  font-size: 1.5em;
   display: block;
+  line-height: 1em;
 }
 
 #sidebar ul li a:hover {
@@ -136,7 +147,8 @@ i, span {
 }
 
 #sidebar ul li a i {
-  margin-right: 10px;
+  margin-left: 10px;
+  float: right;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
