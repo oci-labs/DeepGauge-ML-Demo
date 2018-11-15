@@ -231,7 +231,7 @@ def model_fn(features, labels, mode, params):
     graph = tf.get_default_graph()
 
     meta_graph_0 = tf.train.export_meta_graph(graph=graph_img_convert)
-    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['X']})
+    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['img_bytes']})
     converted_img = graph.get_tensor_by_name('img_converted:0')
 
     meta_graph_1 = tf.train.export_meta_graph(graph=graph_ensemble)

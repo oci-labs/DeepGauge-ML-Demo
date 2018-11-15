@@ -152,8 +152,8 @@ def main(argv):
         y_train=y_train,
         y_test=y_test))
 
-    image = tf.placeholder(tf.string, shape=[None, 1], name='export_input_image')
-    input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'X': image})
+    image = tf.placeholder(tf.string, shape=[None], name='export_input_image_bytes')
+    input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({'img_bytes': image})
     classifier.export_savedmodel(export_dir_base=export_dir,
                                  serving_input_receiver_fn=input_fn)
     print('')
