@@ -22,6 +22,10 @@ MESSAGES = []
 def root():
     return render_template('dashboard.html', messages=MESSAGES)
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
 @app.route('/camera/add')
 def add_camera():
     return render_template('add_camera.html')
