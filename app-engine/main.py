@@ -50,7 +50,7 @@ def add_camera_upload():
 def show_camera(camera_id):
     cam = {
         "id": camera_id,
-        "img": "http://placehold.it/500x500",
+        "img": "http://placehold.it/500x200",
         "acc": 12,
         "type": "Analog Gauge",
         "loc": "St. Louis",
