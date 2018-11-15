@@ -63,7 +63,7 @@ def show_camera(camera_id):
 def show_camera_settings(camera_id):
     cam = {
         "id": camera_id,
-        "img": "http://placehold.it/500x500",
+        "img": "http://placehold.it/570x200",
         "type": "Analog Gauge",
         "rate": "30",
         "refresh": "60",
