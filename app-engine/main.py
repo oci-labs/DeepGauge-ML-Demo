@@ -26,6 +26,10 @@ def root():
 def settings():
     return render_template('settings.html')
 
+@app.route('/user_settings')
+def user_settings():
+    return render_template('user_settings.html')
+
 @app.route('/camera/add')
 def add_camera():
     return render_template('add_camera.html')
