@@ -11,7 +11,40 @@
   </nav>
   <article class="container-fluid">
     <section class="row">
-    
+      <div class="col-12">
+        <h2>User Settings</h2>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-6">
+        <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" />
+          </div>
+          <div class="form-group">
+            <label for="display_name">Display Name</label>
+            <input type="text" class="form-control" id="display_name" />
+          </div>
+          <div class="form-group">
+            <label for="display_name">Company</label>
+            <input type="text" class="form-control" id="company" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-default ml-4">Sign Out</button>
+        </form>
+      </div>
+      <div class="col-4">
+        <form>
+          <div class="form-group">
+            <label for="username">Thumbnail</label>
+          </div>
+          <div class="form-group">
+            <img src="http://placehold.it/300x300/" alt="Thumbnail">
+          </div>
+          <button type="submit" class="btn btn-default ml-4">Edit</button>
+        </form>
+      </div>
     </section>
   </article>
 </div>
