@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="" />
+    <list default="true" id="4c3dc9b1-2449-46b6-a12a-21d5d6cdcadf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/predict_base64_locally.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomEstimator/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/CustomEstimator/trial.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,14 +50,16 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="checkpoint" value="1" />
+          <entry key="data-00000-of-00001" value="1" />
           <entry key="ensemble_tf" value="1" />
           <entry key="funcs_backup" value="1" />
+          <entry key="index" value="1" />
           <entry key="ipynb" value="1" />
           <entry key="jpeg" value="1" />
           <entry key="json" value="4" />
           <entry key="png" value="1" />
-          <entry key="py" value="119" />
-          <entry key="sh" value="23" />
+          <entry key="py" value="120" />
+          <entry key="sh" value="24" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -60,24 +68,24 @@
           <entry key="IPNB" value="1" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="4" />
-          <entry key="PLAIN_TEXT" value="26" />
-          <entry key="Python" value="120" />
+          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="Python" value="121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="1862" />
+          <entry key="Python Console" value="1872" />
           <entry key="dummy" value="41" />
           <entry key="ensemble_tf" value="3337" />
-          <entry key="py" value="11435" />
-          <entry key="sh" value="1032" />
+          <entry key="py" value="11785" />
+          <entry key="sh" value="1045" />
           <entry key="txt" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1097" />
-          <entry key="Python" value="16634" />
+          <entry key="PLAIN_TEXT" value="1110" />
+          <entry key="Python" value="16994" />
         </counts>
       </usages-collector>
     </session>
@@ -87,8 +95,42 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-575">
-              <caret line="233" column="53" selection-start-line="233" selection-start-column="53" selection-end-line="233" selection-end-column="53" />
+            <state relative-caret-position="396">
+              <caret line="260" column="9" selection-start-line="260" selection-start-column="9" selection-end-line="260" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#383#9077#0" />
+                <element signature="e#569#3175#0" />
+                <element signature="e#653#1376#0" />
+                <element signature="e#736#1125#0" />
+                <element signature="e#1313#1357#0" />
+                <element signature="e#1480#2228#0" />
+                <element signature="e#1996#2142#0" />
+                <element signature="e#3287#5335#0" />
+                <element signature="e#3373#4351#0" />
+                <element signature="e#3565#4266#0" />
+                <element signature="e#3751#3863#0" />
+                <element signature="e#5071#5277#0" />
+                <element signature="e#5730#9077#0" />
+                <element signature="e#5771#5924#0" />
+                <element signature="e#5979#6123#0" />
+                <element signature="e#6395#6868#0" />
+                <element signature="e#6447#6838#0" />
+                <element signature="e#7082#7159#0" />
+                <element signature="e#7265#8625#0" />
+                <element signature="e#7559#8181#0" />
+                <element signature="e#7600#7864#0" />
+                <element signature="e#7915#8181#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/predict_base64_locally.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="1" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -96,11 +138,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+            <state relative-caret-position="232">
+              <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -111,8 +162,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomEstimator/trial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6270">
-              <caret line="289" selection-start-line="289" selection-end-line="289" />
+            <state relative-caret-position="362">
+              <caret line="332" selection-start-line="326" selection-end-line="334" selection-end-column="46" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -216,11 +267,12 @@
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer_original/task.py" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/setup.py" />
-        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/input.py" />
         <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py" />
-        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" />
         <option value="$PROJECT_DIR$/CustomEstimator/trial.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh" />
+        <option value="$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/predict_base64_locally.py" />
       </list>
     </option>
   </component>
@@ -278,6 +330,24 @@
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
               <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DeepGauge-ML-Demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DeepGauge-ML-Demo" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEstimator" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="ensemble_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer_from_storage" type="462c0819:PsiDirectoryNode" />
+              <item name="trainer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -344,8 +414,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294423" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3308026" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28850326" />
+      <window_info anchor="bottom" id="Python Console" order="9" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -478,9 +548,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/trainer_from_bucket/task.py" />
-    <entry file="file://$PROJECT_DIR$/trial.py" />
-    <entry file="file://$PROJECT_DIR$/customEstimator.py" />
     <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer/CustomEnsembleEstimator.py" />
     <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/input.py" />
     <entry file="file://$PROJECT_DIR$/modules/ensemble_modules/trainer_from_storage/logs/models/main/checkpoint" />
@@ -653,10 +720,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+        <state relative-caret-position="232">
+          <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542051638/variables/variables.data-00000-of-00001">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542051638/variables/variables.index">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/trial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="332" selection-start-line="326" selection-end-line="334" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -664,24 +747,46 @@
     <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_gcp.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomEstimator/trial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6270">
-          <caret line="289" selection-start-line="289" selection-end-line="289" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575">
-          <caret line="233" column="53" selection-start-line="233" selection-start-column="53" selection-end-line="233" selection-end-column="53" />
+        <state relative-caret-position="396">
+          <caret line="260" column="9" selection-start-line="260" selection-start-column="9" selection-end-line="260" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#383#9077#0" />
+            <element signature="e#569#3175#0" />
+            <element signature="e#653#1376#0" />
+            <element signature="e#736#1125#0" />
+            <element signature="e#1313#1357#0" />
+            <element signature="e#1480#2228#0" />
+            <element signature="e#1996#2142#0" />
+            <element signature="e#3287#5335#0" />
+            <element signature="e#3373#4351#0" />
+            <element signature="e#3565#4266#0" />
+            <element signature="e#3751#3863#0" />
+            <element signature="e#5071#5277#0" />
+            <element signature="e#5730#9077#0" />
+            <element signature="e#5771#5924#0" />
+            <element signature="e#5979#6123#0" />
+            <element signature="e#6395#6868#0" />
+            <element signature="e#6447#6838#0" />
+            <element signature="e#7082#7159#0" />
+            <element signature="e#7265#8625#0" />
+            <element signature="e#7559#8181#0" />
+            <element signature="e#7600#7864#0" />
+            <element signature="e#7915#8181#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomEstimator/modules/ensemble_modules/trainer_from_storage/predict_base64_locally.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="1" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

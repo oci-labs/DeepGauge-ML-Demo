@@ -243,12 +243,21 @@ def model_fn(features, labels, mode, params):
 
     predicted_classes = tf.argmax(logits, 1)
 
+    category_map = tf.constant(params["category_map"])
+
+    ##
+    class_label = tf.gather_nd(category_map, predicted_classes)
+    class_label = tf.convert_to_tensor([class_label])
+
+    ##
+
     if mode == tf.estimator.ModeKeys.PREDICT:
         predictions = {
             'class_ids': predicted_classes[:, tf.newaxis],
             'probabilities': tf.nn.softmax(logits),
             'logits': logits,
-            'category_map': tf.constant(params["category_map"]),
+            'class_label': class_label[:, tf.newaxis],
+            # 'category_map': tf.constant(tf.string(params["category_map"]))[:, tf.newaxis],
         }
         return tf.estimator.EstimatorSpec(mode, predictions=predictions)
 
