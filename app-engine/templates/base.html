@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+    <title>OCI | Deep Gauge</title>
+
+    <link rel="icon" href="https://objectcomputing.com/files/4614/7432/0892/OCI_block_colored_16x16.ico" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="float-left">
+                  <img id="logo" src="https://objectcomputing.com/files/3114/7432/0899/OCI_block_colored_57x57.png" alt="Object Computing" />
+                  OCI
+                </h3>
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info float-right">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                <!-- <li class="active"> -->
+                  <a href="{{ url_for('add_camera') }}">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Add New</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('settings') }}">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('user_settings') }}">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Username</span>
+                  </a>
+                </li>
+            </ul>
+        </nav>
+
+    <!-- Page Content  -->
+    {% block content %}{% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% block script %}{% endblock %}
+  </body>
+</html>
