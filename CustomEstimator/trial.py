@@ -324,15 +324,20 @@ print(f)
 ###############################################
 import tensorflow as tf
 
-predicted_classes = tf.constant([1])
+# predicted_classes = tf.constant([1])
 
-category_map = tf.constant(['cat_1', 'cat_2', 'cat_3'])
+l = ['cat_1', 'cat_2', 'cat_3']
 
-class_label = tf.gather_nd(category_map, predicted_classes)
-class_label = tf.convert_to_tensor([class_label]) #[:, tf.newaxis]
+ll = str(l)
+
+category_map = tf.convert_to_tensor(l)
+# category_map = tf.convert_to_tensor(params["category_map"])
+
+# class_label = tf.gather_nd(category_map, predicted_classes)
+# class_label = tf.convert_to_tensor([class_label]) #[:, tf.newaxis]
 
 with tf.Session() as sess:
-    cat = sess.run(class_label[:, tf.newaxis])
+    cat = sess.run(category_map[tf.newaxis])
 
 
 
