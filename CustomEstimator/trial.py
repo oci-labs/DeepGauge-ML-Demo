@@ -336,9 +336,10 @@ import numpy as np
 filename = '/home/khodayarim/PycharmProjects/data/ImageEveryUnit/psi_1/gauge_scale_5.jpg'
 def parse_image(filename):
     image_string = tf.read_file(filename)
-    image = tf.image.decode_jpeg(image_string, channels=3)
-    image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-    image = tf.image.convert_image_dtype(image, tf.float32)
+    # image = tf.image.decode_jpeg(image_string, channels=3)
+    # image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+    # image = tf.image.convert_image_dtype(image, tf.float32)
+    image = tf.encode_base64(input=image_string)
     return image
 
 with tf.Session() as sess:
@@ -346,7 +347,7 @@ with tf.Session() as sess:
     image = sess.run(image)
 
 
-export_dir='/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542057622'
+export_dir='/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542320507'
 predict_fn = tf.contrib.predictor.from_saved_model(export_dir)
 
-a = predict_fn({'X':np.expand_dims(image, axis=0)})
+a = predict_fn({'img_bytes':[image]})
