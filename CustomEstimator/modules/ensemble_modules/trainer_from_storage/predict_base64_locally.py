@@ -11,7 +11,7 @@ with tf.Session() as sess:
     image = parse_image(filename=filename)
     image = sess.run(image)
 
-export_dir='/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542395881/'
+export_dir='/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/1542398378/'
 predict_fn = tf.contrib.predictor.from_saved_model(export_dir)
 
 a = predict_fn({'img_bytes':[image]})
