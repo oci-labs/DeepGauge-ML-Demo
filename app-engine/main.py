@@ -1,8 +1,7 @@
 # [START gae_python37_render_template]
-import datetime
 from flask import Flask, Response, request, json, render_template, current_app
-from google.cloud import pubsub_v1
-
+from google.cloud import pubsub_v1, storage
+from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 
 app = Flask(__name__)
@@ -14,13 +13,25 @@ app.config['PUBSUB_VERIFICATION_TOKEN'] = os.environ['PUBSUB_VERIFICATION_TOKEN'
 app.config['PUBSUB_TOPIC'] = os.environ['PUBSUB_TOPIC']
 app.config['PROJECT'] = os.environ['GOOGLE_CLOUD_PROJECT']
 
-
 # Global list to storage messages received by this instance.
 MESSAGES = []
 
 @app.route('/')
 def root():
     return render_template('dashboard.html')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        file = request.files['file']
+
+        client = storage.Client()
+        bucket = 'ocideepgauge-images'
+        with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
+            s.write(file.read())
+
+    return "HELLO WORLD"
+
 
 @app.route('/settings')
 def settings():
