@@ -1,5 +1,5 @@
 # [START gae_python37_render_template]
-from flask import Flask, Response, request, json, render_template, current_app
+from flask import Flask, Response, request, json, render_template, current_app, redirect
 from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
@@ -30,7 +30,7 @@ def upload():
         with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
             s.write(file.read())
 
-    return "HELLO WORLD"
+    return redirect("/", code=302)
 
 
 @app.route('/settings')
