@@ -44,7 +44,7 @@ def flowers_table_insert_rows(client, datarow):
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
     """Background Cloud Function to be triggered by Cloud Storage.
-       This generic function logs relevant data when a file is changed. 
+       This generic function logs relevant data when a file is changed.
        Args:
         data (dict): The Cloud Functions event payload.
         context (google.cloud.functions.Context): Metadata of triggering event.
@@ -59,13 +59,13 @@ def predict_gauge(data, context):
     blob = bucket.blob(data['name'])
     img = base64.b64encode(blob.download_as_string())
 
-    instance = {"key":"0", "image_bytes": {"b64": img.decode("utf8")}}
+    instance = {"img_bytes": img.decode("utf8")}
 
     #
     # Compose request to ML Engine
     #
     project = 'ocideepgauge'
-    model = 'flowers'
+    model = 'ensemble_base64_1'
     service = discovery.build('ml', 'v1', cache_discovery=False)
     name = 'projects/{}/models/{}'.format(project, model)
 
