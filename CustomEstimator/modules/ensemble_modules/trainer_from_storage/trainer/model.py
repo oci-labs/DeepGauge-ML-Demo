@@ -3,7 +3,6 @@ import os
 from tensorflow.python.framework import meta_graph
 
 
-
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
                                  primary_models_directory=None,
@@ -99,14 +98,12 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
-            #########################################
             with tf.Session(graph=tf.Graph()) as sess:
                 tf.graph_util.convert_variables_to_constants(
                     sess,
                     tf.get_default_graph().as_graph_def(),
                     [v for v in tf.trainable_variables()]
                 )
-            ################################################
 
             return raw_imgs_in_main_graph, logits_concat
 
@@ -208,19 +205,20 @@ def create_ensemble_architecture(hidden_units=None,
     return
 
 
-def model_fn(features, labels, mode, params):
-    def decode_and_resize(img_base64):
-        image_str_tensor = tf.decode_base64(input=img_base64)
-        image = tf.image.decode_jpeg(image_str_tensor, channels=3)
-        image = tf.expand_dims(image, 0)
-        image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
-        image = tf.squeeze(image, squeeze_dims=[0])
-        image = tf.cast(image, dtype=tf.uint8)
-        return image
+def decode_and_resize(img_base64):
+    image_str_tensor = tf.decode_base64(input=img_base64)
+    image = tf.image.decode_jpeg(image_str_tensor, channels=3)
+    image = tf.expand_dims(image, 0)
+    image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
+    image = tf.squeeze(image, squeeze_dims=[0])
+    image = tf.cast(image, dtype=tf.uint8)
+    return image
 
+
+def model_fn(features, labels, mode, params):
     graph_img_convert = tf.Graph()
     with graph_img_convert.as_default():
-        images_str = tf.placeholder(dtype=tf.string, name='img_string')
+        images_str = tf.placeholder(dtype=tf.string, shape=(None), name='img_string')
         images = tf.map_fn(decode_and_resize, images_str, dtype=tf.uint8)
         tf.image.convert_image_dtype(images, dtype=tf.float32, name='img_converted')
 
@@ -233,7 +231,7 @@ def model_fn(features, labels, mode, params):
     graph = tf.get_default_graph()
 
     meta_graph_0 = tf.train.export_meta_graph(graph=graph_img_convert)
-    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['X']})
+    meta_graph.import_scoped_meta_graph(meta_graph_0, input_map={'img_string': features['img_bytes']})
     converted_img = graph.get_tensor_by_name('img_converted:0')
 
     meta_graph_1 = tf.train.export_meta_graph(graph=graph_ensemble)
@@ -245,12 +243,21 @@ def model_fn(features, labels, mode, params):
 
     predicted_classes = tf.argmax(logits, 1)
 
+    # category_map = tf.constant(params["category_map"])
+    category_map = tf.convert_to_tensor(params["category_map"])
+
+    ##
+    class_label = tf.gather_nd(category_map, predicted_classes)
+    class_label = tf.convert_to_tensor([class_label], dtype=tf.string)
+
+    ##
     if mode == tf.estimator.ModeKeys.PREDICT:
         predictions = {
             'class_ids': predicted_classes[:, tf.newaxis],
             'probabilities': tf.nn.softmax(logits),
             'logits': logits,
-            'category_map': tf.constant(params["category_map"]),
+            'class_label': class_label[:, tf.newaxis],
+            # 'category_map': tf.convert_to_tensor([str(params["category_map"])])[:, tf.newaxis],
         }
         return tf.estimator.EstimatorSpec(mode, predictions=predictions)
 
