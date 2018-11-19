@@ -20,7 +20,55 @@ MESSAGES = []
 
 @app.route('/')
 def root():
-    return render_template('index.html', messages=MESSAGES)
+    return render_template('dashboard.html')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+@app.route('/user_settings')
+def user_settings():
+    return render_template('user_settings.html')
+
+@app.route('/camera/add')
+def add_camera():
+    return render_template('add_camera.html')
+
+@app.route('/camera/add/url')
+def add_camera_url():
+    return 'Add Camera URL'
+
+@app.route('/camera/add/upload')
+def add_camera_upload():
+    return 'Add Camera Upload'
+
+@app.route('/camera/<int:camera_id>')
+def show_camera(camera_id):
+    cam = {
+        "id": camera_id,
+        "img": "https://placehold.it/500x200",
+        "acc": 12,
+        "type": "Analog Gauge",
+        "loc": "St. Louis",
+        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl."
+    }
+
+    return render_template('single_camera.html', camera=cam)
+
+@app.route('/camera/settings/<int:camera_id>')
+def show_camera_settings(camera_id):
+    cam = {
+        "id": camera_id,
+        "img": "https://placehold.it/570x200",
+        "type": "Analog Gauge",
+        "rate": "30",
+        "refresh": "60",
+        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl.",
+        "thresholds": [
+            { "low": 6 }
+        ]
+    }
+    return render_template('settings_camera.html', camera=cam)
 
 # [START push]
 @app.route('/pubsub/push', methods=['POST'])
