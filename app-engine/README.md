@@ -21,7 +21,7 @@ Application specific
 export GOOGLE_CLOUD_PROJECT=ocideepgauge
 export PUBSUB_VERIFICATION_TOKEN=7fSDp7HI29
 export PUBSUB_TOPIC=flowers-prediction
-python main.py
+python3 main.py
 ```
 
 ### Simulating push notifications
