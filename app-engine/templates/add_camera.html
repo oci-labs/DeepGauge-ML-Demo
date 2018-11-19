@@ -72,18 +72,17 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form class="" method="POST" enctype="multipart/form-data">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="input-group mb-3">
               <div class="custom-file">
                 <label class="custom-file-label" for="inputGroupFile">Choose file</label>
-                <input type="file" class="form-control" id="inputGroupFile" />
-
+                <input type="file" name="file" class="form-control" id="inputGroupFile" />
               </div>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Add Device</button>
+          <input type="submit" class="btn btn-primary" value="Add Device" />
         </div>
       </form>
     </div>
