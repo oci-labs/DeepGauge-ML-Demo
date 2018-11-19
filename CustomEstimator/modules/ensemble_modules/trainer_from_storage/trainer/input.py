@@ -81,7 +81,7 @@ class Dataset():
         # image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
         # image = tf.image.convert_image_dtype(image, tf.float32)
         image = tf.encode_base64(input=image_string)
-        return {'X': image}, label
+        return {'img_bytes': image}, label
 
     @classmethod
     def prep_input_function(cls,
