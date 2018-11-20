@@ -64,6 +64,7 @@ http://localhost:8080
 pip3 install connexion
 pip3 install connexion
 pip3 install flask_marshmallow
+pip3 install connexion[swagger-ui]
 ```
 
 ```
@@ -89,6 +90,7 @@ Device
   low_threshold
 
 Settings
+  id
   type
   frame
   refresh
