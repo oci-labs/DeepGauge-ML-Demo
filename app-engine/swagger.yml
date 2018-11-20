@@ -1,0 +1,55 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: DeepGauge
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /settings:
+    post:
+      operationId: settings.create
+      tags:
+        - Settings
+      summary: Create a setting
+      description: Create a new setting
+      parameters:
+        - name: setting
+          in: body
+          description: Setting to create
+          required: True
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Default type of the camera
+              frame:
+                type: integer
+                description: Default frame rate of the camera
+              refresh:
+                type: integer
+                description: Default refresh rate of the camera
+      responses:
+        201:
+          description: Successfully created setting
+          schema:
+            properties:
+              id:
+                type: string
+                description: Id of the setting
+              type:
+                type: string
+                description: Default type of camera
+              frame:
+                type: integer
+                description: Default frame rate of the camera
+              refresh:
+                type: string
+                description: Default refresh rate of the camera
