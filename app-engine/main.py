@@ -4,23 +4,26 @@ from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 
-app = Flask(__name__)
 
-# Configure the following environment variables via app.yaml
-# This is used in the push request handler to veirfy that the request came from
-# pubsub and originated from a trusted source.
-app.config['PUBSUB_VERIFICATION_TOKEN'] = os.environ['PUBSUB_VERIFICATION_TOKEN']
-app.config['PUBSUB_TOPIC'] = os.environ['PUBSUB_TOPIC']
-app.config['PROJECT'] = os.environ['GOOGLE_CLOUD_PROJECT']
+# local modules
+import config
+
+
+# Get the application instance
+connex_app = config.connex_app
+
+# Read the swagger.yml file to configure the endpoints
+connex_app.add_api("swagger.yml")
+
 
 # Global list to storage messages received by this instance.
 MESSAGES = []
 
-@app.route('/')
+@connex_app.route('/')
 def root():
     return render_template('dashboard.html')
 
-@app.route('/upload', methods=['GET', 'POST'])
+@connex_app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         file = request.files['file']
@@ -33,27 +36,27 @@ def upload():
     return redirect("/", code=302)
 
 
-@app.route('/settings')
+@connex_app.route('/settings')
 def settings():
     return render_template('settings.html')
 
-@app.route('/user_settings')
+@connex_app.route('/user_settings')
 def user_settings():
     return render_template('user_settings.html')
 
-@app.route('/camera/add')
+@connex_app.route('/camera/add')
 def add_camera():
     return render_template('add_camera.html')
 
-@app.route('/camera/add/url')
+@connex_app.route('/camera/add/url')
 def add_camera_url():
     return 'Add Camera URL'
 
-@app.route('/camera/add/upload')
+@connex_app.route('/camera/add/upload')
 def add_camera_upload():
     return 'Add Camera Upload'
 
-@app.route('/camera/<int:camera_id>')
+@connex_app.route('/camera/<int:camera_id>')
 def show_camera(camera_id):
     cam = {
         "id": camera_id,
@@ -66,7 +69,7 @@ def show_camera(camera_id):
 
     return render_template('single_camera.html', camera=cam)
 
-@app.route('/camera/settings/<int:camera_id>')
+@connex_app.route('/camera/settings/<int:camera_id>')
 def show_camera_settings(camera_id):
     cam = {
         "id": camera_id,
@@ -82,7 +85,7 @@ def show_camera_settings(camera_id):
     return render_template('settings_camera.html', camera=cam)
 
 # [START push]
-@app.route('/pubsub/push', methods=['POST'])
+@connex_app.route('/pubsub/push', methods=['POST'])
 def pubsub_push():
     if (request.args.get('token', '') !=
             current_app.config['PUBSUB_VERIFICATION_TOKEN']):
@@ -98,15 +101,15 @@ def pubsub_push():
 # [END push]
 
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
+# @connex_app.errorhandler(500)
+# def server_error(e):
+#     logging.exception('An error occurred during a request.')
+#     return """
+#     An internal error occurred: <pre>{}</pre>
+#     See logs for full stacktrace.
+#     """.format(e), 500
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    connex_app.run(host='127.0.0.1', port=8080, debug=True)
 # [START gae_python37_render_template]
