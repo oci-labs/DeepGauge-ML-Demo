@@ -58,3 +58,55 @@ In your web browser, enter the following address:
 ```
 http://localhost:8080
 ```
+
+## Install packages for database
+```
+pip3 install connexion
+pip3 install connexion
+pip3 install flask_marshmallow
+```
+
+```
+Models
+
+User  
+  username
+  display_name
+  company
+  thumbnail
+
+Device
+  id
+  name
+  thumbnail
+  url
+  type
+  location
+  frame
+  refresh
+  notes
+  high_threshold
+  low_threshold
+
+Settings
+  type
+  frame
+  refresh
+
+DeviceReading
+  id_device
+  timestamp
+  accuracy
+  value
+```
+
+```python
+class Person(db.Model):
+    __tablename__ = "person"
+    person_id = db.Column(db.Integer, primary_key=True)
+    lname = db.Column(db.String(32))
+    fname = db.Column(db.String(32))
+    timestamp = db.Column(
+        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+```
