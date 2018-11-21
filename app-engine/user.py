@@ -119,7 +119,7 @@ def update(user_name, user):
         updates = schema.load(user, session=db.session).data
 
         # Set the id to the person we want to update
-        updates.id = update.id_user
+        updates.user_name = user_name
 
         # merge the new object into the old and commit it to the db
         db.session.merge(updates)
@@ -153,12 +153,12 @@ def delete(user_name):
         db.session.delete(user)
         db.session.commit()
         return make_response(
-            "User {id_user} deleted".format(id_user=id_user), 200
+            "User {user_name} deleted".format(user_name=user_name), 200
         )
 
     # Otherwise, nope, didn't find that person
     else:
         abort(
             404,
-            "User not found for Id: {id_user}".format(id_user=id_user),
+            "User not found for Id: {user_name}".format(user_name=user_name),
         )

@@ -276,7 +276,7 @@ paths:
         - name: user_name
           in: path
           description: id of the user to get
-          type: integer
+          type: string
           required: True
       responses:
         200:
@@ -285,7 +285,7 @@ paths:
             type: object
             properties:
               user_name:
-                type: integer
+                type: string
                 description: Id of the user
               display_name:
                 type: string
@@ -307,15 +307,15 @@ paths:
         - name: user_name
           in: path
           description: Id the user to update
-          type: integer
+          type: string
           required: True
-        - name: setting
+        - name: user
           in: body
           schema:
             type: object
             properties:
               user_name:
-                type: integer
+                type: string
                 description: Id of the user
               display_name:
                 type: string
@@ -332,7 +332,7 @@ paths:
           schema:
             properties:
               user_name:
-                type: integer
+                type: string
                 description: Id of the user
               display_name:
                 type: string
@@ -353,7 +353,7 @@ paths:
       parameters:
         - name: user_name
           in: path
-          type: integer
+          type: string
           description: name of the user to delete
           required: true
       responses:
