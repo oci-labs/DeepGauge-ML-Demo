@@ -77,7 +77,7 @@ def create(user):
 
         # Create a person instance using the schema and the passed in person
         schema = UserSchema()
-        users = schema.load(setting, session=db.session).data
+        users = schema.load(user, session=db.session).data
 
         # Add the person to the database
         db.session.add(users)
@@ -116,7 +116,7 @@ def update(user_name, user):
 
         # turn the passed in person into a db object
         schema = UserSchema()
-        updates = schema.load(setting, session=db.session).data
+        updates = schema.load(user, session=db.session).data
 
         # Set the id to the person we want to update
         updates.id = update.id_user
