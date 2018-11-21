@@ -16,9 +16,6 @@ connex_app = config.connex_app
 connex_app.add_api("swagger.yml")
 
 
-# Global list to storage messages received by this instance.
-MESSAGES = []
-
 @connex_app.route('/')
 def root():
     return render_template('dashboard.html')
@@ -29,37 +26,40 @@ def upload():
         file = request.files['file']
 
         client = storage.Client()
+        ## TODO: Make this a global variable
         bucket = 'ocideepgauge-images'
+        ##
         with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
             s.write(file.read())
 
     return redirect("/", code=302)
 
 
-@connex_app.route('/settings')
+@connex_app.route('/setting')
 def settings():
-    return render_template('settings.html')
+    ## TODO Add query to local database to get defaults
+    return render_template('setting.html')
+
+# @connex_app.route('/setting/user/<int:camera_id>')
+# def settings():
+#     ## TODO Add query to local database
+#     return render_template('user_settings.html')
+
+
+
 
 @connex_app.route('/user_settings')
 def user_settings():
     return render_template('user_settings.html')
 
-@connex_app.route('/camera/add')
+@connex_app.route('/device/new')
 def add_camera():
-    return render_template('add_camera.html')
+    return render_template('new_device.html')
 
-@connex_app.route('/camera/add/url')
-def add_camera_url():
-    return 'Add Camera URL'
-
-@connex_app.route('/camera/add/upload')
-def add_camera_upload():
-    return 'Add Camera Upload'
-
-@connex_app.route('/camera/<int:camera_id>')
-def show_camera(camera_id):
-    cam = {
-        "id": camera_id,
+@connex_app.route('/device/<int:device_id>')
+def show_camera(device_id):
+    obj = {
+        "id": device_id,
         "img": "https://placehold.it/500x200",
         "acc": 12,
         "type": "Analog Gauge",
@@ -67,12 +67,12 @@ def show_camera(camera_id):
         "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl."
     }
 
-    return render_template('single_camera.html', camera=cam)
+    return render_template('one_device.html', device=obj)
 
-@connex_app.route('/camera/settings/<int:camera_id>')
-def show_camera_settings(camera_id):
-    cam = {
-        "id": camera_id,
+@connex_app.route('/device/setting/<int:device_id>')
+def show_camera_settings(device_id):
+    obj = {
+        "id": device_id,
         "img": "https://placehold.it/570x200",
         "type": "Analog Gauge",
         "rate": "30",
@@ -82,7 +82,7 @@ def show_camera_settings(camera_id):
             { "low": 6 }
         ]
     }
-    return render_template('settings_camera.html', camera=cam)
+    return render_template('setting_device.html', device=obj)
 
 # [START push]
 @connex_app.route('/pubsub/push', methods=['POST'])

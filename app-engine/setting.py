@@ -5,7 +5,7 @@ settings data
 
 from flask import make_response, abort
 from config import db
-from models import Settings, SettingSchema
+from models import Setting, SettingSchema
 
 def create(setting):
     """

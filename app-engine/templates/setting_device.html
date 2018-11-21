@@ -12,7 +12,7 @@
   <article class="container-fluid">
     <section class="row">
       <div class="col-12">
-        <h2>Camera {{camera.id}} Settings</h2>
+        <h2>Device {{device.id}} Setting</h2>
       </div>
     </section>
     <section class="row">
@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="" rows="3">{{camera.notes}}</textarea>
+          <textarea class="form-control" id="" rows="3">{{device.notes}}</textarea>
         </div>
         <button type="button" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-default ml-4">Delete</button>
@@ -68,11 +68,11 @@
             <label for="thumbnail">Thumbnail</label>
           </div>
           <div class="form-group">
-              <img class="img-fluid" src="{{camera.img}}" alt="Card image cap">
+              <img class="img-fluid" src="{{device.img}}" alt="Card image cap">
           </div>
           <div class="form-group">
             <label for="threshold">Thresholds</label>
-            {% for item in camera.thresholds %}
+            {% for item in device.thresholds %}
             <p>
               <span>Low: {{item.low}}</span>
               <span class="float-right">
