@@ -19,7 +19,7 @@ def read_all():
     users = Setting.query.order_by(Setting.id_user).all()
 
     # Serialize the data for the response
-    settings_schema = DefaultSchema(many=True)
+    settings_schema = SettingSchema(many=True)
     data = settings_schema.dump(users).data
     return data
 
@@ -70,7 +70,6 @@ def create(setting):
 
     existing_setting = (
         Setting.query.filter(Setting.id_user == id_user)
-        .filter(Setting.type == type)
         .one_or_none()
     )
 
@@ -84,20 +83,20 @@ def create(setting):
         # Add the person to the database
         db.session.add(new_setting)
         db.session.commit()
-
-        # Serialize and return the newly created person in the response
-        data = schema.dump(new_setting).data
-
-        return data, 201
-
-    # Otherwise, nope, person exists already
-    else:
-        abort(
-            409,
-            "Setting {id_user} exists already".format(
-                id_user=id_user
-            ),
-        )
+    #
+    #     # Serialize and return the newly created person in the response
+    #     data = schema.dump(new_setting).data
+    #
+    #     return data, 201
+    #
+    # # Otherwise, nope, person exists already
+    # else:
+    #     abort(
+    #         409,
+    #         "Setting {id_user} exists already".format(
+    #             id_user=id_user
+    #         ),
+    #     )
 
 
 def update(id_user, default):

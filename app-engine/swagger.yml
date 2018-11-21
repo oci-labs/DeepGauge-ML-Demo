@@ -193,3 +193,169 @@ paths:
       responses:
         200:
           description: Successfully deleted a person
+  /user:
+    get:
+      operationId: user.read_all
+      tags:
+        - User
+      summary: Read the entire set of users, sorted by user name
+      description: Read the entire set of settings, sorted by user name
+      responses:
+        200:
+          description: Successfully read users set operation
+          schema:
+            type: array
+            items:
+              properties:
+                user_name:
+                  type: integer
+                  description: Id of the user
+                display_name:
+                  type: string
+                  description: the display name
+                company:
+                  type: string
+                  description: Users Company
+                thumbnail:
+                  type: string
+                  description: Url of the thumbnail
+                updated:
+                  type: string
+                  description: Creation/Update timestamp of the setting
+    post:
+      operationId: user.create
+      tags:
+        - User
+      summary: Create a user
+      description: Create a new user
+      parameters:
+        - name: user
+          in: body
+          description: Setting to create
+          required: True
+          schema:
+            type: object
+            properties:
+              user_name:
+                type: integer
+                description: Id of the user
+              display_name:
+                type: string
+                description: the display name
+              company:
+                type: string
+                description: Users Company
+              thumbnail:
+                type: string
+                description: Url of the thumbnail
+      responses:
+        201:
+          description: Successfully created user
+          schema:
+            properties:
+              user_name:
+                type: integer
+                description: Id of the user
+              display_name:
+                type: string
+                description: the display name
+              company:
+                type: string
+                description: Users Company
+              thumbnail:
+                type: string
+                description: Url of the thumbnail
+  /user/{user_name}:
+    get:
+      operationId: user.read_one
+      tags:
+        - User
+      summary: Read one user
+      description: Read one user
+      parameters:
+        - name: user_name
+          in: path
+          description: id of the user to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read setting from user data operation
+          schema:
+            type: object
+            properties:
+              user_name:
+                type: integer
+                description: Id of the user
+              display_name:
+                type: string
+                description: the display name
+              company:
+                type: string
+                description: Users Company
+              thumbnail:
+                type: string
+                description: Url of the thumbnail
+
+    put:
+      operationId: user.update
+      tags:
+        - User
+      summary: Update a user
+      description: Update a user
+      parameters:
+        - name: user_name
+          in: path
+          description: Id the user to update
+          type: integer
+          required: True
+        - name: setting
+          in: body
+          schema:
+            type: object
+            properties:
+              user_name:
+                type: integer
+                description: Id of the user
+              display_name:
+                type: string
+                description: the display name
+              company:
+                type: string
+                description: Users Company
+              thumbnail:
+                type: string
+                description: Url of the thumbnail
+      responses:
+        200:
+          description: Successfully updated person
+          schema:
+            properties:
+              user_name:
+                type: integer
+                description: Id of the user
+              display_name:
+                type: string
+                description: the display name
+              company:
+                type: string
+                description: Users Company
+              thumbnail:
+                type: string
+                description: Url of the thumbnail
+
+    delete:
+      operationId: user.delete
+      tags:
+        - User
+      summary: Delete a user from the users list
+      description: Delete a user
+      parameters:
+        - name: user_name
+          in: path
+          type: integer
+          description: name of the user to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a person
