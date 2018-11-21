@@ -17,7 +17,7 @@ class SettingSchema(ma.ModelSchema):
         sqla_session = db.session
 ###
 class Reading(db.Model):
-    __tablename__ = "default"
+    __tablename__ = "reading"
     id = db.Column(db.Integer, primary_key=True)
     id_device = db.Column(db.Integer,db.ForeignKey('device.id'),nullable=False)
     prediction = db.Column(db.String(64))

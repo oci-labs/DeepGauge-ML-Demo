@@ -12,7 +12,35 @@ basePath: /api
 
 # Paths supported by the server application
 paths:
-  /settings:
+  /setting:
+    get:
+      operationId: setting.read_all
+      tags:
+        - Setting
+      summary: Read the entire set of settings, sorted by user id
+      description: Read the entire set of settings, sorted by user id
+      responses:
+        200:
+          description: Successfully read settings set operation
+          schema:
+            type: array
+            items:
+              properties:
+                id_user:
+                  type: integer
+                  description: Id of the user
+                type:
+                  type: string
+                  description: type of the setting
+                frame_rate:
+                  type: string
+                  description: Setting frame rate
+                refresh_rate:
+                  type: string
+                  description: Setting refresh rate
+                updated:
+                  type: string
+                  description: Creation/Update timestamp of the setting
     post:
       operationId: setting.create
       tags:
@@ -27,29 +55,141 @@ paths:
           schema:
             type: object
             properties:
+              id_user:
+                type: integer
+                description: Id of the user
               type:
                 type: string
-                description: Default type of the camera
-              frame:
-                type: integer
-                description: Default frame rate of the camera
-              refresh:
-                type: integer
-                description: Default refresh rate of the camera
+                description: type of the setting
+              frame_rate:
+                type: string
+                description: Setting frame rate
+              refresh_rate:
+                type: string
+                description: Setting refresh rate
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
       responses:
         201:
           description: Successfully created setting
           schema:
             properties:
-              id:
-                type: string
-                description: Id of the setting
+              id_user:
+                type: integer
+                description: Id of the user
               type:
                 type: string
-                description: Default type of camera
-              frame:
-                type: integer
-                description: Default frame rate of the camera
-              refresh:
+                description: type of the setting
+              frame_rate:
                 type: string
-                description: Default refresh rate of the camera
+                description: Setting frame rate
+              refresh_rate:
+                type: string
+                description: Setting refresh rate
+              updated:
+                type: string
+                description: Creation/Update timestamp of the default
+  /setting/{id_user}:
+    get:
+      operationId: setting.read_one
+      tags:
+        - Setting
+      summary: Read one setting
+      description: Read one setting
+      parameters:
+        - name: id_user
+          in: path
+          description: id of the user to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read setting from user data operation
+          schema:
+            type: object
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              type:
+                type: string
+                description: type of the setting
+              frame_rate:
+                type: string
+                description: Setting frame rate
+              refresh_rate:
+                type: string
+                description: Setting refresh rate
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
+
+    put:
+      operationId: setting.update
+      tags:
+        - Setting
+      summary: Update a setting
+      description: Update a setting
+      parameters:
+        - name: id_user
+          in: path
+          description: Id the user to update
+          type: integer
+          required: True
+        - name: setting
+          in: body
+          schema:
+            type: object
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              type:
+                type: string
+                description: type of the setting
+              frame_rate:
+                type: string
+                description: Setting frame rate
+              refresh_rate:
+                type: string
+                description: Setting refresh rate
+              updated:
+                type: string
+                description: Creation/Update timestamp of the default
+      responses:
+        200:
+          description: Successfully updated person
+          schema:
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              type:
+                type: string
+                description: type of the setting
+              frame_rate:
+                type: string
+                description: Setting frame rate
+              refresh_rate:
+                type: string
+                description: Setting refresh rate
+              updated:
+                type: string
+                description: Creation/Update timestamp of the default
+
+    delete:
+      operationId: setting.delete
+      tags:
+        - Setting
+      summary: Delete a setting from the setting list
+      description: Delete a setting
+      parameters:
+        - name: id_user
+          in: path
+          type: integer
+          description: Id of the user to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a person
