@@ -83,12 +83,11 @@ def create(setting):
         # Add the person to the database
         db.session.add(new_setting)
         db.session.commit()
-    #
-    #     # Serialize and return the newly created person in the response
-    #     data = schema.dump(new_setting).data
-    #
-    #     return data, 201
-    #
+
+        # Serialize and return the newly created person in the response
+        data = schema.dump(new_setting).data
+        return data, 201
+
     # # Otherwise, nope, person exists already
     # else:
     #     abort(
