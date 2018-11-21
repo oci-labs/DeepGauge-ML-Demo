@@ -66,49 +66,45 @@ pip3 install connexion
 pip3 install flask_marshmallow
 pip3 install connexion[swagger-ui]
 ```
+# Models
+Define a schema that represents that data.
 
 ```
-Models
-
-User  
-  username
+User
+  id
+  user_name
   display_name
   company
   thumbnail
-
+  updated
 Device
-  id
+  id  
+  id_user
   name
-  thumbnail
-  url
+  image
+  bucket
   type
   location
-  frame
-  refresh
+  frame_rate
+  refresh_rate
   notes
   high_threshold
   low_threshold
+  updated
 
-Settings
+Default
   id
+  id_user
   type
-  frame
-  refresh
+  frame_rate
+  refresh_rate
+  updated
 
-DeviceReading
+Reading
+  id
   id_device
-  timestamp
+  prediction
   accuracy
-  value
-```
-
-```python
-class Person(db.Model):
-    __tablename__ = "person"
-    person_id = db.Column(db.Integer, primary_key=True)
-    lname = db.Column(db.String(32))
-    fname = db.Column(db.String(32))
-    timestamp = db.Column(
-        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
-    )
+  body
+  timestamp
 ```
