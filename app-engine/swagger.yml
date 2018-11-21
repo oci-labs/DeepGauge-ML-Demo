@@ -237,8 +237,8 @@ paths:
             type: object
             properties:
               user_name:
-                type: integer
-                description: Id of the user
+                type: string
+                description: username of the user
               display_name:
                 type: string
                 description: the display name
