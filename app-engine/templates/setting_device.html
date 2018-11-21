@@ -74,6 +74,14 @@
             <label for="threshold">Thresholds</label>
             {% for item in device.thresholds %}
             <p>
+              <span>High: {{item.high}}</span>
+              <span class="float-right">
+                <button type="button" class="btn btn-sm btn-link">Edit</button>
+                |
+                <button type="button" class="btn btn-sm btn-link">Delete</button>
+              </span>
+            </p>
+            <p>
               <span>Low: {{item.low}}</span>
               <span class="float-right">
                 <button type="button" class="btn btn-sm btn-link">Edit</button>
