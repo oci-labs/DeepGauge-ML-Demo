@@ -14,9 +14,9 @@ basePath: /api
 paths:
   /settings:
     post:
-      operationId: settings.create
+      operationId: setting.create
       tags:
-        - Settings
+        - Setting
       summary: Create a setting
       description: Create a new setting
       parameters:
