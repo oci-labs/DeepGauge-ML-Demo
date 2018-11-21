@@ -67,9 +67,7 @@ paths:
               refresh_rate:
                 type: string
                 description: Setting refresh rate
-              updated:
-                type: string
-                description: Creation/Update timestamp of the setting
+
       responses:
         201:
           description: Successfully created setting
