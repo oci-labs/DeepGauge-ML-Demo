@@ -4,10 +4,8 @@ from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 
-
 # local modules
 import config
-
 
 # Get the application instance
 connex_app = config.connex_app
@@ -36,28 +34,20 @@ def upload():
 
 
 @connex_app.route('/setting')
-def settings():
+def setting():
     ## TODO Add query to local database to get defaults
     return render_template('setting.html')
 
-# @connex_app.route('/setting/user/<int:camera_id>')
-# def settings():
-#     ## TODO Add query to local database
-#     return render_template('user_settings.html')
-
-
-
-
-@connex_app.route('/user_settings')
-def user_settings():
-    return render_template('user_settings.html')
+@connex_app.route('/user')
+def user():
+    return render_template('user.html')
 
 @connex_app.route('/device/new')
-def add_camera():
+def new_device():
     return render_template('new_device.html')
 
 @connex_app.route('/device/<int:device_id>')
-def show_camera(device_id):
+def one_device(device_id):
     obj = {
         "id": device_id,
         "img": "https://placehold.it/500x200",
@@ -70,7 +60,7 @@ def show_camera(device_id):
     return render_template('one_device.html', device=obj)
 
 @connex_app.route('/device/setting/<int:device_id>')
-def show_camera_settings(device_id):
+def show_device_setting(device_id):
     obj = {
         "id": device_id,
         "img": "https://placehold.it/570x200",
