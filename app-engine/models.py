@@ -1,15 +1,19 @@
 from datetime import datetime
 from config import db, ma
 
-class Settings(db.Model):
-    __tablename__ = "settings"
+class Setting(db.Model):
+    __tablename__ = "setting"
     id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
     type = db.Column(db.String(32))
-    frame = db.Column(db.Integer)
-    refresh = db.Column(db.Integer)
+    frame_rate = db.Column(db.String(32))
+    refresh_rate = db.Column(db.String(32))
+    updated = db.Column(
+        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
+    )
 class SettingSchema(ma.ModelSchema):
     class Meta:
-        model = Settings
+        model = Setting
         sqla_session = db.session
 ###
 class Reading(db.Model):
@@ -26,21 +30,7 @@ class ReadingSchema(ma.ModelSchema):
     class Meta:
         model = Reading
         sqla_session = db.session
-###
-class Default(db.Model):
-    __tablename__ = "default"
-    id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
-    type = db.Column(db.String(32))
-    frame_rate = db.Column(db.String(32))
-    refresh_rate = db.Column(db.String(32))
-    updated = db.Column(
-        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
-    )
-class DefaultSchema(ma.ModelSchema):
-    class Meta:
-        model = Default
-        sqla_session = db.session
+
 ###
 class Device(db.Model):
     __tablename__ = "device"

@@ -58,10 +58,9 @@ In your web browser, enter the following address:
 ```
 http://localhost:8080
 ```
-
+# Swagger, SQLLite, SQLAlchemy
 ## Install packages for database
 ```
-pip3 install connexion
 pip3 install connexion
 pip3 install flask_marshmallow
 pip3 install connexion[swagger-ui]
