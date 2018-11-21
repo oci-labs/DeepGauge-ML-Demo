@@ -69,7 +69,7 @@ def show_device_setting(device_id):
         "refresh": "60",
         "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl.",
         "thresholds": [
-            { "low": 6 }
+            { "low": 6, "high": 18 }
         ]
     }
     return render_template('setting_device.html', device=obj)
