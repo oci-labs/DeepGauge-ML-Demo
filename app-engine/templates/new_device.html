@@ -74,12 +74,21 @@
       </div>
       <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
-            <div class="input-group mb-3">
-              <div class="custom-file">
-                <label class="custom-file-label" for="inputGroupFile">Choose file</label>
-                <input type="file" name="file" class="form-control" id="inputGroupFile" />
-              </div>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <label class="custom-file-label" for="inputGroupFile">Choose file</label>
+              <input type="file" name="file" class="form-control" id="inputGroupFile" />
             </div>
+          </div>
+          <div class="form-group">
+            <label for="default_device_type">Device Type</label>
+            <select class="form-control" id="default_device_type">
+              <option></option>
+              <option>Device A</option>
+              <option>Device B</option>
+              <option>Device A</option>
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <input type="submit" class="btn btn-primary" value="Add Device" />
