@@ -357,3 +357,309 @@ paths:
       responses:
         200:
           description: Successfully deleted a person
+  /device:
+    get:
+      operationId: device.read_all
+      tags:
+        - Device
+      summary: Read the entire set of devices, sorted by user id
+      description: Read the entire set of devices, sorted by user id
+      responses:
+        200:
+          description: Successfully read devices set operation
+          schema:
+            type: array
+            items:
+              properties:
+                id_user:
+                  type: integer
+                  description: Id of the user
+                name:
+                  type: string
+                  description: the device name
+                image:
+                  type: string
+                  description: the device image
+                bucket:
+                  type: string
+                  description: Bucket URL of the device
+                type:
+                  type: string
+                  description: The type of device
+                location:
+                  type: string
+                  description: The location of the device
+                frame_rate:
+                  type: string
+                  description: The frame rate of the device
+                refresh_rate:
+                  type: string
+                  description: The refresh rate of the device
+                notes:
+                  type: string
+                  description: The notes for device
+                high_threshold:
+                  type: integer
+                  description: The high threshold for device
+                low_threshold:
+                  type: integer
+                  description: The low threshold for device
+                updated:
+                  type: string
+                  description: Creation/Update timestamp of the setting
+
+    post:
+      operationId: device.create
+      tags:
+        - Device
+      summary: Create a device
+      description: Create a new device
+      parameters:
+        - name: device
+          in: body
+          description: Device to create
+          required: True
+          schema:
+            type: object
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              name:
+                type: string
+                description: the device name
+              image:
+                type: string
+                description: the device image
+              bucket:
+                type: string
+                description: Bucket URL of the device
+              type:
+                type: string
+                description: The type of device
+              location:
+                type: string
+                description: The location of the device
+              frame_rate:
+                type: string
+                description: The frame rate of the device
+              refresh_rate:
+                type: string
+                description: The refresh rate of the device
+              notes:
+                type: string
+                description: The notes for device
+              high_threshold:
+                type: integer
+                description: The high threshold for device
+              low_threshold:
+                type: integer
+                description: The low threshold for device
+
+      responses:
+        201:
+          description: Successfully created device
+          schema:
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              name:
+                type: string
+                description: the device name
+              image:
+                type: string
+                description: the device image
+              bucket:
+                type: string
+                description: Bucket URL of the device
+              type:
+                type: string
+                description: The type of device
+              location:
+                type: string
+                description: The location of the device
+              frame_rate:
+                type: string
+                description: The frame rate of the device
+              refresh_rate:
+                type: string
+                description: The refresh rate of the device
+              notes:
+                type: string
+                description: The notes for device
+              high_threshold:
+                type: integer
+                description: The high threshold for device
+              low_threshold:
+                type: integer
+                description: The low threshold for device
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
+  /device/{id_device}:
+    get:
+      operationId: device.read_one
+      tags:
+        - Device
+      summary: Read one device
+      description: Read one device
+      parameters:
+        - name: id_device
+          in: path
+          description: id of the device to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read device from read operation
+          schema:
+            type: object
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              name:
+                type: string
+                description: the device name
+              image:
+                type: string
+                description: the device image
+              bucket:
+                type: string
+                description: Bucket URL of the device
+              type:
+                type: string
+                description: The type of device
+              location:
+                type: string
+                description: The location of the device
+              frame_rate:
+                type: string
+                description: The frame rate of the device
+              refresh_rate:
+                type: string
+                description: The refresh rate of the device
+              notes:
+                type: string
+                description: The notes for device
+              high_threshold:
+                type: integer
+                description: The high threshold for device
+              low_threshold:
+                type: integer
+                description: The low threshold for device
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
+
+    put:
+      operationId: device.update
+      tags:
+        - Device
+      summary: Update a device
+      description: Update a device
+      parameters:
+        - name: id_device
+          in: path
+          description: Id the device to update
+          type: integer
+          required: True
+        - name: device
+          in: body
+          schema:
+            type: object
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              name:
+                type: string
+                description: the device name
+              image:
+                type: string
+                description: the device image
+              bucket:
+                type: string
+                description: Bucket URL of the device
+              type:
+                type: string
+                description: The type of device
+              location:
+                type: string
+                description: The location of the device
+              frame_rate:
+                type: string
+                description: The frame rate of the device
+              refresh_rate:
+                type: string
+                description: The refresh rate of the device
+              notes:
+                type: string
+                description: The notes for device
+              high_threshold:
+                type: integer
+                description: The high threshold for device
+              low_threshold:
+                type: integer
+                description: The low threshold for device
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
+      responses:
+        200:
+          description: Successfully updated device
+          schema:
+            properties:
+              id_user:
+                type: integer
+                description: Id of the user
+              name:
+                type: string
+                description: the device name
+              image:
+                type: string
+                description: the device image
+              bucket:
+                type: string
+                description: Bucket URL of the device
+              type:
+                type: string
+                description: The type of device
+              location:
+                type: string
+                description: The location of the device
+              frame_rate:
+                type: string
+                description: The frame rate of the device
+              refresh_rate:
+                type: string
+                description: The refresh rate of the device
+              notes:
+                type: string
+                description: The notes for device
+              high_threshold:
+                type: integer
+                description: The high threshold for device
+              low_threshold:
+                type: integer
+                description: The low threshold for device
+              updated:
+                type: string
+                description: Creation/Update timestamp of the setting
+
+    delete:
+      operationId: device.delete
+      tags:
+        - Device
+      summary: Delete a device from the list
+      description: Delete a device
+      parameters:
+        - name: id_device
+          in: path
+          type: integer
+          description: id of the device to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a person
