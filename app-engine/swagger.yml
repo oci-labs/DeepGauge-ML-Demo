@@ -357,6 +357,7 @@ paths:
       responses:
         200:
           description: Successfully deleted a person
+
   /device:
     get:
       operationId: device.read_all
@@ -663,3 +664,184 @@ paths:
       responses:
         200:
           description: Successfully deleted a person
+  /reading:
+    get:
+      operationId: reading.read_all
+      tags:
+        - Reading
+      summary: Read the entire set of readings, sorted by device id
+      description: Read the entire set of readings, sorted by device id
+      responses:
+        200:
+          description: Successfully read readings set operation
+          schema:
+            type: array
+            items:
+              properties:
+                id_device:
+                  type: integer
+                  description: individual device identification
+                prediction:
+                  type: string
+                  description: the predicted label
+                accuracy:
+                  type: string
+                  description: the accuracy of the predictions
+                body:
+                  type: string
+                  description: the reccommendation response body
+                timestamp:
+                  type: string
+                  description: Creation/Update timestamp of the setting
+
+    post:
+      operationId: reading.create
+      tags:
+        - Reading
+      summary: Create a reading
+      description: Create a new reading
+      parameters:
+        - name: reading
+          in: body
+          description: Reading to create
+          required: True
+          schema:
+            type: object
+            properties:
+              id_device:
+                type: integer
+                description: individual device identification
+              prediction:
+                type: string
+                description: the predicted label
+              accuracy:
+                type: string
+                description: the accuracy of the predictions
+              body:
+                type: string
+                description: the reccommendation response body
+      responses:
+        201:
+          description: Successfully created reading
+          schema:
+            properties:
+              id_device:
+                type: integer
+                description: reading id
+              id_device:
+                type: integer
+                description: individual device identification
+              prediction:
+                type: string
+                description: the predicted label
+              accuracy:
+                type: string
+                description: the accuracy of the predictions
+              body:
+                type: string
+                description: the reccommendation response body
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the setting
+  /reading/{id_device}:
+    get:
+      operationId: reading.read_many
+      tags:
+        - Reading
+      summary: Read readings from one device
+      description: Read readings from one device
+      parameters:
+        - name: id_device
+          in: path
+          description: id of the device to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read reading from device id data operation
+          schema:
+            type: object
+            properties:
+              id_device:
+                type: integer
+                description: individual device identification
+              prediction:
+                type: string
+                description: the predicted label
+              accuracy:
+                type: string
+                description: the accuracy of the predictions
+              body:
+                type: string
+                description: the reccommendation response body
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the setting
+  /reading/{reading_id}:
+    put:
+      operationId: reading.update
+      tags:
+        - Reading
+      summary: Update a reading
+      description: Update a reading
+      parameters:
+        - name: reading_id
+          in: path
+          description: Id the reading to update
+          type: integer
+          required: True
+        - name: reading
+          in: body
+          schema:
+            type: object
+            properties:
+              id_device:
+                type: integer
+                description: individual device identification
+              prediction:
+                type: string
+                description: the predicted label
+              accuracy:
+                type: string
+                description: the accuracy of the predictions
+              body:
+                type: string
+                description: the reccommendation response body
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the setting
+      responses:
+        200:
+          description: Successfully updated reading
+          schema:
+            properties:
+              id_device:
+                type: integer
+                description: individual device identification
+              prediction:
+                type: string
+                description: the predicted label
+              accuracy:
+                type: string
+                description: the accuracy of the predictions
+              body:
+                type: string
+                description: the reccommendation response body
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the setting
+    delete:
+      operationId: reading.delete
+      tags:
+        - Reading
+      summary: Delete a reading from the list
+      description: Delete a reading
+      parameters:
+        - name: reading_id
+          in: path
+          type: integer
+          description: id of the reading to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a reading
