@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_train_base64_trial_141
+JOB_NAME=custom_estimator_train_base64_trial_309
 BUCKET="gs://custom_estimator"
 ##
 PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
@@ -17,7 +17,7 @@ JOB_DIR="${BUCKET}/misc/logs/job_dir"
 
 gcloud ml-engine jobs submit training "$JOB_NAME" \
     --stream-logs \
-    --runtime-version 1.10 \
+    --runtime-version 1.4 \
     --module-name trainer.task \
     --package-path "$PACKAGE_PATH" \
     --staging-bucket "$BUCKET" \

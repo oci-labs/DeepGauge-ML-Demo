@@ -205,8 +205,8 @@ def create_ensemble_architecture(hidden_units=None,
     return
 
 
-def decode_and_resize(img_base64):
-    image_str_tensor = tf.decode_base64(input=img_base64)
+def decode_and_resize(image_str_tensor):
+    # image_str_tensor = tf.decode_base64(input=img_base64)
     image = tf.image.decode_jpeg(image_str_tensor, channels=3)
     image = tf.expand_dims(image, 0)
     image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
