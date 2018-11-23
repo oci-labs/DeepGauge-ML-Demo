@@ -87,22 +87,22 @@ def update(id_device, device):
     :return:       updated device structure
     """
     # Get the person requested from the db into session
-    print(id_device)
-    print(device)
-    update = Device.query.filter(Device.id == id_device).one_or_none()
-    print(update)
+    update_device = Device.query.filter(Device.id == id_device).one_or_none()
     # Did we find a user?
-    if update is not None:
+    if update_device is not None:
 
         # device['id'] = update.id
         # device['updated'] = datetime.utcnow
 
         # turn the passed in person into a db object
         schema = DeviceSchema()
-        updates = schema.load(device, session=db.session).data
+        update = schema.load(device, session=db.session).data
+
+        # Set the id to the person we want to update
+        update.id = update_device.id
 
         # merge the new object into the old and commit it to the db
-        db.session.merge(updates)
+        db.session.merge(update)
         db.session.commit()
 
         # return updated person in the response
