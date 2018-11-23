@@ -57,16 +57,20 @@ def predict_gauge(data, context):
     bucket_id = 'ocideepgauge-images'
     bucket = client.get_bucket(bucket_id)
     blob = bucket.blob(data['name'])
-    img = base64.b64encode(blob.download_as_string(), altchars=b'-_').rstrip(b'=')
+    img = base64.b64encode(blob.download_as_string())
+    # img = img.decode("utf8").replace('+', '-').replace('/', '_').replace('=', '')
 
-    instance = {"img_bytes": img}
+    print(img)
+
+    # instance = {"img_bytes": {"b64": img.decode("utf8")}}
+    instance = {"img_bytes": img.decode("utf8")}
 
     #
     # Compose request to ML Engine
     #
     project = 'ocideepgauge'
-    model = 'ensemble_base64_1'
-    service = discovery.build('ensemble_base64_1', 'v8', cache_discovery=False)
+    model = 'dg'
+    service = discovery.build('ml', 'v1', cache_discovery=False)
     name = 'projects/{}/models/{}'.format(project, model)
 
     # Create a request to call projects.models.predict.
