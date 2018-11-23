@@ -47,7 +47,7 @@ def read_one(user_name):
     else:
         abort(
             404,
-            "User not found for Id: {id_user}".format(id_user=id_user),
+            "User not found for Id: {user_name}".format(user_name=user_name),
         )
 
 

@@ -4,7 +4,7 @@ from config import db, ma
 class Setting(db.Model):
     __tablename__ = "setting"
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer,db.ForeignKey('user.id'))
+    id_user = db.Column(db.Integer)
     type = db.Column(db.String(32))
     frame_rate = db.Column(db.String(32))
     refresh_rate = db.Column(db.String(32))
@@ -19,7 +19,7 @@ class SettingSchema(ma.ModelSchema):
 class Reading(db.Model):
     __tablename__ = "reading"
     id = db.Column(db.Integer, primary_key=True)
-    id_device = db.Column(db.Integer,db.ForeignKey('device.id'))
+    id_device = db.Column(db.Integer)
     prediction = db.Column(db.String(64))
     accuracy = db.Column(db.String(64))
     body = db.Column(db.String(128))
@@ -35,7 +35,7 @@ class ReadingSchema(ma.ModelSchema):
 class Device(db.Model):
     __tablename__ = "device"
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer,db.ForeignKey('user.id'))
+    id_user = db.Column(db.Integer)
     name = db.Column(db.String(32))
     image = db.Column(db.String(32))
     bucket = db.Column(db.String(32))

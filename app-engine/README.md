@@ -76,6 +76,7 @@ User
   company
   thumbnail
   updated
+
 Device
   id  
   id_user
@@ -91,7 +92,7 @@ Device
   low_threshold
   updated
 
-Default
+Setting
   id
   id_user
   type
