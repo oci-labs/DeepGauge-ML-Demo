@@ -39,7 +39,10 @@ Browse the AppEngine Project
 ```
 $ gcloud app browse -s deep-gauge
 ```
-
+View any logs
+```
+ $ gcloud app logs tail
+```
 Create an isolated Python environment in a directory external to your project and activate it:
 ```
 virtualenv env
@@ -61,9 +64,15 @@ http://localhost:8080
 # Swagger, SQLLite, SQLAlchemy
 ## Install packages for database
 ```
+pip3 install flask
 pip3 install connexion
 pip3 install flask_marshmallow
 pip3 install connexion[swagger-ui]
+pip3 install google-cloud-pubsub
+pip3 install google-cloud-storage
+pip3 install google-resumable-media
+pip3 install marshmallow-sqlalchemy
+
 ```
 # Models
 Define a schema that represents that data.

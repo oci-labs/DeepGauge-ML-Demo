@@ -3,20 +3,76 @@ from flask import Flask, Response, request, json, render_template, current_app, 
 from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
-
-from models import Device, DeviceSchema
-
-# local modules
-import config
-
-# Get the application instance
-connex_app = config.connex_app
+from config import db, app, connex_app
+from models import Setting, Reading, User, Person, Device, DeviceSchema
 
 # Read the swagger.yml file to configure the endpoints
 connex_app.add_api("swagger.yml")
 
+def make_database():
+    # Delete database file if it exists currently
+    # if os.path.exists("deepgauge.db"):
+    #     os.remove("deepgauge.db")
 
-@connex_app.route('/')
+    # Create the database
+    db.create_all()
+
+    # Data to initialize database with
+    DEVICES = [
+        {
+            "id_user":1,
+            "name":"Device One",
+            "image":"https://placehold.it/282x282/",
+            "bucket":"ocideepgauge",
+            "type":"Camera",
+            "location":"St. Louis",
+            "frame_rate":5,
+            "refresh_rate":60,
+            "notes":"General notes and information about Camera One",
+            "high_threshold":10,
+            "low_threshold":5
+        },
+        {
+            "id_user":1,
+            "name":"Device Two",
+            "image":"https://placehold.it/282x282/",
+            "bucket":"ocideepgauge",
+            "type":"Camera",
+            "location":"St. Louis",
+            "frame_rate":10,
+            "refresh_rate":120,
+            "notes":"General notes and information about Camera One",
+            "high_threshold":20,
+            "low_threshold":10
+        }
+    ]
+
+    # iterate over the PEOPLE structure and populate the database
+    for device in DEVICES:
+        d = Device(
+            id_user=device.get("id_user"),
+            name=device.get("name"),
+            image=device.get("image"),
+            bucket=device.get("bucket"),
+            type=device.get("type"),
+            location=device.get("location"),
+            frame_rate=device.get("frame_rate"),
+            refresh_rate=device.get("refresh_rate"),
+            notes=device.get("notes"),
+            high_threshold=device.get("high_threshold"),
+            low_threshold=device.get("low_threshold")
+        )
+        db.session.add(d)
+
+    db.session.commit()
+    return True
+
+@app.route('/build-my-database')
+def database():
+    make_database()
+    return 'OK', 200
+
+@app.route('/')
 def root():
     query = Device.query.order_by(Device.id_user).all()
 
@@ -26,7 +82,7 @@ def root():
     print(data)
     return render_template('dashboard.html', devices=data)
 
-@connex_app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         file = request.files['file']
@@ -37,24 +93,26 @@ def upload():
         ##
         with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
             s.write(file.read())
+        ## Create a new Device
+        ## Redirect to the device page.
 
     return redirect("/", code=302)
 
 
-@connex_app.route('/setting')
+@app.route('/setting')
 def setting():
     ## TODO Add query to local database to get defaults
     return render_template('setting.html')
 
-@connex_app.route('/user')
+@app.route('/user')
 def user():
     return render_template('user.html')
 
-@connex_app.route('/device/new')
+@app.route('/device/new')
 def new_device():
     return render_template('new_device.html')
 
-@connex_app.route('/device/<int:device_id>')
+@app.route('/device/<int:device_id>')
 def one_device(device_id):
     query = Device.query.filter(Device.id == device_id).one_or_none()
 
@@ -71,7 +129,7 @@ def one_device(device_id):
 
     return render_template('one_device.html', device=data)
 
-@connex_app.route('/device/setting/<int:device_id>')
+@app.route('/device/setting/<int:device_id>')
 def show_device_setting(device_id):
     obj = {
         "id": device_id,
@@ -87,7 +145,7 @@ def show_device_setting(device_id):
     return render_template('setting_device.html', device=obj)
 
 # [START push]
-@connex_app.route('/pubsub/push', methods=['POST'])
+@app.route('/pubsub/push', methods=['POST'])
 def pubsub_push():
     if (request.args.get('token', '') !=
             current_app.config['PUBSUB_VERIFICATION_TOKEN']):
@@ -103,7 +161,7 @@ def pubsub_push():
 # [END push]
 
 
-# @connex_app.errorhandler(500)
+# @app.errorhandler(500)
 # def server_error(e):
 #     logging.exception('An error occurred during a request.')
 #     return """
@@ -113,5 +171,5 @@ def pubsub_push():
 
 
 if __name__ == '__main__':
-    connex_app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
 # [START gae_python37_render_template]
