@@ -4,6 +4,8 @@ from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 
+from models import Device, DeviceSchema
+
 # local modules
 import config
 
@@ -16,7 +18,13 @@ connex_app.add_api("swagger.yml")
 
 @connex_app.route('/')
 def root():
-    return render_template('dashboard.html')
+    query = Device.query.order_by(Device.id_user).all()
+
+    # Serialize the data for the response
+    schema = DeviceSchema(many=True)
+    data = schema.dump(query).data
+    print(data)
+    return render_template('dashboard.html', devices=data)
 
 @connex_app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -48,16 +56,20 @@ def new_device():
 
 @connex_app.route('/device/<int:device_id>')
 def one_device(device_id):
-    obj = {
-        "id": device_id,
-        "img": "https://placehold.it/500x200",
-        "acc": 12,
-        "type": "Analog Gauge",
-        "loc": "St. Louis",
-        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl."
-    }
+    query = Device.query.filter(Device.id == device_id).one_or_none()
 
-    return render_template('one_device.html', device=obj)
+    # Did we find a person?
+    if query is not None:
+
+        # Serialize the data for the response
+        schema = DeviceSchema()
+        data = schema.dump(query).data
+
+    # Otherwise, nope, didn't find that person
+    else:
+        data = []
+
+    return render_template('one_device.html', device=data)
 
 @connex_app.route('/device/setting/<int:device_id>')
 def show_device_setting(device_id):

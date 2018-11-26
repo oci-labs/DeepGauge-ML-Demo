@@ -19,11 +19,11 @@
           </a>
         </h2>
         <div class="card">
-          <img class="card-img-top" src="{{device.img}}" alt="Card image cap">
+          <img class="card-img-top" src={{device.image}} alt="Device Image">
           <div class="card-body">
               <p class="d-flex justify-content-between align-items-center">
                 Accuracy
-                <span class="badge badge-primary badge-pill">{{device.acc}}</span>
+                <span class="badge badge-primary badge-pill">{{device.accuracy}}</span>
               </p>
               <p class="d-flex justify-content-between align-items-center">
                 Device Type:
@@ -31,7 +31,7 @@
               </p>
               <p class="d-flex justify-content-between align-items-center">
                 Location:
-                <span class="badge badge-primary">{{device.loc}}</span>
+                <span class="badge badge-primary">{{device.location}}</span>
               </p>
               <strong class="card-text">Notes</strong>
               <p class="card-text mb-5">{{device.notes}}</p>
