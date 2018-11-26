@@ -1,44 +1,10 @@
-import base64, json
-from google.cloud import storage
-from googleapiclient import discovery
-from google.cloud import pubsub_v1
+import base64, json, datetime
+
 # Imports the Google Cloud client library
 from google.cloud import bigquery
-import datetime
-
-def flowers_table_insert_rows(client, datarow):
-    SCHEMA = [
-    bigquery.SchemaField('DATETIME','DATETIME',mode='REQUIRED'),
-    bigquery.SchemaField('KEY','INTEGER',mode='REQUIRED'),
-    bigquery.SchemaField('PREDICTION','INTEGER',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE1','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE2','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE3','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE4','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE5','FLOAT',mode='REQUIRED'),
-    bigquery.SchemaField('SCORE6','FLOAT',mode='REQUIRED')
-    ]
-
-    #my_bigquery.dataset(dataset_name).table(table_name).exists()  # returns boolean
-
-    """Insert / fetch table data."""
-    dataset_id = 'flowers_dataset_final'
-    table_id = 'flowers_table_final'
-    dataset = bigquery.Dataset(client.dataset(dataset_id))
-    try:
-        dataset = client.create_dataset(dataset)
-    except Exception as err:
-        print("dataset already exists")
-    dataset.location = 'US'
-    table = bigquery.Table(dataset.table(table_id), schema=SCHEMA)
-    try:
-        table = client.create_table(table)
-    except Exception as err:
-        print("table already exists")
-    rows_to_insert = datarow
-    errors = client.insert_rows(table, rows_to_insert)  # API request
-    assert errors == []
-    # [END bigquery_table_insert_rows]
+from google.cloud import pubsub_v1
+from google.cloud import storage
+from googleapiclient import discovery
 
 
 # [START functions_predict_gauge]
@@ -63,8 +29,6 @@ def predict_gauge(data, context):
 
     # Compose request to ML Engine
     project = 'ocideepgauge'
-
-
     model = 'dg'
     service = discovery.build('ml', 'v1', cache_discovery=False)
     name = 'projects/{}/models/{}'.format(project, model)
