@@ -1,9 +1,9 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_estimator_train_serving_function_35
+JOB_NAME=custom_estimator_train_serving_function_37
 BUCKET="gs://custom_estimator"
 ##
-PACKAGE_PATH=/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer
+PACKAGE_PATH="/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer"
 ##
 PRIMARY_PATH="${BUCKET}/misc/primary_models"
 ENSEMBLE_PATH="${BUCKET}/misc/ensemble_graph"
@@ -33,4 +33,4 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --batch_size=200 \
     --retrain_primary_models=False \
     --learning_rate=3e-4 \
-    --job_dir="$JOB_DIR"
+    --job_dir="$JOB_DIR" \
