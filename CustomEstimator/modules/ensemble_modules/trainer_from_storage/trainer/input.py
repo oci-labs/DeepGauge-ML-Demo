@@ -77,11 +77,11 @@ class Dataset():
     def parse_function(filename, label):
         filename = filename['file']
         image_string = tf.read_file(filename)
-        # image = tf.image.decode_jpeg(image_string, channels=3)
-        # image = tf.image.resize_images(image, [224, 224], method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-        # image = tf.image.convert_image_dtype(image, tf.float32)
-        # image = tf.encode_base64(input=image_string)
-        return {'img_bytes': image_string}, label
+        image = tf.image.decode_jpeg(image_string, channels=3)
+        image = tf.expand_dims(image, 0)
+        image = tf.image.resize_bilinear(image, [224, 224], align_corners=False)
+        image = tf.squeeze(image, squeeze_dims=[0])
+        return {'img': image}, label
 
     @classmethod
     def prep_input_function(cls,
