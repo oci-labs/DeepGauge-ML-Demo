@@ -12,7 +12,10 @@ connex_app = connexion.App(__name__, specification_dir=basedir)
 app = connex_app.app
 
 # Build the Sqlite ULR for SqlAlchemy
-sqlite_url = "sqlite:////" + os.path.join(basedir, "deepgauge.db")
+# sqlite_url = "sqlite:////" + os.path.join(basedir, "deepgauge.db")
+sqlite_url = "sqlite:///:memory:"
+
+
 
 # Configure the SqlAlchemy part of the app instance
 app.config["SQLALCHEMY_ECHO"] = True
