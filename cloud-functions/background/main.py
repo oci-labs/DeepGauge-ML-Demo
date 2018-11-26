@@ -64,6 +64,7 @@ def predict_gauge(data, context):
     # Compose request to ML Engine
     project = 'ocideepgauge'
 
+
     model = 'dg'
     service = discovery.build('ml', 'v1', cache_discovery=False)
     name = 'projects/{}/models/{}'.format(project, model)
