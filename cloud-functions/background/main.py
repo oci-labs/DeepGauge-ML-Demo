@@ -60,11 +60,8 @@ def predict_gauge(data, context):
     img = base64.b64encode(blob.download_as_string())
 
     instance = {"bytes": {"b64": img.decode("utf8")}}
-    # instance = {"bytes": img.decode("utf8")}
 
-    #
     # Compose request to ML Engine
-    #
     project = 'ocideepgauge'
     model = 'dg'
     service = discovery.build('ml', 'v1', cache_discovery=False)
