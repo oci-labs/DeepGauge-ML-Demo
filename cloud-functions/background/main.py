@@ -58,12 +58,9 @@ def predict_gauge(data, context):
     bucket = client.get_bucket(bucket_id)
     blob = bucket.blob(data['name'])
     img = base64.b64encode(blob.download_as_string())
-    # img = img.decode("utf8").replace('+', '-').replace('/', '_').replace('=', '')
 
-    print(img)
-
-    # instance = {"img_bytes": {"b64": img.decode("utf8")}}
-    instance = {"img_bytes": img.decode("utf8")}
+    instance = {"bytes": {"b64": img.decode("utf8")}}
+    # instance = {"bytes": img.decode("utf8")}
 
     #
     # Compose request to ML Engine
