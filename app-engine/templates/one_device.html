@@ -21,9 +21,11 @@
         <div class="card">
           <img class="card-img-top" src={{device.image}} alt="Device Image">
           <div class="card-body">
+              <canvas id="myChart" responsive="true" height="100"></canvas>
+              <hr />
               <p class="d-flex justify-content-between align-items-center">
                 Accuracy
-                <span class="badge badge-primary badge-pill">{{device.accuracy}}</span>
+                <span class="badge badge-primary badge-pill">{{reading.accuracy}}</span>
               </p>
               <p class="d-flex justify-content-between align-items-center">
                 Device Type:
@@ -35,9 +37,7 @@
               </p>
               <strong class="card-text">Notes</strong>
               <p class="card-text mb-5">{{device.notes}}</p>
-
-            <canvas id="myChart" responsive="true" height="400"></canvas>
-          </div>
+            </div>
         </div>
       </div>
 
