@@ -44,7 +44,7 @@ def flowers_table_insert_rows(client, datarow):
 # [START functions_predict_gauge]
 def predict_gauge(data, context):
     """Background Cloud Function to be triggered by Cloud Storage.
-       This generic function logs relevant data when a file is changed. 
+       This generic function logs relevant data when a file is changed.
        Args:
         data (dict): The Cloud Functions event payload.
         context (google.cloud.functions.Context): Metadata of triggering event.
@@ -59,13 +59,13 @@ def predict_gauge(data, context):
     blob = bucket.blob(data['name'])
     img = base64.b64encode(blob.download_as_string())
 
-    instance = {"key":"0", "image_bytes": {"b64": img.decode("utf8")}}
+    instance = {"bytes": {"b64": img.decode("utf8")}}
 
-    #
     # Compose request to ML Engine
-    #
     project = 'ocideepgauge'
-    model = 'flowers'
+
+
+    model = 'dg'
     service = discovery.build('ml', 'v1', cache_discovery=False)
     name = 'projects/{}/models/{}'.format(project, model)
 
@@ -75,33 +75,35 @@ def predict_gauge(data, context):
         body={'instances': [instance]}
     ).execute()
 
+    print(response)
+
     #
     # Compose request to PUB/SUB
     #
-    topic_name = "flower-prediction"
-
-    publisher = pubsub_v1.PublisherClient()
-    topic_path = publisher.topic_path(project, topic_name)
+    # topic_name = "flower-prediction"
+    #
+    # publisher = pubsub_v1.PublisherClient()
+    # topic_path = publisher.topic_path(project, topic_name)
 
     # Data must be a bytestring
-    predictions = json.dumps(response['predictions'])
-    bytestring = predictions.encode('utf-8')
-
-    # Add two attributes, origin and username, to the message
-    publisher.publish(topic_path, bytestring, origin='flower-sample', username='gcp')
-
-    print('Published messages with custom attributes.')
-    # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
-    #print(response['predictions']
-    dt=datetime.datetime.now()
-    #Compose request to BigQuery
-    predict=(response['predictions'][0]['prediction'])
-    key=(response['predictions'][0]['key'])
-    score1, score2, score3, score4, score5, score6=(response['predictions'][0]['scores'])
-    rows=[(dt, key, predict, score1, score2, score3, score4, score5, score6)]
-    client = bigquery.Client()
-    flowers_table_insert_rows(client,rows)
-    print(dt, key, predict, score1, score2, score3,score4,score5,score6)
+    # predictions = json.dumps(response['predictions'])
+    # bytestring = predictions.encode('utf-8')
+    #
+    # # Add two attributes, origin and username, to the message
+    # publisher.publish(topic_path, bytestring, origin='flower-sample', username='gcp')
+    #
+    # print('Published messages with custom attributes.')
+    # # daisy - 0, dandelion - 1, roses - 2, sunflowers - 3, tulips - 4
+    # #print(response['predictions']
+    # dt=datetime.datetime.now()
+    # #Compose request to BigQuery
+    # predict=(response['predictions'][0]['prediction'])
+    # key=(response['predictions'][0]['key'])
+    # score1, score2, score3, score4, score5, score6=(response['predictions'][0]['scores'])
+    # rows=[(dt, key, predict, score1, score2, score3, score4, score5, score6)]
+    # client = bigquery.Client()
+    # flowers_table_insert_rows(client,rows)
+    # print(dt, key, predict, score1, score2, score3,score4,score5,score6)
     #print(reponse['predictions'][2])
     # Print General Information
     #print('Event ID: {}'.format(context.event_id))

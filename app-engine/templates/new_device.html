@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="content">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="{{ url_for('root') }}">
+        <i class="fas fa-chevron-left"></i>
+        Back to Dashboard
+      </a>
+    </div>
+  </nav>
+
+  <article class="container-fluid">
+    <section class="row">
+      <div class="col-4">
+        <h2>Add New Device</h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#urlModal">
+            Via URL
+          </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+            Upload Image
+          </button>
+
+      </div>
+    </section>
+  </article>
+</div>
+
+
+<!-- URL Modal -->
+<div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="urlModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New via URL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="url">URL</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="" aria-label="URL" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fa fa-qrcode"></i></span>
+          </div>
+        </div>
+        <label for="url">Device Type</label>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Add Device</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <label class="custom-file-label" for="inputGroupFile">Choose file</label>
+              <input type="file" name="file" class="form-control" id="inputGroupFile" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="default_device_type">Device Type</label>
+            <select class="form-control" id="default_device_type">
+              <option></option>
+              <option>Device A</option>
+              <option>Device B</option>
+              <option>Device A</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Add Device" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

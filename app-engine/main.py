@@ -1,74 +1,148 @@
 # [START gae_python37_render_template]
-import datetime
-from flask import Flask, Response, request, json, render_template, current_app
-from google.cloud import pubsub_v1
-
+from flask import Flask, Response, request, json, render_template, current_app, redirect
+from google.cloud import pubsub_v1, storage
+from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
+from config import db, app, connex_app
+from models import Setting, Reading, User, Person, Device, DeviceSchema
 
-app = Flask(__name__)
+# Read the swagger.yml file to configure the endpoints
+connex_app.add_api("swagger.yml")
 
-# Configure the following environment variables via app.yaml
-# This is used in the push request handler to veirfy that the request came from
-# pubsub and originated from a trusted source.
-app.config['PUBSUB_VERIFICATION_TOKEN'] = os.environ['PUBSUB_VERIFICATION_TOKEN']
-app.config['PUBSUB_TOPIC'] = os.environ['PUBSUB_TOPIC']
-app.config['PROJECT'] = os.environ['GOOGLE_CLOUD_PROJECT']
+def make_database():
+    # Delete database file if it exists currently
+    # if os.path.exists("deepgauge.db"):
+    #     os.remove("deepgauge.db")
 
+    # Create the database
+    db.create_all()
 
-# Global list to storage messages received by this instance.
-MESSAGES = []
+    # Data to initialize database with
+    DEVICES = [
+        {
+            "id_user":1,
+            "name":"Device One",
+            "image":"https://placehold.it/282x282/",
+            "bucket":"ocideepgauge",
+            "type":"Camera",
+            "location":"St. Louis",
+            "frame_rate":5,
+            "refresh_rate":60,
+            "notes":"General notes and information about Camera One",
+            "high_threshold":10,
+            "low_threshold":5
+        },
+        {
+            "id_user":1,
+            "name":"Device Two",
+            "image":"https://placehold.it/282x282/",
+            "bucket":"ocideepgauge",
+            "type":"Camera",
+            "location":"St. Louis",
+            "frame_rate":10,
+            "refresh_rate":120,
+            "notes":"General notes and information about Camera One",
+            "high_threshold":20,
+            "low_threshold":10
+        }
+    ]
+
+    # iterate over the PEOPLE structure and populate the database
+    for device in DEVICES:
+        d = Device(
+            id_user=device.get("id_user"),
+            name=device.get("name"),
+            image=device.get("image"),
+            bucket=device.get("bucket"),
+            type=device.get("type"),
+            location=device.get("location"),
+            frame_rate=device.get("frame_rate"),
+            refresh_rate=device.get("refresh_rate"),
+            notes=device.get("notes"),
+            high_threshold=device.get("high_threshold"),
+            low_threshold=device.get("low_threshold")
+        )
+        db.session.add(d)
+
+    db.session.commit()
+    return True
+
+@app.route('/build-my-database')
+def database():
+    make_database()
+    return 'OK', 200
 
 @app.route('/')
 def root():
-    return render_template('dashboard.html')
+    query = Device.query.order_by(Device.id_user).all()
 
-@app.route('/settings')
-def settings():
-    return render_template('settings.html')
+    # Serialize the data for the response
+    schema = DeviceSchema(many=True)
+    data = schema.dump(query).data
+    print(data)
+    return render_template('dashboard.html', devices=data)
 
-@app.route('/user_settings')
-def user_settings():
-    return render_template('user_settings.html')
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        file = request.files['file']
 
-@app.route('/camera/add')
-def add_camera():
-    return render_template('add_camera.html')
+        client = storage.Client()
+        ## TODO: Make this a global variable
+        bucket = 'ocideepgauge-images'
+        ##
+        with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
+            s.write(file.read())
+        ## Create a new Device
+        ## Redirect to the device page.
 
-@app.route('/camera/add/url')
-def add_camera_url():
-    return 'Add Camera URL'
+    return redirect("/", code=302)
 
-@app.route('/camera/add/upload')
-def add_camera_upload():
-    return 'Add Camera Upload'
 
-@app.route('/camera/<int:camera_id>')
-def show_camera(camera_id):
-    cam = {
-        "id": camera_id,
-        "img": "https://placehold.it/500x200",
-        "acc": 12,
-        "type": "Analog Gauge",
-        "loc": "St. Louis",
-        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl."
-    }
+@app.route('/setting')
+def setting():
+    ## TODO Add query to local database to get defaults
+    return render_template('setting.html')
 
-    return render_template('single_camera.html', camera=cam)
+@app.route('/user')
+def user():
+    return render_template('user.html')
 
-@app.route('/camera/settings/<int:camera_id>')
-def show_camera_settings(camera_id):
-    cam = {
-        "id": camera_id,
+@app.route('/device/new')
+def new_device():
+    return render_template('new_device.html')
+
+@app.route('/device/<int:device_id>')
+def one_device(device_id):
+    query = Device.query.filter(Device.id == device_id).one_or_none()
+
+    # Did we find a person?
+    if query is not None:
+
+        # Serialize the data for the response
+        schema = DeviceSchema()
+        data = schema.dump(query).data
+
+    # Otherwise, nope, didn't find that person
+    else:
+        data = []
+
+    return render_template('one_device.html', device=data)
+
+@app.route('/device/setting/<int:device_id>')
+def show_device_setting(device_id):
+    obj = {
+        "id": device_id,
         "img": "https://placehold.it/570x200",
         "type": "Analog Gauge",
         "rate": "30",
         "refresh": "60",
         "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl.",
         "thresholds": [
-            { "low": 6 }
+            { "low": 6, "high": 18 }
         ]
     }
-    return render_template('settings_camera.html', camera=cam)
+    return render_template('setting_device.html', device=obj)
 
 # [START push]
 @app.route('/pubsub/push', methods=['POST'])
@@ -87,13 +161,13 @@ def pubsub_push():
 # [END push]
 
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
+# @app.errorhandler(500)
+# def server_error(e):
+#     logging.exception('An error occurred during a request.')
+#     return """
+#     An internal error occurred: <pre>{}</pre>
+#     See logs for full stacktrace.
+#     """.format(e), 500
 
 
 if __name__ == '__main__':
