@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def main():
+def image_circle_detection():
     
     img = cv2.imread('/home/gabe/Documents/example_gauge.jpg')          #Image source
     if img is None:                                                     #Check if image exists
@@ -43,7 +43,7 @@ def dist_2_pts(x1, y1, x2, y2):
     return np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
 
-def mainVideo():
+def live_video_detection():
     cap = cv2.VideoCapture(0)
     t1 = True
     while(True):
@@ -141,6 +141,10 @@ def mainVideo():
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
+
+def main():
+    image_circle_detection()
+
 
 
 if __name__=='__main__':
