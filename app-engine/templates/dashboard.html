@@ -8,7 +8,9 @@
             {% for device in devices %}
             <div class="col-xs-12 col-sm-4">
               <div class="card">
+                {% if device.image %}
                 <img class="card-img-top" src="{{ device.image }}" alt="Card image cap">
+                {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">Device {{ device.id }}</h5>
                   <p class="d-flex justify-content-between align-items-center">

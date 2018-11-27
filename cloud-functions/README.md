@@ -70,7 +70,7 @@ gcloud functions deploy hello_gcs_generic --runtime python37 --trigger-resource 
 ```
 Deep Gauge
 ```
-gcloud functions deploy predict_gauge --source=. --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.finalize
+gcloud functions deploy predict_gauge --source=. --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.metadataUpdate
 ```
 
 #### Object Finalize: triggering the function
