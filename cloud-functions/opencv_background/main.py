@@ -11,7 +11,7 @@ def main():
     
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                        #Convert to gray
     gray = cv2.medianBlur(gray, 5)
-    
+
     rows = gray.shape[0]
     circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, rows / 4,
                                param1=200, param2=100,
@@ -33,6 +33,7 @@ def main():
     final = cv2.bitwise_or(fg, bk)
     finalR = cv2.resize(final, (1920, 1080))                            #Set img size
     cv2.imshow("circle mask", finalR)                                   #Show image
+    cv2.imwrite('/home/gabe/Documents/only_gauge.png', finalR)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
