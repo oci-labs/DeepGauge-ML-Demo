@@ -11,7 +11,7 @@
   </nav>
   <article class="container-fluid">
     <section class="row">
-      <div class="col-8">
+      <div class="col-12">
         <h2>
           Device {{device.id}}
           <a class="float-right" href = {{ url_for('show_device_setting', device_id=device.id) }}>
@@ -23,6 +23,10 @@
           <div class="card-body">
               <canvas id="myChart" responsive="true" height="100"></canvas>
               <hr />
+              <p class="d-flex justify-content-between align-items-center">
+                Prediction
+                <span class="badge badge-primary badge-pill">{{reading.prediction}}</span>
+              </p>
               <p class="d-flex justify-content-between align-items-center">
                 Accuracy
                 <span class="badge badge-primary badge-pill">{{reading.accuracy}}</span>

@@ -170,7 +170,6 @@ def one_device(device_id):
     else:
         reading = []
 
-    print(reading)
     return render_template('one_device.html', device=data, reading=reading)
 
 @app.route('/device/setting/<int:device_id>')
@@ -187,7 +186,7 @@ def show_device_setting(device_id):
     # Otherwise, nope, didn't find that person
     else:
         data = []
-    print(data)
+
     return render_template('setting_device.html', device=data)
 
 # [START push]
@@ -205,12 +204,14 @@ def pubsub_push():
     for d in payload_data:
         for cl in d['class_label']:
             prediction = cl
+        for ci in d['class_ids']:
+            acc = d['probabilities'][ci]*100
 
     schema = ReadingSchema()
     reading = Reading(
         id_device   = envelope['message']['attributes']['device'],
         prediction  = prediction,
-        accuracy    = "",
+        accuracy    = acc,
         body        = payload_json
     )
     # Add to the database
@@ -225,13 +226,13 @@ def pubsub_push():
 # [END push]
 
 
-# @app.errorhandler(500)
-# def server_error(e):
-#     logging.exception('An error occurred during a request.')
-#     return """
-#     An internal error occurred: <pre>{}</pre>
-#     See logs for full stacktrace.
-#     """.format(e), 500
+@app.errorhandler(500)
+def server_error(e):
+    logging.exception('An error occurred during a request.')
+    return """
+    An internal error occurred: <pre>{}</pre>
+    See logs for full stacktrace.
+    """.format(e), 500
 
 
 if __name__ == '__main__':
