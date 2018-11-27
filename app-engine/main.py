@@ -4,7 +4,7 @@ from google.cloud import pubsub_v1, storage
 from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 from config import db, app, connex_app
-from models import Setting, Reading, User, Person, Device, DeviceSchema
+from models import *
 
 # Read the swagger.yml file to configure the endpoints
 connex_app.add_api("swagger.yml")
@@ -31,19 +31,6 @@ def make_database():
             "notes":"General notes and information about Camera One",
             "high_threshold":10,
             "low_threshold":5
-        },
-        {
-            "id_user":1,
-            "name":"Device Two",
-            "image":"https://placehold.it/282x282/",
-            "bucket":"ocideepgauge",
-            "type":"Camera",
-            "location":"St. Louis",
-            "frame_rate":10,
-            "refresh_rate":120,
-            "notes":"General notes and information about Camera One",
-            "high_threshold":20,
-            "low_threshold":10
         }
     ]
 
@@ -64,13 +51,20 @@ def make_database():
         )
         db.session.add(d)
 
+    u = User(
+        user_name       = "Technician",
+        display_name    = "Technician Name",
+        company         = "Technicians Company",
+        thumbnail       = "https://jobs.centurylink.com/sites/century-link/images/sp-technician-img.jpg"
+    )
+    db.session.add(u)
+
     db.session.commit()
     return True
 
-@app.route('/build-my-database')
-def database():
-    make_database()
-    return 'OK', 200
+# Flask lets you create a test request to initialize an app.
+with app.test_request_context():
+     make_database()
 
 @app.route('/')
 def root():
@@ -79,24 +73,50 @@ def root():
     # Serialize the data for the response
     schema = DeviceSchema(many=True)
     data = schema.dump(query).data
-    print(data)
+
     return render_template('dashboard.html', devices=data)
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         file = request.files['file']
-
         client = storage.Client()
-        ## TODO: Make this a global variable
-        bucket = 'ocideepgauge-images'
-        ##
+        bucket = 'ocideepgauge-images' #TODO: Make this a global variable
+
+        # Create a new Device entry
+        schema = DeviceSchema()
+        device = Device(
+            id_user         = 1, #TODO request this from the Flask auth session - not implemented
+            name            = "",
+            image           = 'https://storage.googleapis.com/{0}/{1}'.format(bucket, file.filename),
+            bucket          = "gs://ocideepgauge-images",
+            type            = "gauge",
+            location        = "",  #TODO detect or update value from geo service
+            frame_rate      = 15, #TODO change to defaults set in the database
+            refresh_rate    = 30, #TODO change to defaults set in the database
+            notes           = "",
+            high_threshold  = 0,
+            low_threshold   = 0
+        )
+
+        # Add the device to the database
+        db.session.add(device)
+        db.session.commit()
+
+        # Serialize and return the newly created person in the response
+        data = schema.dump(device).data
+
+        # Upload the image to Google Storage bucket
         with GCSObjectStreamUpload(client=client, bucket_name=bucket, blob_name=file.filename) as s:
             s.write(file.read())
-        ## Create a new Device
-        ## Redirect to the device page.
 
-    return redirect("/", code=302)
+        my_bucket = client.get_bucket(bucket)
+        blob = my_bucket.blob(file.filename)
+        blob.metadata = {'device_id':data['id'],'type':'gauge'}
+        blob.patch()
+
+        # Redirect to the device page.
+        return redirect("/device/setting/{}".format(data['id']), code=302)
 
 
 @app.route('/setting')
@@ -106,7 +126,13 @@ def setting():
 
 @app.route('/user')
 def user():
-    return render_template('user.html')
+    user = User.query.filter(User.id == 1).one_or_none()
+
+    # Serialize the data for the response
+    schema = UserSchema()
+    data = schema.dump(user).data
+
+    return render_template('user.html', user=data)
 
 @app.route('/device/new')
 def new_device():
@@ -131,18 +157,20 @@ def one_device(device_id):
 
 @app.route('/device/setting/<int:device_id>')
 def show_device_setting(device_id):
-    obj = {
-        "id": device_id,
-        "img": "https://placehold.it/570x200",
-        "type": "Analog Gauge",
-        "rate": "30",
-        "refresh": "60",
-        "notes": "Bacon ipsum dolor amet shank doner jerky short loin filet mignon. Spare ribs short loin turducken jowl.",
-        "thresholds": [
-            { "low": 6, "high": 18 }
-        ]
-    }
-    return render_template('setting_device.html', device=obj)
+    query = Device.query.filter(Device.id == device_id).one_or_none()
+
+    # Did we find a person?
+    if query is not None:
+
+        # Serialize the data for the response
+        schema = DeviceSchema()
+        data = schema.dump(query).data
+
+    # Otherwise, nope, didn't find that person
+    else:
+        data = []
+    print(data)
+    return render_template('setting_device.html', device=data)
 
 # [START push]
 @app.route('/pubsub/push', methods=['POST'])
@@ -154,7 +182,38 @@ def pubsub_push():
     envelope = json.loads(request.get_data().decode('utf-8'))
     payload = base64.b64decode(envelope['message']['data'])
 
-    MESSAGES.append(payload)
+    print("RECEIVED PUB SUB")
+    print(envelope)
+    print(payload)
+    print(type(envelope))
+    items = envelope.items()
+    print(items)
+    print(envelope['message'])
+    # print(envelope.message.attributes.device)
+    # reading
+    # schema = ReadingSchema()
+    # reading = Reading(
+    #     id_device   =
+    #     prediction  = db.Column(db.String(64))
+    #     accuracy    = db.Column(db.String(64))
+    #     body        = db.Column(db.String(128))
+    # )
+    # readings.id_device = reading.get('id_device')
+    # # Add to the database
+    # db.session.add(readings)
+    # db.session.commit()
+    #
+    # # Serialize and return the newly created person in the response
+    # data = schema.dump(reading).data
+
+    # print(payload['class_label'])
+
+    # if envelope.attributes:
+    #     print('Attributes:')
+    #     for key in envelope.attributes:
+    #         value = envelope.attributes.get(key)
+    #         print('{}: {}'.format(key, value))
+    # MESSAGES.append(payload)
 
     # Returning any 2xx status indicates successful receipt of the message.
     return 'OK', 200
