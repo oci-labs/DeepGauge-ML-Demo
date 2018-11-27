@@ -24,7 +24,7 @@ def make_database():
             "name":"Device One",
             "image":"https://placehold.it/282x282/",
             "bucket":"ocideepgauge",
-            "type":"Camera",
+            "type":"Gauge",
             "location":"St. Louis",
             "frame_rate":5,
             "refresh_rate":60,
@@ -58,6 +58,14 @@ def make_database():
         thumbnail       = "https://jobs.centurylink.com/sites/century-link/images/sp-technician-img.jpg"
     )
     db.session.add(u)
+
+    r = Reading(
+        id_device   = 1,
+        prediction  = "psi 8",
+        accuracy    = "89%",
+        body        = "[{}]"
+    )
+    db.session.add(r)
 
     db.session.commit()
     return True
@@ -141,8 +149,6 @@ def new_device():
 @app.route('/device/<int:device_id>')
 def one_device(device_id):
     query = Device.query.filter(Device.id == device_id).one_or_none()
-
-    # Did we find a person?
     if query is not None:
 
         # Serialize the data for the response
@@ -153,7 +159,19 @@ def one_device(device_id):
     else:
         data = []
 
-    return render_template('one_device.html', device=data)
+    query_reading = Reading.query.filter(Reading.id_device == device_id).one_or_none()
+    if query_reading is not None:
+
+        # Serialize the data for the response
+        schema = ReadingSchema()
+        reading = schema.dump(query_reading).data
+
+    # Otherwise, nope, didn't find that person
+    else:
+        reading = []
+
+    print(reading)
+    return render_template('one_device.html', device=data, reading=reading)
 
 @app.route('/device/setting/<int:device_id>')
 def show_device_setting(device_id):
@@ -182,38 +200,25 @@ def pubsub_push():
     envelope = json.loads(request.get_data().decode('utf-8'))
     payload = base64.b64decode(envelope['message']['data'])
 
-    print("RECEIVED PUB SUB")
-    print(envelope)
-    print(payload)
-    print(type(envelope))
-    items = envelope.items()
-    print(items)
-    print(envelope['message'])
-    # print(envelope.message.attributes.device)
-    # reading
-    # schema = ReadingSchema()
-    # reading = Reading(
-    #     id_device   =
-    #     prediction  = db.Column(db.String(64))
-    #     accuracy    = db.Column(db.String(64))
-    #     body        = db.Column(db.String(128))
-    # )
-    # readings.id_device = reading.get('id_device')
-    # # Add to the database
-    # db.session.add(readings)
-    # db.session.commit()
-    #
-    # # Serialize and return the newly created person in the response
-    # data = schema.dump(reading).data
+    payload_json = payload.decode('utf8').replace("'", '"')
+    payload_data = json.loads(payload_json)
+    for d in payload_data:
+        for cl in d['class_label']:
+            prediction = cl
 
-    # print(payload['class_label'])
+    schema = ReadingSchema()
+    reading = Reading(
+        id_device   = envelope['message']['attributes']['device'],
+        prediction  = prediction,
+        accuracy    = "",
+        body        = payload_json
+    )
+    # Add to the database
+    db.session.add(reading)
+    db.session.commit()
 
-    # if envelope.attributes:
-    #     print('Attributes:')
-    #     for key in envelope.attributes:
-    #         value = envelope.attributes.get(key)
-    #         print('{}: {}'.format(key, value))
-    # MESSAGES.append(payload)
+    # Serialize and return the newly created person in the response
+    data = schema.dump(reading).data
 
     # Returning any 2xx status indicates successful receipt of the message.
     return 'OK', 200
