@@ -1,3 +1,4 @@
 .idea/
 *.pyc
 google-cloud-vision-api/OCIDeepGauge-eaa8c9248a8d.json
+google-cloud-vision-api/.ipynb_checkpoints/Make Requests To Vision API With Client Library-checkpoint.ipynb

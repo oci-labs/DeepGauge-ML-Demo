@@ -8,6 +8,9 @@ data = json.loads(my_json)
 for d in data:
     for cl in d['class_label']:
         print(cl)
+    for ci in d['class_ids']:
+        print(ci)
+        print(d['probabilities'][26]*100)
 
     print()
 
