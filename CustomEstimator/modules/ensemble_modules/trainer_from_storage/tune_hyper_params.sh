@@ -1,20 +1,17 @@
-
-
+##
 REGION=us-central1
-JOB_NAME=custom_estimator_tune_hyperParams_19
+JOB_NAME=custom_estimator_demo_2
 BUCKET="gs://custom_estimator"
-
-
+##
 PACKAGE_PATH="/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer"
 CONFIG_PATH="/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/hyperparam.yaml"
-
-
+##
 PRIMARY_PATH="${BUCKET}/misc/primary_models"
 ENSEMBLE_PATH="${BUCKET}/misc/ensemble_graph"
 IMG_PATH="${BUCKET}/data"
 BIN_PATH="${BUCKET}/misc/logs/dumps"
-EXPORT_PATH="${BUCKET}/misc/exported_model"
-JOB_DIR="${BUCKET}/misc/logs/job_dir"
+STAGING_BUCKET="${BUCKET}/staging_folder"
+JOB_DIR="${BUCKET}/misc/logs/job_dir/${JOB_NAME}"
 
 
 gcloud ml-engine jobs submit training "$JOB_NAME" \
@@ -22,7 +19,7 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --runtime-version 1.10 \
     --module-name trainer.task \
     --package-path "$PACKAGE_PATH" \
-    --staging-bucket "$BUCKET" \
+    --staging-bucket "$STAGING_BUCKET" \
     --region "$REGION" \
     --config "$CONFIG_PATH" \
     -- \
@@ -30,9 +27,10 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --primary_models_directory="${PRIMARY_PATH}" \
     --ensemble_architecture_path="${ENSEMBLE_PATH}" \
     --path_to_images="${IMG_PATH}" \
-    --export_dir="${EXPORT_PATH}" \
-    --train_epochs=80 \
-    --retrain_primary_models=False \
-    --job_dir="$JOB_DIR"
+    --dev=False \
+    --train_epochs=250 \
+    --retrain_primary_models=True \
+    --job_dir="$JOB_DIR" \
+
 
 
