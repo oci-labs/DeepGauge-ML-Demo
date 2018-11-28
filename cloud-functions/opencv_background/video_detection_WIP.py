@@ -86,7 +86,7 @@ def live_video_detection():
             count = 0
 
         # Display the resulting frame
-        cv2.imshow('frame',final)
+        cv2.imshow('frame',gray)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
