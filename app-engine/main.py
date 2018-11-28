@@ -68,8 +68,9 @@ def root():
     schema = DeviceSchema(many=True)
     data = schema.dump(query).data
 
-    date_time_obj = datetime.strptime(data[0]['updated'], '%Y-%m-%dT%H:%M:%S.%f%z')
-    data[0]['updated'] = date_time_obj.strftime('%B %d, %Y, %H:%M:%S')
+    for idx, d in enumerate(data):
+        date_time_obj = datetime.strptime(data[idx]['updated'], '%Y-%m-%dT%H:%M:%S.%f%z')
+        data[idx]['updated'] = date_time_obj.strftime('%B %d, %Y, %H:%M:%S')
 
     return render_template('dashboard.html', devices=data)
 
@@ -208,6 +209,14 @@ def pubsub_push():
     # Add to the database
     db.session.add(reading)
     db.session.commit()
+
+    # Update the Device model with the prediction
+    id_device = envelope['message']['attributes']['device']
+    update_device = Device.query.filter(Device.id == id_device).one_or_none()
+
+    if update_device is not None:
+        update_device.prediction = prediction.replace("_"," ").upper()
+        db.session.commit()
 
     # Serialize and return the newly created person in the response
     data = schema.dump(reading).data
