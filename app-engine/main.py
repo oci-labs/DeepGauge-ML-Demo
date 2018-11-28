@@ -5,12 +5,14 @@ from lib.GCSObjectStreamUpload import GCSObjectStreamUpload
 import base64, json, logging, os
 from config import db, app, connex_app
 from models import *
+from datetime import datetime
 
 # Read the swagger.yml file to configure the endpoints
 connex_app.add_api("swagger.yml")
 
 def make_database():
     # Delete database file if it exists currently
+    # Keep for running the database locally
     # if os.path.exists("deepgauge.db"):
     #     os.remove("deepgauge.db")
 
@@ -18,38 +20,20 @@ def make_database():
     db.create_all()
 
     # Data to initialize database with
-    DEVICES = [
-        {
-            "id_user":1,
-            "name":"Device One",
-            "image":"https://placehold.it/282x282/",
-            "bucket":"ocideepgauge",
-            "type":"Gauge",
-            "location":"St. Louis",
-            "frame_rate":5,
-            "refresh_rate":60,
-            "notes":"General notes and information about Camera One",
-            "high_threshold":10,
-            "low_threshold":5
-        }
-    ]
-
-    # iterate over the PEOPLE structure and populate the database
-    for device in DEVICES:
-        d = Device(
-            id_user=device.get("id_user"),
-            name=device.get("name"),
-            image=device.get("image"),
-            bucket=device.get("bucket"),
-            type=device.get("type"),
-            location=device.get("location"),
-            frame_rate=device.get("frame_rate"),
-            refresh_rate=device.get("refresh_rate"),
-            notes=device.get("notes"),
-            high_threshold=device.get("high_threshold"),
-            low_threshold=device.get("low_threshold")
-        )
-        db.session.add(d)
+    d = Device(
+        id_user         = 1,
+        name            = "Device One",
+        image           = "https://storage.googleapis.com/ocideepgauge-images/gauge_7.png",
+        bucket          = "ocideepgauge",
+        type            = "Gauge",
+        location        = "St. Louis",
+        prediction      = "PSI 7",
+        frame_rate      = 5,
+        refresh_rate    = 60,
+        notes           = "General notes and information about Camera One",
+        high_threshold  = 10,
+        low_threshold   = 5
+    )
 
     u = User(
         user_name       = "Technician",
@@ -57,7 +41,6 @@ def make_database():
         company         = "Technicians Company",
         thumbnail       = "https://jobs.centurylink.com/sites/century-link/images/sp-technician-img.jpg"
     )
-    db.session.add(u)
 
     r = Reading(
         id_device   = 1,
@@ -65,6 +48,9 @@ def make_database():
         accuracy    = "89%",
         body        = "[{}]"
     )
+
+    db.session.add(u)
+    db.session.add(d)
     db.session.add(r)
 
     db.session.commit()
@@ -82,7 +68,11 @@ def root():
     schema = DeviceSchema(many=True)
     data = schema.dump(query).data
 
+    date_time_obj = datetime.strptime(data[0]['updated'], '%Y-%m-%dT%H:%M:%S.%f%z')
+    data[0]['updated'] = date_time_obj.strftime('%B %d, %Y, %H:%M:%S')
+
     return render_template('dashboard.html', devices=data)
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
@@ -99,6 +89,7 @@ def upload():
             image           = 'https://storage.googleapis.com/{0}/{1}'.format(bucket, file.filename),
             bucket          = "gs://ocideepgauge-images",
             type            = "gauge",
+            prediction      = "",
             location        = "",  #TODO detect or update value from geo service
             frame_rate      = 15, #TODO change to defaults set in the database
             refresh_rate    = 30, #TODO change to defaults set in the database

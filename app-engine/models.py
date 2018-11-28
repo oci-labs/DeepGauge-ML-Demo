@@ -55,6 +55,7 @@ class Device(db.Model):
     bucket = db.Column(db.String(32))
     type = db.Column(db.String(32))
     location = db.Column(db.String(32))
+    prediction = db.Column(db.String(32))
     frame_rate = db.Column(db.String(32))
     refresh_rate = db.Column(db.String(32))
     notes = db.Column(db.String(64))
