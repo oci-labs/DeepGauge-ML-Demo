@@ -390,6 +390,9 @@ paths:
                 location:
                   type: string
                   description: The location of the device
+                prediction:
+                  type: string
+                  description: The location of the device
                 frame_rate:
                   type: string
                   description: The frame rate of the device
@@ -441,6 +444,9 @@ paths:
               location:
                 type: string
                 description: The location of the device
+              prediction:
+                type: string
+                description: The location of the device
               frame_rate:
                 type: string
                 description: The frame rate of the device
@@ -478,6 +484,9 @@ paths:
                 type: string
                 description: The type of device
               location:
+                type: string
+                description: The location of the device
+              prediction:
                 type: string
                 description: The location of the device
               frame_rate:
@@ -535,6 +544,9 @@ paths:
               location:
                 type: string
                 description: The location of the device
+              prediction:
+                type: string
+                description: The location of the device
               frame_rate:
                 type: string
                 description: The frame rate of the device
@@ -589,6 +601,9 @@ paths:
               location:
                 type: string
                 description: The location of the device
+              prediction:
+                type: string
+                description: The location of the device
               frame_rate:
                 type: string
                 description: The frame rate of the device
@@ -628,6 +643,9 @@ paths:
                 type: string
                 description: The type of device
               location:
+                type: string
+                description: The location of the device
+              prediction:
                 type: string
                 description: The location of the device
               frame_rate:
