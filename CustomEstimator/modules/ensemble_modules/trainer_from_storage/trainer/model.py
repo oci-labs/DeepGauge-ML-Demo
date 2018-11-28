@@ -206,7 +206,6 @@ def create_ensemble_architecture(hidden_units=None,
 
 
 def model_fn(features, labels, mode, params):
-
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
         meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
@@ -250,8 +249,18 @@ def model_fn(features, labels, mode, params):
                                    predictions=predicted_classes,
                                    name='acc_op')
 
-    metrics = {'accuracy': accuracy}
+    """confusion matrix"""
+    batch_confusion = tf.confusion_matrix(tf.argmax(labels, 1),
+                                          predicted_classes,
+                                          num_classes=params['n_output'],
+                                          name='batch_confusion')
+    confusion_image = tf.reshape(tf.cast(batch_confusion, tf.float32),
+                                 [1, params['n_output'], params['n_output'], 1])
+
+    tf.summary.image('confusion', confusion_image)
     tf.summary.scalar('accuracy', accuracy[1])
+
+    metrics = {'accuracy': accuracy}
 
     if mode == tf.estimator.ModeKeys.EVAL:
         return tf.estimator.EstimatorSpec(
