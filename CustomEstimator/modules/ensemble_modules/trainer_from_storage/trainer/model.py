@@ -20,8 +20,15 @@ def create_ensemble_architecture(hidden_units=None,
                     saver = tf.train.import_meta_graph(pipeline_params["checkpoint_file_path"],
                                                        clear_devices=True,
                                                        import_scope='CNN_model')
-                    saver.restore(tf.get_default_session(),
+                    saver.restore(sess,
                                   tf.train.latest_checkpoint(pipeline_params["checkpoint_path"]))
+
+                    # vars = [v.name.split(":")[0] for v in tf.trainable_variables()]
+                    #
+                    # tf.graph_util.convert_variables_to_constants(
+                    #     sess,
+                    #     tf.get_default_graph().as_graph_def(),
+                    #     vars)
 
                 X_image_tf = graph_model.get_tensor_by_name("CNN_model/X_image_tf:0")
                 logits_tf = graph_model.get_tensor_by_name("CNN_model/logits_tf:0")
@@ -98,12 +105,14 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
-            with tf.Session(graph=tf.Graph()) as sess:
-                tf.graph_util.convert_variables_to_constants(
-                    sess,
-                    tf.get_default_graph().as_graph_def(),
-                    [v for v in tf.trainable_variables()]
-                )
+            # vars = [v.name.split(":")[0] for v in tf.trainable_variables() if 'img_size_info' not in v.name]
+            #
+            # with tf.Session(graph=tf.get_default_graph()) as sess:
+            #     tf.graph_util.convert_variables_to_constants(
+            #         sess,
+            #         sess.graph.as_graph_def(),
+            #         vars
+            #     )
 
             return raw_imgs_in_main_graph, logits_concat
 
