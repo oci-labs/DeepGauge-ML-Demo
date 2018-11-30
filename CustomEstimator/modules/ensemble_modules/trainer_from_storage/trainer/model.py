@@ -224,7 +224,7 @@ def create_ensemble_architecture(hidden_units=None,
 
 def gen_plot(matrix=None, labels=None):
     """Create a pyplot plot and save to buffer."""
-    sns.heatmap(matrix, annot=True, cmap='Blues', xticklabels=labels, yticklabels=labels)
+    sns.heatmap(matrix, annot=True, cmap='Blues', xticklabels=labels, yticklabels=labels, cbar=False)
     plt.title('confusion_matrix')
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
