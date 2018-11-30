@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_trial_200
+JOB_NAME=custom_trial_216
 BUCKET="gs://custom_estimator"
 ##
 PACKAGE_PATH="/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer"

@@ -2,6 +2,14 @@ import tensorflow as tf
 import os
 from tensorflow.python.framework import meta_graph
 
+####
+import numpy as np
+import matplotlib
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+import io
+import seaborn as sns
+
 
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
@@ -214,6 +222,21 @@ def create_ensemble_architecture(hidden_units=None,
     return
 
 
+def gen_plot(matrix=None, labels=None):
+    """Create a pyplot plot and save to buffer."""
+    sns.heatmap(matrix, annot=True, cmap='Blues', xticklabels=labels, yticklabels=labels)
+    plt.title('confusion_matrix')
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    # plt.figure()
+    # plt.plot(matrix)
+    # plt.title('confusion_matrix')
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    image_string = buf.getvalue()
+    buf.close()
+    return image_string
+
 def model_fn(features, labels, mode, params):
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
@@ -263,19 +286,35 @@ def model_fn(features, labels, mode, params):
                                           predicted_classes,
                                           num_classes=params['n_output'],
                                           name='batch_confusion')
-    confusion_image = tf.reshape(tf.cast(batch_confusion, tf.float32),
-                                 [1, params['n_output'], params['n_output'], 1])
+    #########################
+    plot_buf = tf.py_func(gen_plot, [batch_confusion, category_map], tf.string)
+    # plot_buf = gen_plot(title="confusion_matrix", matrix=[1,2,3,4,5])
 
-    tf.summary.image('confusion', confusion_image)
+    # Convert PNG buffer to TF image
+    cm_image = tf.image.decode_png(plot_buf, channels=4)
+
+    # Add the batch dimension
+    cm_image = tf.expand_dims(cm_image, 0)
+    ########################
+
+
+
+    # confusion_image = tf.reshape(tf.cast(batch_confusion, tf.float32),
+    #                              [1, params['n_output'], params['n_output'], 1])
+
+    # tf.summary.image('confusion', image)
     tf.summary.scalar('accuracy', accuracy[1])
 
     metrics = {'accuracy': accuracy}
 
     if mode == tf.estimator.ModeKeys.EVAL:
+        tf.summary.image('confusion_eval', cm_image)
         return tf.estimator.EstimatorSpec(
             mode, loss=loss, eval_metric_ops=metrics)
 
     assert mode == tf.estimator.ModeKeys.TRAIN
+
+    tf.summary.image('confusion_train', cm_image)
 
     if params['retrain_primary_models'] != True:
         trainable_variables = [v for v in tf.trainable_variables() if 'ensemble' in v.name]
