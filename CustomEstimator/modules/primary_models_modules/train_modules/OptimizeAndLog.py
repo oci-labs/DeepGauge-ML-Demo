@@ -1,6 +1,6 @@
 import tensorflow as tf
-from modules.NeuralNet import Graph
-from modules.PerfMeasures import Measures
+from modules.primary_models_modules.train_modules.NeuralNet import Graph
+from modules.primary_models_modules.train_modules.PerfMeasures import Measures
 import time
 from datetime import timedelta
 import pickle
@@ -24,7 +24,7 @@ class OptimizerLogger(object):
         ##
         try:
             #
-            with open('dumps/category_mapper.json') as handle:
+            with open('modules/primary_models_modules/dumps/category_mapper.json') as handle:
                 category_mapper = json.load(handle)
             #
             OptimizerLogger.category_mapper = category_mapper
@@ -134,12 +134,16 @@ class OptimizerLogger(object):
 
                     ##
                     # modelsInfo['main']['best_median']
-                    print('train_acc: {:.4f}   test_acc: {:.4f}  best_logits_median: {:.4f}'.
-                          format(train_acc, test_acc, modelsInfo['main']['best_median']))
-                    print('')
+                    # print('train_acc: {:.4f}   test_acc: {:.4f}  best_logits_median: {:.4f}'.
+                    #       format(train_acc, test_acc, modelsInfo['main']['best_median']))
+                    # print('')
+
+                print('After {} epochs train_acc is {:.4f} and test_acc is {:.4f}'.
+                      format(i, train_acc, test_acc))
+                print('')
 
                 ## to save modelsInfo
-                with open('./dumps/best_models_info.pkl', 'wb') as pklFile:
+                with open('./modules/primary_models_modules/dumps/best_models_info.pkl', 'wb') as pklFile:
                     pickle.dump(modelsInfo, pklFile)
 
         tf.reset_default_graph()

@@ -1,0 +1,3 @@
+model_checkpoint_path: "best_model_psi_0"
+all_model_checkpoint_paths: "../psi-NAN/best_model_psi-NAN"
+all_model_checkpoint_paths: "best_model_psi_0"

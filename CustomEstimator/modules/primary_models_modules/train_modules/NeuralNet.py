@@ -1,4 +1,4 @@
-from modules.NewLayers import NewLayer
+from modules.primary_models_modules.train_modules.NewLayers import NewLayer
 
 
 ##

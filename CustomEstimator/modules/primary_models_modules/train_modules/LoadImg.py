@@ -122,7 +122,9 @@ class Dataset(object):
     @classmethod
     def prep_datasets(cls, ver_ratio, container_path, final_img_width, final_img_height,
                       color_mode='grayscale',
-                      random_state=19, is_trial=False, bin_path='dumps/'):
+                      random_state=19,
+                      is_trial=False,
+                      bin_path='modules/primary_models_modules/dumps/'):
         ##
         X_train_path_names, X_test_path_names, y_train, y_test = \
             cls.split_data_files(ver_ratio=ver_ratio,
