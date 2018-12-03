@@ -5,6 +5,7 @@ from tensorflow.python.framework import meta_graph
 ####
 import numpy as np
 import matplotlib
+
 matplotlib.use("agg")
 import matplotlib.pyplot as plt
 import io
@@ -113,15 +114,6 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
-            # vars = [v.name.split(":")[0] for v in tf.trainable_variables() if 'img_size_info' not in v.name]
-            #
-            # with tf.Session(graph=tf.get_default_graph()) as sess:
-            #     tf.graph_util.convert_variables_to_constants(
-            #         sess,
-            #         sess.graph.as_graph_def(),
-            #         vars
-            #     )
-
             return raw_imgs_in_main_graph, logits_concat
 
         @classmethod
@@ -228,14 +220,12 @@ def gen_plot(matrix=None, labels=None):
     plt.title('confusion_matrix')
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    # plt.figure()
-    # plt.plot(matrix)
-    # plt.title('confusion_matrix')
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
     image_string = buf.getvalue()
     buf.close()
     return image_string
+
 
 def model_fn(features, labels, mode, params):
     graph_ensemble = tf.Graph()
@@ -286,31 +276,30 @@ def model_fn(features, labels, mode, params):
                                           predicted_classes,
                                           num_classes=params['n_output'],
                                           name='batch_confusion')
-    #########################
+
     plot_buf = tf.py_func(gen_plot, [batch_confusion, category_map], tf.string)
-    # plot_buf = gen_plot(title="confusion_matrix", matrix=[1,2,3,4,5])
 
     # Convert PNG buffer to TF image
     cm_image = tf.image.decode_png(plot_buf, channels=4)
 
     # Add the batch dimension
     cm_image = tf.expand_dims(cm_image, 0)
-    ########################
+    """"""
 
-
-
-    # confusion_image = tf.reshape(tf.cast(batch_confusion, tf.float32),
-    #                              [1, params['n_output'], params['n_output'], 1])
-
-    # tf.summary.image('confusion', image)
     tf.summary.scalar('accuracy', accuracy[1])
 
     metrics = {'accuracy': accuracy}
 
+    ######
+    eval_summary_hook = tf.train.SummarySaverHook(
+        save_steps=1,
+        summary_op=tf.summary.image('confusion_eval', cm_image))
+
     if mode == tf.estimator.ModeKeys.EVAL:
-        tf.summary.image('confusion_eval', cm_image)
         return tf.estimator.EstimatorSpec(
-            mode, loss=loss, eval_metric_ops=metrics)
+            mode, loss=loss,
+            eval_metric_ops=metrics,
+            evaluation_hooks=[eval_summary_hook])
 
     assert mode == tf.estimator.ModeKeys.TRAIN
 
@@ -324,4 +313,6 @@ def model_fn(features, labels, mode, params):
     optimizer = tf.train.AdamOptimizer(learning_rate=params['learning_rate'], name='adam_fc')
     train_op = optimizer.minimize(loss, var_list=trainable_variables,
                                   global_step=tf.train.get_or_create_global_step())
-    return tf.estimator.EstimatorSpec(mode, loss=loss, train_op=train_op)
+    return tf.estimator.EstimatorSpec(mode,
+                                      loss=loss,
+                                      train_op=train_op)

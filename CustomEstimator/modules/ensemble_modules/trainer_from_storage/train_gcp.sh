@@ -1,6 +1,6 @@
 ##
 REGION=us-central1
-JOB_NAME=custom_confusion_matrix_3
+JOB_NAME=custom_trial_103
 BUCKET="gs://custom_estimator"
 ##
 PACKAGE_PATH="/home/khodayarim/PycharmProjects/DeepGauge-ML-Demo/CustomEstimator/modules/ensemble_modules/trainer_from_storage/trainer"
@@ -24,8 +24,8 @@ gcloud ml-engine jobs submit training "$JOB_NAME" \
     --primary_models_directory="${PRIMARY_PATH}" \
     --ensemble_architecture_path="${ENSEMBLE_PATH}" \
     --path_to_images="${IMG_PATH}" \
-    --dev=False \
-    --train_epochs=400 \
+    --dev=True \
+    --train_epochs=30 \
     --batch_size=400 \
     --retrain_primary_models=True \
     --learning_rate=8.5e-4 \
