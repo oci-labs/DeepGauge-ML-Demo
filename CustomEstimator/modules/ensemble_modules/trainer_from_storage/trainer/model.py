@@ -290,7 +290,6 @@ def model_fn(features, labels, mode, params):
 
     metrics = {'accuracy': accuracy}
 
-    ######
     eval_summary_hook = tf.train.SummarySaverHook(
         save_steps=1,
         summary_op=tf.summary.image('confusion_eval', cm_image))

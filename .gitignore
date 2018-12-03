@@ -9,3 +9,12 @@ out
 gen
 /CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/
 /CustomEstimator/modules/ensemble_modules/trainer_from_storage/hyperparam_original.yaml
+/CustomEstimator/CLI_commands/
+/CustomEstimator/data/
+/CustomEstimator/.ipynb_checkpoints/
+/CustomEstimator/modules/primary_models_modules/logs/exported_model/
+/CustomEstimator/modules/primary_models_modules/logs/models_ensemble/
+/CustomEstimator/modules/primary_models_modules/logs/primary_models_original/
+/CustomEstimator/modules/primary_models_modules/logs/temporary_latest_streaming_image/
+/CustomEstimator/modules/primary_models_modules/logs/temporary_models/
+/CustomEstimator/modules/primary_models_modules/logs/TensorBoard/
