@@ -105,7 +105,7 @@ class OptimizerLogger(object):
 
                 for i in range(total_iterations,
                                total_iterations + num_iterations):
-                    print('epoch {} ... '.format(i))
+                    # print('epoch {} ... '.format(i))
                     # TensorFlow assigns the variables in feed_dict_train
                     # to the placeholder variables and then runs the optimizer.
                     session.run(optimizer, feed_dict=feed_dict_train)
@@ -139,7 +139,7 @@ class OptimizerLogger(object):
                     # print('')
 
                 print('After {} epochs train_acc is {:.4f} and test_acc is {:.4f}'.
-                      format(i, train_acc, test_acc))
+                      format(i+1, train_acc, test_acc))
                 print('')
 
                 ## to save modelsInfo
