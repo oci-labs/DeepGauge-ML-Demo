@@ -114,6 +114,9 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
+            # vars = [v.name.split(":")[0] for v in tf.trainable_variables()]
+            # tf.stop_gradient(vars, name='stop_gradient')
+
             return raw_imgs_in_main_graph, logits_concat
 
         @classmethod
@@ -161,7 +164,8 @@ def create_ensemble_architecture(hidden_units=None,
             ##
             graph_fc = tf.Graph()
             with graph_fc.as_default():
-                X_tf = tf.placeholder(tf.float32, shape=[None, concatenated_features.get_shape().as_list()[1]],
+                X_tf = tf.placeholder(tf.float32,
+                                      shape=[None, concatenated_features.get_shape().as_list()[1]],
                                       name='X_tf')
 
                 ##
