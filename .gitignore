@@ -1,2 +1,4 @@
 .idea/
 *.pyc
+google-cloud-vision-api/*
+test-shadow-removal/*
