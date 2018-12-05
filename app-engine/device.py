@@ -88,25 +88,27 @@ def update(id_device, device):
     """
     # Get the person requested from the db into session
     update_device = Device.query.filter(Device.id == id_device).one_or_none()
-    # Did we find a user?
+
+    # Did we find a device?
     if update_device is not None:
+        update_device.updated = datetime.utcnow()
+        update_device.bucket = device['bucket']
+        update_device.frame_rate = device['frame_rate']
+        update_device.high_threshold = device['high_threshold']
+        update_device.id_user = device['id_user']
+        update_device.image = device['image']
+        update_device.location = device['location']
+        update_device.low_threshold = device['low_threshold']
+        update_device.name = device['name']
+        update_device.notes = device['notes']
+        update_device.prediction = device['prediction']
+        update_device.refresh_rate = device['refresh_rate']
+        update_device.type = device['type']
 
-        # device['id'] = update.id
-        # device['updated'] = datetime.utcnow
-
-        # turn the passed in person into a db object
-        schema = DeviceSchema()
-        update = schema.load(device, session=db.session).data
-
-        # Set the id to the person we want to update
-        update.id = update_device.id
-
-        # merge the new object into the old and commit it to the db
-        db.session.merge(update)
         db.session.commit()
 
-        # return updated person in the response
-        data = schema.dump(update).data
+        schema = DeviceSchema()
+        data = schema.dump(update_device).data
 
         return data, 200
 
@@ -114,7 +116,7 @@ def update(id_device, device):
     else:
         abort(
             404,
-            "Device not found for Id: {user_name}".format(user_name=user_name),
+            "Device not found for Id: {id_device}".format(id_device=id_device),
         )
 
 

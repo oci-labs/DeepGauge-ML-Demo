@@ -158,7 +158,7 @@ $(document).ready(function() {
   }
 
   var ctx = document.getElementById('myChart').getContext('2d');
-  ctx.canvas.height = 300;
+  ctx.canvas.height = 100;
 
   var color = Chart.helpers.color;
   var cfg = {
