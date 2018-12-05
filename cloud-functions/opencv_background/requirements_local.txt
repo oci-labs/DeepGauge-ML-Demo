@@ -1,0 +1,6 @@
+# Function dependencies
+opencv-python
+google-cloud-storage
+google-api-python-client
+google-cloud-pubsub
+google-cloud-bigquery
