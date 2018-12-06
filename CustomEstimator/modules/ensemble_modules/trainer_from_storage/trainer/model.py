@@ -295,19 +295,24 @@ def model_fn(features, labels, mode, params):
 
     metrics = {'accuracy': accuracy}
 
-    eval_summary_hook = tf.train.SummarySaverHook(
-        save_steps=1,
-        summary_op=tf.summary.image('confusion_eval', cm_image))
+    def func_1():
+        tf.summary.image('confusion_train', cm_image)
+        return 'confusion_train'
+
+    def func_2():
+        tf.summary.image('confusion_eval', cm_image)
+        return 'confusion_eval'
+
+    conf_matrix = tf.cond(pred=tf.equal(mode, tf.estimator.ModeKeys.TRAIN),
+                          true_fn=lambda: tf.py_func(func_1, [], tf.string),
+                          false_fn=lambda: tf.py_func(func_2, [], tf.string))
 
     if mode == tf.estimator.ModeKeys.EVAL:
         return tf.estimator.EstimatorSpec(
             mode, loss=loss,
-            eval_metric_ops=metrics,
-            evaluation_hooks=[eval_summary_hook])
+            eval_metric_ops=metrics)
 
     assert mode == tf.estimator.ModeKeys.TRAIN
-
-    tf.summary.image('confusion_train', cm_image)
 
     if params['retrain_primary_models'] != True:
         trainable_variables = [v for v in tf.trainable_variables() if 'ensemble' in v.name]
