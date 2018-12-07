@@ -21,7 +21,7 @@
           <div class="form-group">
             <label for="url">URL</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="" aria-label="URL" aria-describedby="basic-addon2">
+              <input type="text" class="form-control" placeholder="{{device.bucket}}" aria-label="URL" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fa fa-qrcode"></i></span>
               </div>
@@ -30,28 +30,28 @@
           <div class="form-group">
             <label for="url">Device Type</label>
             <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option>Choose...</option>
+              <option value="camera">Camera</option>
+              <option value="gauge" selected>Gauge</option>
+              <option value="raspberry_pi">RaspberryPi</option>
             </select>
           </div>
           <div class="form-group">
             <label for="url">Frame Rate</label>
             <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option>Choose...</option>
+              <option value="15" selected>15</option>
+              <option value="30">30</option>
+              <option value="60">60</option>
             </select>
           </div>
           <div class="form-group">
           <label for="url">Refresh Rate</label>
           <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option>Choose...</option>
+            <option value="30" selected>30 seconds</option>
+            <option value="60">1 minutes</option>
+            <option value="300">5 minutes</option>
           </select>
         </div>
         <div class="form-group">
@@ -62,19 +62,18 @@
         <button type="button" class="btn btn-default ml-4">Delete</button>
       </form>
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <form>
           <div class="form-group">
             <label for="thumbnail">Thumbnail</label>
           </div>
           <div class="form-group">
-              <img class="img-fluid" src="{{device.img}}" alt="Card image cap">
+              <img class="img-fluid" src="{{device.image}}" alt="Device Image">
           </div>
           <div class="form-group">
             <label for="threshold">Thresholds</label>
-            {% for item in device.thresholds %}
             <p>
-              <span>High: {{item.high}}</span>
+              <span>High: {{device.high_threshold}}</span>
               <span class="float-right">
                 <button type="button" class="btn btn-sm btn-link">Edit</button>
                 |
@@ -82,14 +81,13 @@
               </span>
             </p>
             <p>
-              <span>Low: {{item.low}}</span>
+              <span>Low: {{device.low_threshold}}</span>
               <span class="float-right">
                 <button type="button" class="btn btn-sm btn-link">Edit</button>
                 |
                 <button type="button" class="btn btn-sm btn-link">Delete</button>
               </span>
             </p>
-            {% endfor %}
           </div>
           <button class="btn btn-sm btn-primary">Add New</button>
         </form>

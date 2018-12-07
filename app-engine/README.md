@@ -94,6 +94,7 @@ Device
   bucket
   type
   location
+  prediction
   frame_rate
   refresh_rate
   notes

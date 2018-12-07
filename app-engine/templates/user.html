@@ -20,15 +20,15 @@
         <form>
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" />
+            <input type="text" class="form-control" id="username" placeholder="{{user.user_name}}" />
           </div>
           <div class="form-group">
             <label for="display_name">Display Name</label>
-            <input type="text" class="form-control" id="display_name" />
+            <input type="text" class="form-control" id="display_name" placeholder="{{user.display_name}}" />
           </div>
           <div class="form-group">
             <label for="display_name">Company</label>
-            <input type="text" class="form-control" id="company" />
+            <input type="text" class="form-control" id="company"  placeholder="{{user.company}}"/>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="submit" class="btn btn-default ml-4">Sign Out</button>
@@ -40,7 +40,7 @@
             <label for="username">Thumbnail</label>
           </div>
           <div class="form-group">
-            <img src="https://placehold.it/300x300/" alt="Thumbnail">
+            <img src="{{user.thumbnail}}" alt="Thumbnail">
           </div>
           <button type="submit" class="btn btn-default">Edit</button>
         </form>

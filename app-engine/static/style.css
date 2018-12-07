@@ -216,7 +216,6 @@ a.article, a.article:hover {
     min-width: 80px;
     max-width: 80px;
     text-align: center;
-    margin-left: -80px !important;
   }
   .dropdown-toggle::after {
     top: auto;
@@ -237,9 +236,10 @@ a.article, a.article:hover {
   }
   #sidebar ul li a {
     padding: 20px 10px;
+    text-align: center;
   }
   #sidebar ul li a span {
-    font-size: 0.85em;
+    font-size: 0.50em;
   }
   #sidebar ul li a i {
     margin-right: 0;
@@ -250,6 +250,9 @@ a.article, a.article:hover {
   }
   #sidebar ul li a i {
     font-size: 1.3em;
+    margin-left: 0;
+    text-align: center;
+    float: none;
   }
   #sidebar {
     margin-left: 0;
