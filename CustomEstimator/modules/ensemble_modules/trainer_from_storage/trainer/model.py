@@ -292,20 +292,21 @@ def model_fn(features, labels, mode, params):
     """"""
 
     tf.summary.scalar('accuracy', accuracy[1])
+    tf.summary.image('confusion_matrix', cm_image)
 
     metrics = {'accuracy': accuracy}
 
-    def func_1():
-        tf.summary.image('confusion_train', cm_image)
-        return 'confusion_train'
-
-    def func_2():
-        tf.summary.image('confusion_eval', cm_image)
-        return 'confusion_eval'
-
-    conf_matrix = tf.cond(pred=tf.equal(mode, tf.estimator.ModeKeys.TRAIN),
-                          true_fn=lambda: tf.py_func(func_1, [], tf.string),
-                          false_fn=lambda: tf.py_func(func_2, [], tf.string))
+    # def func_1():
+    #     return tf.summary.image('confusion_train', cm_image)
+    #
+    # def func_2():
+    #     return tf.summary.image('confusion_eval', cm_image)
+    #
+    # conf_matrix = tf.cond(pred=tf.equal(mode, tf.estimator.ModeKeys.TRAIN),
+    #                       true_fn=lambda: tf.py_func(func_1, [], tf.string),
+    #                       false_fn=lambda: tf.py_func(func_2, [], tf.string))
+    #
+    # tf.identity(conf_matrix)
 
     if mode == tf.estimator.ModeKeys.EVAL:
         return tf.estimator.EstimatorSpec(
