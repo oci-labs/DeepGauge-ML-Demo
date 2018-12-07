@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by .ignore support plugin (hsz.mobi)
 ### Example user template template
 ### Example user template
@@ -67,3 +68,10 @@ gen
 /CustomEstimator/prediction_online.py
 /CustomEstimator/prediction_batch.py
 /CustomEstimator/logs/
+||||||| merged common ancestors
+.idea/
+*.pyc
+=======
+google-cloud-vision-api/*
+test-shadow-removal/*
+>>>>>>> master

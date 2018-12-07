@@ -70,7 +70,7 @@ gcloud functions deploy hello_gcs_generic --runtime python37 --trigger-resource 
 ```
 Deep Gauge
 ```
-gcloud functions deploy predict_gauge --source=. --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.finalize
+gcloud functions deploy predict_gauge --source=. --runtime python37 --trigger-resource ocideepgauge-images --trigger-event google.storage.object.metadataUpdate
 ```
 
 #### Object Finalize: triggering the function
@@ -149,10 +149,11 @@ gcloud pubsub topics create my-topic
 Use the [gcloud pubsub subscriptions create](https://cloud.google.com/sdk/gcloud/reference/pubsub/subscriptions/create) command to create a subscription. Only messages published to the topic after the subscription is created are available to subscriber applications.
 ```
 gcloud pubsub subscriptions create my-sub --topic my-topic
+gcloud pubsub subscriptions create gauge-prediction --topic gauge-prediction
 ```
 # BigQuery
 
-## Create BigQuery Dataset and Table 
+## Create BigQuery Dataset and Table
 
 i)Creating a dataset
 ```
@@ -164,7 +165,7 @@ dataset = bigquery.Dataset(dataset_ref)
 dataset.location = 'US'
 dataset = client.create_dataset(dataset)  # API request
 ```
-ii) Creating Schema for flowers ML Engine BigQuery 
+ii) Creating Schema for flowers ML Engine BigQuery
 ```
 SCHEMA = [
     bigquery.SchemaField('KEY', 'INTEGER', mode='REQUIRED'),
@@ -202,7 +203,7 @@ From Cloud Storage
 Note: For the DeepGauge we use streaming inserts.
 
 ### Streaming Data into BigQuery
-Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job. 
+Instead of using a job to load data into BigQuery, you can choose to stream your data into BigQuery one record at a time by using the tabledata().insertAll() method. This approach enables querying data without the delay of running a load job.
 ```
 rows_to_insert = [
     (u'Phred Phlyntstone', 32),
@@ -221,7 +222,7 @@ SELECT SCORE1
 FROM `ocideepgauge.flowers_dataset.flowers_table`
 LIMIT 1000
 ```
-2. Command line 
+2. Command line
 ```
 bq ls --format=pretty ocideepgauge:flowers_dataset
 ```

@@ -1,2 +1,7 @@
-# Function dependencies
-opencv
+# Function dependencies, for example:
+# package>=version
+opencv-python==3.4.4.19
+numpy==1.15.4
+scikit-image==0.14.1
+google-cloud-storage
+google-api-python-client
