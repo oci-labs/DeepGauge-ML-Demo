@@ -2,7 +2,9 @@ from setuptools import find_packages
 from setuptools import setup
 
 REQUIRED_PACKAGES = ['pandas>=0.23.4',
-                     'multiprocessing']
+                     'multiprocessing',
+                     'matplotlib',
+                     'seaborn']
 
 setup(
     name='deepGauge_custom_estimator',
