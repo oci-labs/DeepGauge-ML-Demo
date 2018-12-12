@@ -1,0 +1,19 @@
+trainingInput:
+  scaleTier: BASIC
+  hyperparameters:
+    maxTrials: 30
+    enableTrialEarlyStopping: False
+    goal: MAXIMIZE
+    hyperparameterMetricTag: accuracy
+    params:
+    - parameterName: learning_rate
+      type: DOUBLE
+      minValue: 0.0003
+      maxValue: 0.009
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: batch_size
+      type: DISCRETE
+      discreteValues:
+      - 200
+      - 400
+      scaleType: UNIT_LINEAR_SCALE

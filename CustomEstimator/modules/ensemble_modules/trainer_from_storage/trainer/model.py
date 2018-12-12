@@ -2,6 +2,15 @@ import tensorflow as tf
 import os
 from tensorflow.python.framework import meta_graph
 
+####
+import numpy as np
+import matplotlib
+
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+import io
+import seaborn as sns
+
 
 def create_ensemble_architecture(hidden_units=None,
                                  n_output=None,
@@ -20,8 +29,15 @@ def create_ensemble_architecture(hidden_units=None,
                     saver = tf.train.import_meta_graph(pipeline_params["checkpoint_file_path"],
                                                        clear_devices=True,
                                                        import_scope='CNN_model')
-                    saver.restore(tf.get_default_session(),
+                    saver.restore(sess,
                                   tf.train.latest_checkpoint(pipeline_params["checkpoint_path"]))
+
+                    # vars = [v.name.split(":")[0] for v in tf.trainable_variables()]
+                    #
+                    # tf.graph_util.convert_variables_to_constants(
+                    #     sess,
+                    #     tf.get_default_graph().as_graph_def(),
+                    #     vars)
 
                 X_image_tf = graph_model.get_tensor_by_name("CNN_model/X_image_tf:0")
                 logits_tf = graph_model.get_tensor_by_name("CNN_model/logits_tf:0")
@@ -98,12 +114,8 @@ def create_ensemble_architecture(hidden_units=None,
             logits_name = [n.name for n in tf.get_default_graph().as_graph_def().node if 'final_logit' in n.name][0]
             logits_concat = graph.get_tensor_by_name(logits_name + ':0')
 
-            with tf.Session(graph=tf.Graph()) as sess:
-                tf.graph_util.convert_variables_to_constants(
-                    sess,
-                    tf.get_default_graph().as_graph_def(),
-                    [v for v in tf.trainable_variables()]
-                )
+            # vars = [v.name.split(":")[0] for v in tf.trainable_variables()]
+            # tf.stop_gradient(vars, name='stop_gradient')
 
             return raw_imgs_in_main_graph, logits_concat
 
@@ -152,7 +164,8 @@ def create_ensemble_architecture(hidden_units=None,
             ##
             graph_fc = tf.Graph()
             with graph_fc.as_default():
-                X_tf = tf.placeholder(tf.float32, shape=[None, concatenated_features.get_shape().as_list()[1]],
+                X_tf = tf.placeholder(tf.float32,
+                                      shape=[None, concatenated_features.get_shape().as_list()[1]],
                                       name='X_tf')
 
                 ##
@@ -205,8 +218,21 @@ def create_ensemble_architecture(hidden_units=None,
     return
 
 
-def model_fn(features, labels, mode, params):
+def gen_plot(matrix=None, labels=None):
+    """Create a pyplot plot and save to buffer."""
+    plt.gcf().clear()
+    sns.heatmap(matrix, annot=True, cmap='Blues', xticklabels=labels, yticklabels=labels, cbar=False)
+    plt.title('confusion_matrix')
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    image_string = buf.getvalue()
+    buf.close()
+    return image_string
 
+
+def model_fn(features, labels, mode, params):
     graph_ensemble = tf.Graph()
     with tf.Session(graph=graph_ensemble) as sess:
         meta_graph_path = tf.gfile.Glob(os.path.join(params["ensemble_architecture_path"], '*.meta'))[0]
@@ -250,12 +276,30 @@ def model_fn(features, labels, mode, params):
                                    predictions=predicted_classes,
                                    name='acc_op')
 
-    metrics = {'accuracy': accuracy}
+    """confusion matrix"""
+    batch_confusion = tf.confusion_matrix(tf.argmax(labels, 1),
+                                          predicted_classes,
+                                          num_classes=params['n_output'],
+                                          name='batch_confusion')
+
+    plot_buf = tf.py_func(gen_plot, [batch_confusion, category_map], tf.string)
+
+    # Convert PNG buffer to TF image
+    cm_image = tf.image.decode_png(plot_buf, channels=4)
+
+    # Add the batch dimension
+    cm_image = tf.expand_dims(cm_image, 0)
+    """"""
+
     tf.summary.scalar('accuracy', accuracy[1])
+    tf.summary.image('confusion_matrix', cm_image)
+
+    metrics = {'accuracy': accuracy}
 
     if mode == tf.estimator.ModeKeys.EVAL:
         return tf.estimator.EstimatorSpec(
-            mode, loss=loss, eval_metric_ops=metrics)
+            mode, loss=loss,
+            eval_metric_ops=metrics)
 
     assert mode == tf.estimator.ModeKeys.TRAIN
 
@@ -267,4 +311,6 @@ def model_fn(features, labels, mode, params):
     optimizer = tf.train.AdamOptimizer(learning_rate=params['learning_rate'], name='adam_fc')
     train_op = optimizer.minimize(loss, var_list=trainable_variables,
                                   global_step=tf.train.get_or_create_global_step())
-    return tf.estimator.EstimatorSpec(mode, loss=loss, train_op=train_op)
+    return tf.estimator.EstimatorSpec(mode,
+                                      loss=loss,
+                                      train_op=train_op)

@@ -1,4 +1,77 @@
+<<<<<<< HEAD
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/hyperparam_original.yaml
+/CustomEstimator/CLI_commands/
+/CustomEstimator/data/
+/CustomEstimator/.ipynb_checkpoints/
+/CustomEstimator/modules/primary_models_modules/logs/exported_model/
+/CustomEstimator/modules/primary_models_modules/logs/models_ensemble/
+/CustomEstimator/modules/primary_models_modules/logs/primary_models_original/
+/CustomEstimator/modules/primary_models_modules/logs/temporary_latest_streaming_image/
+/CustomEstimator/modules/primary_models_modules/logs/temporary_models/
+/CustomEstimator/modules/primary_models_modules/logs/TensorBoard/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi-NAN/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_10/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_9_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_1/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_7_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_5_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_12/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_3/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_14/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_2_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_8/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_11_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_13_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_11/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_14_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_2/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_8_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_0/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_6_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_4_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_6/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_13/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_4/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_15/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_9/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_1_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_3_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_7/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_10_5/
+/CustomEstimator/modules/primary_models_modules/logs/models/psi_12_5/
+/CustomEstimator/modules/ensemble_modules/trainer_from_memory/
+/CustomEstimator/modules/ensemble_modules/ensemble/
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_create.sh
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_data.sh
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/bucket_misc.sh
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/predict_base64_locally.py
+/CustomEstimator/modules/ensemble_modules/trainer_from_storage/train_test_local.sh
+/CustomEstimator/modules/ensemble_modules/trainer_local/
+/CustomEstimator/customEstimator.py
+/CustomEstimator/DeepGauge_ML-Demo.ipynb
+/CustomEstimator/train_ensemble.py
+/CustomEstimator/train_gcp.sh
+/CustomEstimator/train_local.sh
+/CustomEstimator/trial.py
+/CustomEstimator/README.md
+/CustomEstimator/prediction_online.py
+/CustomEstimator/prediction_batch.py
+/CustomEstimator/logs/
+||||||| merged common ancestors
 .idea/
 *.pyc
+=======
 google-cloud-vision-api/*
 test-shadow-removal/*
+>>>>>>> master
