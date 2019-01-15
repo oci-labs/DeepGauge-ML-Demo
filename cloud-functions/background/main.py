@@ -40,8 +40,6 @@ def predict_gauge(data, context):
         body={'instances': [instance]}
     ).execute()
 
-    print(response)
-
     # Compose request to PUB/SUB
     topic_name = "gauge-prediction"
 
@@ -56,7 +54,10 @@ def predict_gauge(data, context):
     bytestring = predictions.encode('utf-8')
     device_id = my_blob.metadata['device_id']
 
+
     # Add two attributes, origin and username, to the message
     publisher.publish(topic_path,bytestring,image=thumbnail,device=device_id)
+
+    return response
 
 # [END functions_predict_gauge]
