@@ -3,7 +3,7 @@ $ gcloud projects list
 ```
 
 ```
-gcloud config set project MY_PROJECT
+gcloud config set project ocideepgauge
 ```
 ## Running Locally
 Then set environment variables before starting your application:
