@@ -11,7 +11,7 @@ gen
 /CustomEstimator/modules/ensemble_modules/trainer_from_storage/misc/exported_model/
 /CustomEstimator/modules/ensemble_modules/trainer_from_storage/hyperparam_original.yaml
 /CustomEstimator/CLI_commands/
-/CustomEstimator/gaugeReader.ipynb
+#/CustomEstimator/gaugeReader.ipynb
 /CustomEstimator/data/
 /CustomEstimator/.ipynb_checkpoints/
 /CustomEstimator/modules/primary_models_modules/logs/exported_model/
