@@ -6,9 +6,11 @@ In this project an ensembling machine learning (ML) model is trained and used to
 
 2- go to the repository folder in the terminal
 
-3- run 'jupyter notebook'
+3- run 'cd CustomEstimator'
 
-4- click on gaugeReader.ipynb to open the notebook
+4- run 'jupyter notebook'
+
+5- click on gaugeReader.ipynb to open the notebook
 
 
 
