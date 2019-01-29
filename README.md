@@ -4,13 +4,13 @@ In this project an ensembling machine learning (ML) model is trained and used to
 
 1- run 'git clone https://github.com/oci-labs/DeepGauge-ML-Demo.git'
 
-2- go to the repository folder in the terminal
+2- go to the repository folder in a terminal
 
-3- run 'cd CustomEstimator'
+3- run 'jupyter notebook'
 
-4- run 'jupyter notebook'
+4- in the jupyter console, go to CustomEstimator folder and open gaugeReader.ipynb
 
-5- click on gaugeReader.ipynb to open the notebook
+5- run the whole document to install the required Python packages, download the images, and run the code blocks 
 
 
 
