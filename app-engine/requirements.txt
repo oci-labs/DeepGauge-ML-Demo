@@ -24,7 +24,7 @@ MarkupSafe==1.1.0
 marshmallow==2.16.3
 marshmallow-sqlalchemy==0.15.0
 openapi-spec-validator==0.2.4
-protobuf==3.6.1
+protobuf==3.18.3
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
 pytz==2018.7
